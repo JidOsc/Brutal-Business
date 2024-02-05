@@ -11,5 +11,15 @@ namespace Spelet
         public float
             health,
             speed;
+
+        public void TakeDamage(float amount)
+        {
+            health -= amount;
+
+            /*if(health <= 0)
+            {
+                Die();
+            }*/
+        }
     }
 }
