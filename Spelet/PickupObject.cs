@@ -15,7 +15,7 @@ namespace Spelet
 {
                 return true;
             }
-else
+            else
             {
                 return false;
             }
