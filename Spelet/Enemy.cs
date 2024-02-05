@@ -12,7 +12,13 @@ namespace Spelet
     internal class Enemy : HPEntity
     {
         float viewDistance = 1.1f;
-        
+
+        List<Vector2> directionalDirections = new List<Vector2>();
+
+        Vector2 direction;
+
+        Random random = new Random();
+
         public bool SeesPlayer(Player player)
         {
             float distanceToPlayer = (float)Math.Sqrt(Math.Pow(player.position.X - position.X, 2) + Math.Pow(player.position.Y - position.Y, 2));
@@ -29,7 +35,56 @@ namespace Spelet
 
         public void ChasePlayer(Player player)
         {
-            velocity = Vector2.Normalize(position - player.position) * speed * -1;         
+            velocity = Vector2.Normalize(position - player.position) * speed * -1;
+        }
+
+        public void Patrol(short[][] obstacles)
+        {
+            if(obstacles[(int)(position.Y + direction.Y)][(int)(position.X + direction.X)] >= 10)
+            {
+                //om ruta inte är ledig
+                direction = GetNewDirection(GetAvailableDirections(obstacles));
+            }
+            
+            velocity = direction * speed;
+
+        }
+        
+        public List<Vector2> GetAvailableDirections(short[][] obstacles)
+        {
+            List<Vector2> directionalDirections = new List<Vector2>();
+
+            if (obstacles[(int)(position.X - 1)][(int)position.Y] < 10)
+            {
+                directionalDirections.Add(new Vector2(-1, 0));
+                //Vänster
+            }
+
+           
+            if (obstacles[(int)(position.Y - 1)][(int)position.Y] < 10)
+            {
+                directionalDirections.Add(new Vector2(0, -1));
+                //Upp
+            }
+
+
+            if (obstacles[(int)(position.X + 1)][(int)position.Y] < 10)
+            {
+                directionalDirections.Add(new Vector2(1, 0));
+                //Höger
+            }
+
+            if (obstacles[(int)(position.Y + 1)][(int)position.Y] < 10)
+            {
+                directionalDirections.Add(new Vector2(0, 1));
+                //Ner
+            }
+            return directionalDirections;
+        }
+
+        public Vector2 GetNewDirection(List<Vector2> availableDirections)
+        {
+            return availableDirections[random.Next(0, availableDirections.Count + 1)];
         }
 
         public void Update()
