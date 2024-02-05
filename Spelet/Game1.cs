@@ -9,6 +9,8 @@ namespace Spelet
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        GameManager gameManager;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -35,6 +37,8 @@ namespace Spelet
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            gameManager.Update(gameTime);
+
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -43,6 +47,12 @@ namespace Spelet
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+
+            gameManager.Draw(_spriteBatch);
+
+            _spriteBatch.End();
 
             // TODO: Add your drawing code here
 

@@ -15,18 +15,29 @@ namespace Spelet
         List<PickupObject> pickupObjects;
         Player player;
 
+        Random random = new Random();
+
+        Map map;
+
+        public MapManager()
+        {
+            map = new Map(32, 6);
+        }
+
         public void Update(GameTime _gameTime)
         {
             foreach(Enemy enemy in enemyList)
             {
                 //enemy.Update();
-
-                /*if (enemy.SeesPlayer(player))
+                
+                if (enemy.SeesPlayer(player))
                 {
                     enemy.ChasePlayer(player);
-                }*/
-
-                Vector2.Normalize(SequencePosition - player.position) * speed * -1;
+                }
+                else
+                {
+                    //enemy.Patrol(map.foregroundTiles);
+                }
             }
 
             foreach(PickupObject pickupObject in pickupObjects)
@@ -34,18 +45,26 @@ namespace Spelet
                 //pickupObject.Update();
 
                 /*if (pickupObject.PlayerCanPickup(player))
-                {
+                {*/
                     if (player.PicksUp())
                     {
                         player.PickedUp(pickupObject);
                         pickupObjects.Remove(pickupObject);
                     }
-                }*/
+                //}
             }
 
             //player.Update();
+        }
 
+        public void Draw(SpriteBatch _spriteBatch)
+        {
+            map.Draw(_spriteBatch);
 
+            foreach(Enemy enemy in enemyList)
+            {
+                //enemy.Draw();
+            }
         }
     }
 }

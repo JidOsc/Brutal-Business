@@ -11,12 +11,37 @@ namespace Spelet
 {
     internal class Map
     {
-        short[][] foregroundTiles;
+        public short[][] foregroundTiles = new short[][]
+        {
+            new short[] { 0, 0, 0, 0, 0 },
+            new short[] { 0, 0, 0, 0, 0 },
+            new short[] { 0, 0, 0, 0, 0 }
+        };
+
         short[][] backgroundTiles;
 
-        short 
+        short
             sizeX,
-            sizeY;
+            sizeY,
+            tileSize,
+            amountOfColumns;
+
+        Texture2D
+            spritesheet;
+
+        Rectangle 
+            srcRect = new Rectangle();
+
+        public Map(short tileSize, short amountOfColumns)
+        {
+            this.tileSize = tileSize;
+            this.amountOfColumns = amountOfColumns;
+
+            this.sizeX = (short)foregroundTiles[0].Length;
+            this.sizeY = (short)foregroundTiles.Length;
+
+            srcRect = new Rectangle(0, 0, tileSize, tileSize);
+        }
 
         public void Draw(SpriteBatch _spriteBatch)
         {
@@ -24,7 +49,10 @@ namespace Spelet
             {
                 for(int x = 0; x < sizeX; x++)
                 {
-                    _spriteBatch.Draw();
+                    srcRect.X = (foregroundTiles[y][x] % amountOfColumns) * tileSize;
+                    srcRect.Y = (foregroundTiles[y][x] / amountOfColumns) * tileSize;
+
+                    _spriteBatch.Draw(spritesheet, new Vector2(x, y) * tileSize, srcRect, Color.White);
                 }
             }
         }
