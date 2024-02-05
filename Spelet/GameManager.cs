@@ -9,5 +9,9 @@ namespace Spelet
     internal class GameManager
     {
         public MapManager mapManager;
+
+        viewDistance >= Math.Sqrt(Math.Pow(Player.position.X - position.x, 2) + Math.Pow(Player.position.y - position.y, 2))
+            {
+            }
     }
 }

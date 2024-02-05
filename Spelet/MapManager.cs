@@ -25,6 +25,8 @@ namespace Spelet
                 {
                     enemy.ChasePlayer(player);
                 }*/
+
+                Vector2.Normalize(SequencePosition - player.position) * speed * -1;
             }
 
             foreach(PickupObject pickupObject in pickupObjects)
