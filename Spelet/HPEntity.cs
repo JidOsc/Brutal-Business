@@ -8,7 +8,7 @@ namespace Spelet
 {
     internal class HPEntity : Entity
     {
-        float
+        public float
             health,
             speed;
     }

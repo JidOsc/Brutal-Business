@@ -11,10 +11,10 @@ namespace Spelet
 {
     internal class Entity : Hitbox
     {
-        Vector2
+        public Vector2
             velocity;
 
-        Texture2D
+        public Texture2D
             texture;
     }
 }

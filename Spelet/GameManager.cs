@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Spelet
 {
-    internal class Collectible : PickupObject
+    internal class GameManager
     {
-
+        public MapManager mapManager;
     }
 }

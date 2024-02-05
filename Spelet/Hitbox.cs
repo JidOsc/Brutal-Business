@@ -11,7 +11,7 @@ namespace Spelet
 {
     internal class Hitbox
     {
-        Vector2
+        public Vector2
             position,
             size;
     }
