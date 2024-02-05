@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Spelet
 {
@@ -10,8 +13,14 @@ namespace Spelet
     {
         public MapManager mapManager;
 
-        viewDistance >= Math.Sqrt(Math.Pow(Player.position.X - position.x, 2) + Math.Pow(Player.position.y - position.y, 2))
-            {
-            }
+        public void Update(GameTime _gameTime)
+        {
+            mapManager.Update(_gameTime);
+        }
+
+        public void Draw(SpriteBatch _spriteBatch)
+        {
+            mapManager.Draw(_spriteBatch);
+        }
     }
 }
