@@ -19,6 +19,8 @@ namespace Spelet
         {
             inventory = new List<PickupObject>();
             texture = Data.textures["player"];
+
+            walkingAnimation = new Animation(0, 0.3f, 5, 64);
         }
 
         public bool PicksUp()
@@ -44,7 +46,7 @@ namespace Spelet
 
         public void PickedUp(PickupObject pickedupobject)
         {
-            inventory. Add += 1;
+            //inventory.Add += 1;
             //lägg till upplockat föremål i inventory
         }
 

@@ -56,7 +56,7 @@ namespace Spelet
                 }
             }
 
-            player.Update();
+            player.Update(_gameTime);
         }
 
         public void Draw(SpriteBatch _spriteBatch)

@@ -28,6 +28,8 @@ namespace Spelet
 
         public Animation(short firstFrame,float timeBetweenFrames,short lastFrame,short frameSize)
         {
+            spelAnimation = true;
+
             this.firstFrame = firstFrame;
             this.lastFrame = lastFrame;
 
@@ -37,19 +39,16 @@ namespace Spelet
             
             this.timeBetweenFrames = timeBetweenFrames;
 
-            sourcerect = new Rectangle(firstFrame*frameSize,0,frameSize,frameSize);
+            sourcerect = new Rectangle(firstFrame*frameSize, 0, frameSize, frameSize);
             
         }
         public void Update(GameTime gameTime)
         {
             if(lastAnimationSecond + timeBetweenFrames < gameTime.TotalGameTime.TotalSeconds)
-            {
-                
-                
+            { 
                 if (spelAnimation)
                 {
                     frameNumber += 1;
-
                     frameNumber %= (short)(lastFrame - firstFrame + 1);
 
                     lastAnimationSecond = (float)gameTime.TotalGameTime.TotalSeconds;
@@ -59,6 +58,7 @@ namespace Spelet
         
         public Rectangle GetFrame()
         {
+            sourcerect.Location = new Point(frameNumber * frameSize, 0);
             return sourcerect;
         }
 
