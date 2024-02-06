@@ -11,6 +11,8 @@ namespace Spelet
 {
     internal class Data
     {
+        public static Random random = new Random();
+
         public static KeyboardState keyboard, lastKeyboard;
 
         public static Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>()
@@ -22,7 +24,10 @@ namespace Spelet
 
         public static void LoadContent(ContentManager _contentManager)
         {
-            
+            foreach (string imagename in textures.Keys)
+            {
+                textures[imagename] = _contentManager.Load<Texture2D>(imagename);
+            }
             
 
             //loopa igenom dictionary för att med hjälp av contentmanager ladda in alla texturer
