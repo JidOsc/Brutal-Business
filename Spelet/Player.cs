@@ -13,6 +13,7 @@ namespace Spelet
     {
         public PickupObject[] inventory;
         short inventorySize = 3;
+        KeyboardState keyboard;
 
         public Player()
         {
@@ -32,7 +33,41 @@ namespace Spelet
 
         public void Update()
         {
-            //kolla om spelaren går
+            if (keyboard.IsKeyDown(Keys.S))
+            {
+                velocity.Y = speed;
+            }
+            else if (keyboard.IsKeyDown(Keys.W))
+            {
+                velocity.Y = -speed;
+            }
+            else
+            {
+                velocity.Y = 0;
+            }
+           
+            if (keyboard.IsKeyDown(Keys.D))
+            {
+                velocity.X = -speed;
+            }
+            else if (keyboard.IsKeyDown(Keys.A))
+            {
+                velocity.X = speed;
+            }
+            else
+            {
+                velocity.X = 0;
+            }
+
+            position += velocity;
+            
+            
+
+
+
+
+
+
         }
 
         public void Draw()
