@@ -19,7 +19,11 @@ namespace Spelet
 
         public MapManager()
         {
-            map = new Map(32, 6);
+            map = new Map(32, 7);
+
+            enemyList = new List<Enemy>();
+            pickupObjects = new List<PickupObject>();
+            player = new Player();
         }
 
         public void Update(GameTime _gameTime)

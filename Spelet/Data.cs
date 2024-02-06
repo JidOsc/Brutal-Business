@@ -20,7 +20,7 @@ namespace Spelet
         public static Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>()
         {
             {"player", null },
-            {"enemy", null },
+            //{"enemy", null },
             {"tilemap", null }
         };
 

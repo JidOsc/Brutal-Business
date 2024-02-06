@@ -14,11 +14,10 @@ namespace Spelet
         public List<PickupObject> inventory;
         public short inventorySize = 3;
 
-        KeyboardState keyboard;
-
         public Player()
         {
             inventory = new List<PickupObject>();
+            texture = Data.textures["player"];
         }
 
         public bool PicksUp()
@@ -45,11 +44,11 @@ namespace Spelet
 
         public void Update()
         {
-            if (keyboard.IsKeyDown(Keys.S))
+            if (Data.keyboard.IsKeyDown(Keys.S))
             {
                 velocity.Y = speed;
             }
-            else if (keyboard.IsKeyDown(Keys.W))
+            else if (Data.keyboard.IsKeyDown(Keys.W))
             {
                 velocity.Y = -speed;
             }
@@ -58,13 +57,13 @@ namespace Spelet
                 velocity.Y = 0;
             }
            
-            if (keyboard.IsKeyDown(Keys.D))
-            {
-                velocity.X = -speed;
-            }
-            else if (keyboard.IsKeyDown(Keys.A))
+            if (Data.keyboard.IsKeyDown(Keys.D))
             {
                 velocity.X = speed;
+            }
+            else if (Data.keyboard.IsKeyDown(Keys.A))
+            {
+                velocity.X = -speed;
             }
             else
             {

@@ -13,9 +13,9 @@ namespace Spelet
     {
         public short[][] foregroundTiles = new short[][]
         {
+            new short[] { 0, 0, 1, 2, 3 },
             new short[] { 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0 }
+            new short[] { 0, 5, 6, 7, 0 }
         };
 
         short[][] backgroundTiles;
