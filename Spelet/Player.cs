@@ -11,13 +11,14 @@ namespace Spelet
 {
     internal class Player : HPEntity
     {
-        public PickupObject[] inventory;
-        short inventorySize = 3;
+        public List<PickupObject> inventory;
+        public short inventorySize = 3;
+
         KeyboardState keyboard;
 
         public Player()
         {
-            inventory = new PickupObject[inventorySize];
+            inventory = new List<PickupObject>();
         }
 
         public bool PicksUp()
@@ -25,6 +26,13 @@ namespace Spelet
             return true;
             //kollar om knapp trycks på och skickar tillbaka true om den gör det
         }
+        public bool Inventoryspace()
+        {
+            if (inventory.Count<
+            {
+                return true;
+            }
+        }       
 
         public void PickedUp(PickupObject pickedupobject)
         {
