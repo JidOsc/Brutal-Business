@@ -89,7 +89,7 @@ namespace Spelet
 
         public void Update()
         {
-
+            position += velocity;
         }
 
 
