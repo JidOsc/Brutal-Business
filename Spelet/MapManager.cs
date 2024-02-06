@@ -21,7 +21,10 @@ namespace Spelet
         {
             map = new Map(32, 7);
 
-            enemyList = new List<Enemy>();
+            enemyList = new List<Enemy>()
+            {
+                new Enemy(new Vector2 (600,600))
+            };
             pickupObjects = new List<PickupObject>();
             player = new Player();
         }
@@ -38,7 +41,7 @@ namespace Spelet
                 }
                 else
                 {
-                    enemy.Patrol(map.foregroundTiles);
+                    enemy.Patrol(map);
                 }
             }
 

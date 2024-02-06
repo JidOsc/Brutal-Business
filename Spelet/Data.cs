@@ -21,7 +21,7 @@ namespace Spelet
         public static Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>()
         {
             {"player", null },
-            //{"enemy", null },
+            {"enemy", null },
             {"tilemap", null }
         };
 
@@ -39,6 +39,11 @@ namespace Spelet
         public static float RelationToRotation(Vector2 firstPos, Vector2 secondPos)
         {
             return (float)Math.Atan2(firstPos.X - secondPos.X, firstPos.Y - secondPos.Y);
+        }
+
+        public static Vector2 WorldToGrid(Vector2 position, short tileSize)
+        {
+            return new Vector2((int)Math.Floor(position.X / tileSize),(int)Math.Floor( position.Y / tileSize));
         }
     }
 }

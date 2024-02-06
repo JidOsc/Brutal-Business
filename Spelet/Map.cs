@@ -20,10 +20,12 @@ namespace Spelet
 
         short[][] backgroundTiles;
 
+        public short
+            tileSize;
+
         short
             sizeX,
             sizeY,
-            tileSize,
             amountOfColumns;
 
         Texture2D

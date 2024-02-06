@@ -41,12 +41,14 @@ namespace Spelet
             velocity = Vector2.Normalize(position - player.position) * speed * -1;
         }
 
-        public void Patrol(short[][] obstacles)
+        public void Patrol(Map map)
         {
-            if(obstacles[(int)(position.Y + direction.Y)][(int)(position.X + direction.X)] > 0)
+            Vector2 currentTilePosition = Data.WorldToGrid(position, map.tileSize);
+
+            if(map.foregroundTiles[(int)(currentTilePosition.Y + direction.Y)][(int)(currentTilePosition.X + direction.X)] > 0)
             {
                 //om ruta inte är ledig
-                direction = GetNewDirection(GetAvailableDirections(obstacles));
+                direction = GetNewDirection(GetAvailableDirections(map.foregroundTiles));
             }
             
             velocity = direction * speed;
