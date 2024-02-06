@@ -14,7 +14,7 @@ namespace Spelet
         public float
             health;
 
-        const float
+        public const float
             maxHealth = 1.5f,
             speed = 1.1f;
 

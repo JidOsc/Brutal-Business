@@ -35,13 +35,16 @@ namespace Spelet
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            Data.keyboard = Keyboard.GetState();
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             gameManager.Update(gameTime);
 
             // TODO: Add your update logic here
 
+            Data.lastKeyboard = Data.keyboard;
             base.Update(gameTime);
         }
 
