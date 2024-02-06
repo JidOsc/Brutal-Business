@@ -41,6 +41,7 @@ namespace Spelet
         protected override void Update(GameTime gameTime)
         {
             Data.keyboard = Keyboard.GetState();
+            Data.mouse = Mouse.GetState();
 
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -50,6 +51,7 @@ namespace Spelet
             // TODO: Add your update logic here
 
             Data.lastKeyboard = Data.keyboard;
+            Data.lastMouse = Data.mouse;
             base.Update(gameTime);
         }
 

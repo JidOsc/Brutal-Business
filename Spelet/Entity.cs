@@ -34,7 +34,7 @@ namespace Spelet
                 sourceRectangle, 
                 Color.White, 
                 rotation,
-                new Vector2(texture.Width / 2, texture.Height / 2), 
+                new Vector2(sourceRectangle.Width / 2, sourceRectangle.Height / 2), 
                 1, 
                 SpriteEffects.None, 
                 0.5f);

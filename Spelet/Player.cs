@@ -82,7 +82,8 @@ namespace Spelet
 
             walkingAnimation.Update(gameTime);
             sourceRectangle = walkingAnimation.GetFrame();
-            rotation = Data.RelationToRotation(position, Data.mouse.Position.ToVector2());
+
+            rotation = Data.RelationToRotation(Data.mouse.Position.ToVector2(), position) * -1;
 
 
 
