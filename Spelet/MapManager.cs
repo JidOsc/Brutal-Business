@@ -15,8 +15,6 @@ namespace Spelet
         List<PickupObject> pickupObjects;
         Player player;
 
-        Random random = new Random();
-
         Map map;
 
         public MapManager()
@@ -28,7 +26,7 @@ namespace Spelet
         {
             foreach(Enemy enemy in enemyList)
             {
-                //enemy.Update();
+                enemy.Update();
                 
                 if (enemy.SeesPlayer(player))
                 {
@@ -36,7 +34,7 @@ namespace Spelet
                 }
                 else
                 {
-                    //enemy.Patrol(map.foregroundTiles);
+                    enemy.Patrol(map.foregroundTiles);
                 }
             }
 
@@ -44,17 +42,17 @@ namespace Spelet
             {
                 //pickupObject.Update();
 
-                /*if (pickupObject.PlayerCanPickup(player))
-                {*/
+                if (pickupObject.PlayerCanPickup(player))
+                {
                     if (player.PicksUp())
                     {
                         player.PickedUp(pickupObject);
                         pickupObjects.Remove(pickupObject);
                     }
-                //}
+                }
             }
 
-            //player.Update();
+            player.Update();
         }
 
         public void Draw(SpriteBatch _spriteBatch)
@@ -63,8 +61,15 @@ namespace Spelet
 
             foreach(Enemy enemy in enemyList)
             {
-                //enemy.Draw();
+                enemy.Draw(_spriteBatch);
             }
+
+            foreach(PickupObject pickupObject in pickupObjects)
+            {
+                pickupObject.Draw(_spriteBatch);
+            }
+
+            player.Draw(_spriteBatch);
         }
     }
 }
