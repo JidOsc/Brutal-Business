@@ -9,6 +9,13 @@ namespace Spelet
 {
     internal class PickupObject : Entity
     {
+        float value;
+
+        public PickupObject()
+        {
+
+        }
+
         public bool PlayerCanPickup(Player player)
         {
             if ()
