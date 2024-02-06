@@ -25,7 +25,7 @@ namespace Spelet
             return true;
             //kollar om knapp trycks på och skickar tillbaka true om den gör det
         }
-        public bool Inventoryspace()
+        public bool HasInventorySpace()
         {
             if (inventory.Count < inventorySize)
             {
