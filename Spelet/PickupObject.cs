@@ -1,4 +1,5 @@
-﻿using Spelet;
+﻿using Microsoft.Xna.Framework;
+using Spelet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,8 @@ namespace Spelet
 
         public bool PlayerCanPickup(Player player)
         {
-            if ()
-{
+            if (IsInside(player.position))
+            {
                 return true;
             }
             else

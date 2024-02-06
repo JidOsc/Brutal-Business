@@ -15,6 +15,8 @@ namespace Spelet
 
         public static KeyboardState keyboard, lastKeyboard;
 
+        public static MouseState mouse, lastMouse;
+
         public static Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>()
         {
             {"player", null },
