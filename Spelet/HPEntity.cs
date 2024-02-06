@@ -12,8 +12,11 @@ namespace Spelet
     internal class HPEntity : Entity
     {
         public float
-            health,
-            speed;
+            health;
+
+        const float
+            maxHealth = 1.5f,
+            speed = 1.1f;
 
         public void TakeDamage(float amount)
         {
@@ -23,11 +26,6 @@ namespace Spelet
             {
                 Die();
             }*/
-        }
-
-        public void Draw(SpriteBatch _spriteBatch)
-        {
-            _spriteBatch.Draw(texture, position, Color.White);
         }
     }
 }
