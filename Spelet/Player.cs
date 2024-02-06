@@ -46,7 +46,7 @@ namespace Spelet
 
         public void PickedUp(PickupObject pickedupobject)
         {
-            //inventory.Add += 1;
+            inventory.Add(pickedupobject);
             //lägg till upplockat föremål i inventory
         }
 
@@ -82,7 +82,7 @@ namespace Spelet
 
             walkingAnimation.Update(gameTime);
             sourceRectangle = walkingAnimation.GetFrame();
-            
+            rotation = Data.RelationToRotation(position, Data.mouse.Position.ToVector2());
 
 
 
