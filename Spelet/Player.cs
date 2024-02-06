@@ -28,9 +28,13 @@ namespace Spelet
         }
         public bool Inventoryspace()
         {
-            if (inventory.Count<
+            if (inventory.Count < inventorySize)
             {
                 return true;
+            }
+            else
+            {
+                return false;
             }
         }       
 
