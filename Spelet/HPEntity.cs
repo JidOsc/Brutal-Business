@@ -16,7 +16,7 @@ namespace Spelet
 
         public const float
             maxHealth = 1.5f,
-            speed = 1.1f;
+            speed = 1.9f;
 
         public void TakeDamage(float amount)
         {

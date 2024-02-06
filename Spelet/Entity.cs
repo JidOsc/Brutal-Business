@@ -17,15 +17,22 @@ namespace Spelet
         public Texture2D
             texture;
 
+        public float
+            rotation = 0f;
+
+        Rectangle
+            sourceRectangle;
+
+
         public void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.Draw(
                 texture, 
                 position, 
-                null, 
+                sourceRectangle, 
                 Color.White, 
-                0f, 
-                Vector2.Zero, 
+                rotation,
+                new Vector2(texture.Width / 2, texture.Height / 2), 
                 1, 
                 SpriteEffects.None, 
                 0.5f);

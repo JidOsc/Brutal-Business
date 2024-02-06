@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
 namespace Spelet
 {
@@ -33,6 +34,11 @@ namespace Spelet
             
 
             //loopa igenom dictionary för att med hjälp av contentmanager ladda in alla texturer
+        }
+
+        public static float RelationToRotation(Vector2 firstPos, Vector2 secondPos)
+        {
+            return (float)Math.Atan2(firstPos.X - secondPos.X, firstPos.Y - secondPos.Y);
         }
     }
 }
