@@ -13,6 +13,11 @@ namespace Spelet
     {
         public MapManager mapManager;
 
+        public GameManager()
+        {
+            mapManager = new MapManager();
+        }
+
         public void Update(GameTime _gameTime)
         {
             mapManager.Update(_gameTime);

@@ -30,6 +30,8 @@ namespace Spelet
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Data.LoadContent(Content);
 
+            gameManager = new GameManager();
+
             // TODO: use this.Content to load your game content here
         }
 
