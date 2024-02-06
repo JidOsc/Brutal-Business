@@ -17,7 +17,7 @@ namespace Spelet
 
         Vector2 direction;
 
-        Random random = new Random();
+        
 
         public bool SeesPlayer(Player player)
         {
@@ -84,7 +84,7 @@ namespace Spelet
 
         public Vector2 GetNewDirection(List<Vector2> availableDirections)
         {
-            return availableDirections[random.Next(0, availableDirections.Count + 1)];
+            return availableDirections[Data.random.Next(0, availableDirections.Count + 1)];
         }
 
         public void Update()
