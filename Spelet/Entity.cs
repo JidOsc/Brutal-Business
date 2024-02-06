@@ -20,7 +20,7 @@ namespace Spelet
         public float
             rotation = 0f;
 
-        Rectangle
+        public Rectangle
             sourceRectangle;
 
 

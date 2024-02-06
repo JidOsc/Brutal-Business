@@ -13,6 +13,7 @@ namespace Spelet
     {
         public List<PickupObject> inventory;
         public short inventorySize = 3;
+        public Animation walkingAnimation;
 
         public Player()
         {
@@ -47,7 +48,7 @@ namespace Spelet
             //lägg till upplockat föremål i inventory
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             if (Data.keyboard.IsKeyDown(Keys.S))
             {
@@ -76,10 +77,10 @@ namespace Spelet
             }
 
             position += velocity;
-            
-            
 
-
+            walkingAnimation.Update(gameTime);
+            sourceRectangle = walkingAnimation.GetFrame();
+            
 
 
 
@@ -88,6 +89,7 @@ namespace Spelet
 
         public void Draw()
         {
+            
             //lär inte behövas här
         }
     }
