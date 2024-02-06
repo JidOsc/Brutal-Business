@@ -16,5 +16,19 @@ namespace Spelet
 
         public Texture2D
             texture;
+
+        public void Draw(SpriteBatch _spriteBatch)
+        {
+            _spriteBatch.Draw(
+                texture, 
+                position, 
+                null, 
+                Color.White, 
+                0f, 
+                Vector2.Zero, 
+                1, 
+                SpriteEffects.None, 
+                0.5f);
+        }
     }
 }

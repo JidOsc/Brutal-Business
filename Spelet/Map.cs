@@ -41,6 +41,7 @@ namespace Spelet
             this.sizeY = (short)foregroundTiles.Length;
 
             srcRect = new Rectangle(0, 0, tileSize, tileSize);
+            spritesheet = Data.textures["tilemap"];
         }
 
         public void Draw(SpriteBatch _spriteBatch)

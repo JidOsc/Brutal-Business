@@ -28,6 +28,7 @@ namespace Spelet
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            Data.LoadContent(Content);
 
             // TODO: use this.Content to load your game content here
         }
