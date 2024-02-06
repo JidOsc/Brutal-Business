@@ -40,7 +40,7 @@ namespace Spelet
 
         public void Patrol(short[][] obstacles)
         {
-            if(obstacles[(int)(position.Y + direction.Y)][(int)(position.X + direction.X)] >= 10)
+            if(obstacles[(int)(position.Y + direction.Y)][(int)(position.X + direction.X)] > 0)
             {
                 //om ruta inte är ledig
                 direction = GetNewDirection(GetAvailableDirections(obstacles));
@@ -54,27 +54,27 @@ namespace Spelet
         {
             List<Vector2> directionalDirections = new List<Vector2>();
 
-            if (obstacles[(int)(position.X - 1)][(int)position.Y] < 10)
+            if (obstacles[(int)(position.X - 1)][(int)position.Y] == 0)
             {
                 directionalDirections.Add(new Vector2(-1, 0));
                 //Vänster
             }
 
            
-            if (obstacles[(int)(position.Y - 1)][(int)position.Y] < 10)
+            if (obstacles[(int)(position.Y - 1)][(int)position.Y] == 0)
             {
                 directionalDirections.Add(new Vector2(0, -1));
                 //Upp
             }
 
 
-            if (obstacles[(int)(position.X + 1)][(int)position.Y] < 10)
+            if (obstacles[(int)(position.X + 1)][(int)position.Y] == 0)
             {
                 directionalDirections.Add(new Vector2(1, 0));
                 //Höger
             }
 
-            if (obstacles[(int)(position.Y + 1)][(int)position.Y] < 10)
+            if (obstacles[(int)(position.Y + 1)][(int)position.Y] == 0)
             {
                 directionalDirections.Add(new Vector2(0, 1));
                 //Ner
