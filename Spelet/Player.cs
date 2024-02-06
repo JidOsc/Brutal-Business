@@ -22,7 +22,11 @@ namespace Spelet
 
         public bool PicksUp()
         {
-            return true;
+            if (Data.keyboard.IsKeyDown(Keys.E))
+            {
+                return true;
+            }
+            return false;
             //kollar om knapp trycks på och skickar tillbaka true om den gör det
         }
         public bool HasInventorySpace()
@@ -39,6 +43,7 @@ namespace Spelet
 
         public void PickedUp(PickupObject pickedupobject)
         {
+            inventory. Add += 1;
             //lägg till upplockat föremål i inventory
         }
 
