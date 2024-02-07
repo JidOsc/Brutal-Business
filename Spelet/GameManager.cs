@@ -16,6 +16,7 @@ namespace Spelet
         public GameManager()
         {
             mapManager = new MapManager();
+            short[][] map = LoadMap();
         }
 
         public void Update(GameTime _gameTime)
@@ -26,6 +27,16 @@ namespace Spelet
         public void Draw(SpriteBatch _spriteBatch)
         {
             mapManager.Draw(_spriteBatch);
+        }
+
+        public void SaveMap()
+        {
+
+        }
+
+        public short[][] LoadMap()
+        {
+
         }
     }
 }
