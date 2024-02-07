@@ -28,7 +28,7 @@ namespace Spelet
             };
             pickupObjects = new List<PickupObject>()
             {
-                new PickupObject()
+                new PickupObject(new Vector2(300,200))
             };
             player = new Player();
         }
@@ -37,7 +37,7 @@ namespace Spelet
         {
             foreach(Enemy enemy in enemyList)
             {
-                enemy.Update();
+                enemy.Update(_gameTime);
                 
                 if (enemy.SeesPlayer(player))
                 {
@@ -77,7 +77,7 @@ namespace Spelet
 
             foreach(PickupObject pickupObject in pickupObjects)
             {
-                pickupObject.Draw(_spriteBatch);
+                //pickupObject.Draw(_spriteBatch);
             }
 
             player.Draw(_spriteBatch);
