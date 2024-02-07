@@ -31,7 +31,7 @@ namespace Spelet
             walkingAnimation = new Animation(0, 0.3f, 5, 64);
         }
 
-        public bool Cansee(Map map,Player player)
+        public bool IsWallThere(Map map,Player player)
         {
             Vector2 positionB;
             Vector2 positionA;
@@ -57,11 +57,12 @@ namespace Spelet
             }
             return true;
         }
+
         public bool SeesPlayer(Player player, Map map)
         {
             float distanceToPlayer = Vector2.Distance(player.position, position);
 
-            if (distanceToPlayer <= viewDistance && Cansee(map, player))
+            if (distanceToPlayer <= viewDistance && IsWallThere(map, player))
             {
                 return true;
             }
