@@ -20,6 +20,7 @@ namespace Spelet
         public Enemy(Vector2 position)
         {
             texture = Data.textures["enemy"];
+            direction = new Vector2(1, 0);
         }
 
         public bool SeesPlayer(Player player)

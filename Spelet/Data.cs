@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace Spelet
 {
@@ -43,7 +44,8 @@ namespace Spelet
 
         public static Vector2 WorldToGrid(Vector2 position, short tileSize)
         {
-            return new Vector2((int)Math.Floor(position.X / tileSize),(int)Math.Floor( position.Y / tileSize));
+            Debug.WriteLine(new Vector2((int)(position.X / tileSize), (int)(position.Y / tileSize)));
+            return new Vector2((int)(position.X / tileSize),(int)(position.Y / tileSize));
         }
     }
 }

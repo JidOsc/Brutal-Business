@@ -23,7 +23,7 @@ namespace Spelet
 
             enemyList = new List<Enemy>()
             {
-                new Enemy(new Vector2 (600,600))
+                new Enemy(new Vector2 (176, 96))
             };
             pickupObjects = new List<PickupObject>();
             player = new Player();
