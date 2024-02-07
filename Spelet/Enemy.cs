@@ -24,6 +24,7 @@ namespace Spelet
             texture = Data.textures["enemy"];
             direction = new Vector2(1, 0);
             this.position = position;
+            speed = 0.01f;
         }
 
         public bool SeesPlayer(Player player)
