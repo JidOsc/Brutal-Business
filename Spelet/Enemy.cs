@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
+using System.Linq.Expressions;
 
 namespace Spelet
 {
@@ -21,6 +23,7 @@ namespace Spelet
         {
             texture = Data.textures["enemy"];
             direction = new Vector2(1, 0);
+            this.position = position;
         }
 
         public bool SeesPlayer(Player player)
@@ -45,6 +48,8 @@ namespace Spelet
         public void Patrol(Map map)
         {
             Vector2 currentTilePosition = Data.WorldToGrid(position, map.tileSize);
+
+            Debug.WriteLine(currentTilePosition);
 
             if(map.foregroundTiles[(int)(currentTilePosition.Y + direction.Y)][(int)(currentTilePosition.X + direction.X)] > 0)
             {

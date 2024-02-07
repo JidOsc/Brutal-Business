@@ -44,6 +44,7 @@ namespace Spelet
 
         public static Vector2 WorldToGrid(Vector2 position, short tileSize)
         {
+
             Debug.WriteLine(new Vector2((int)(position.X / tileSize), (int)(position.Y / tileSize)));
             return new Vector2((int)(position.X / tileSize),(int)(position.Y / tileSize));
         }
