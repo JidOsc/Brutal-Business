@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Spelet
 {
-    internal class Button : UIelement
+    internal class Button :UIelement
     {
         Color CurrentColor, StartColor = Color.Black;
 
@@ -23,8 +24,12 @@ namespace Spelet
                 CurrentColor = StartColor * 0.6f;
             }
         }
-    }
 
-  
+        public void Draw(SpriteBatch _spriteBatch)
+        {
+            
+            //_spriteBatch.Draw(background, new Vector2(100, 100), new Vector2(200, 50), Color.White);
+        }
+    }
 }
 
