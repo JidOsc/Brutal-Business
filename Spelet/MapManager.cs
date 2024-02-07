@@ -12,6 +12,7 @@ namespace Spelet
     internal class MapManager
     {
         List<Enemy> enemyList;
+        
         List<PickupObject> pickupObjects;
         Player player;
 
@@ -25,7 +26,10 @@ namespace Spelet
             {
                 new Enemy(new Vector2 (176, 96))
             };
-            pickupObjects = new List<PickupObject>();
+            pickupObjects = new List<PickupObject>()
+            {
+                new PickupObject()
+            };
             player = new Player();
         }
 
