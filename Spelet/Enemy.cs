@@ -59,7 +59,7 @@ namespace Spelet
         }
         public bool SeesPlayer(Player player, Map map)
         {
-            float distanceToPlayer = (float)Math.Sqrt(Math.Pow(player.position.X - position.X, 2) + Math.Pow(player.position.Y - position.Y, 2));
+            float distanceToPlayer = Vector2.Distance(player.position, position);
 
             if (distanceToPlayer <= viewDistance && Cansee(map, player))
             {
