@@ -16,7 +16,7 @@ namespace Spelet
         public GameManager()
         {
             mapManager = new MapManager();
-            short[][] map = LoadMap();
+            //short[][] map = LoadMap();
         }
 
         public void Update(GameTime _gameTime)
@@ -34,9 +34,9 @@ namespace Spelet
 
         }
 
-        public short[][] LoadMap()
+        /*public short[][] LoadMap()
         {
 
-        }
+        }*/
     }
 }
