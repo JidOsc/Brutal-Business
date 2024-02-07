@@ -24,7 +24,8 @@ namespace Spelet
             {"player", null },
             {"enemy", null },
             {"tilemap", null },
-            {"gear", null }
+            {"gear", null },
+            {"background", null }
         };
 
         public static void LoadContent(ContentManager _contentManager)

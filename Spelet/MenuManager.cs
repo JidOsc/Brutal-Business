@@ -19,12 +19,12 @@ namespace Spelet
 
         public void Update(GameTime _gameTime)
         {
-
+            Mainmenu.Update(_gameTime);
         }
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-
+            Mainmenu.Draw(_spriteBatch);
         }
     }
 }

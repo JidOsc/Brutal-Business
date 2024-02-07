@@ -14,7 +14,7 @@ namespace Spelet
         
         public UIelement()
         {
-            background = Data.textures["Button"];
+            background = Data.textures["background"];
         }
     }
 }

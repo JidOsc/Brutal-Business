@@ -3,22 +3,24 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Spelet
 {
-    internal class Button :UIelement
+    internal class Button : UIelement
     {
         Color CurrentColor, StartColor = Color.Black;
+        Rectangle backgroundBox;
 
         public Button(Vector2 position, Vector2 size)
         {
             this.position = position;
+
+            backgroundBox = new(position.ToPoint(), size.ToPoint());
         }
 
-        public void Update()
+        public void Update(GameTime _gameTime)
         {
             if (IsInside(Data.mouse.Position.ToVector2()))
             {
@@ -28,12 +30,9 @@ namespace Spelet
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            _spriteBatch.Draw(background, new Vector2(100, 100), new Vector2(200, 50), Color.White);
+            _spriteBatch.Draw(background, new Vector2(100, 100), backgroundBox, Color.White);
             
         }
-
-        public Button(Vector2 position, Vector2 size, )
-
     }
 }
 
