@@ -31,11 +31,37 @@ namespace Spelet
             walkingAnimation = new Animation(0, 0.3f, 5, 64);
         }
 
-        public bool SeesPlayer(Player player)
+        public bool Cansee(Map map,Player player)
+        {
+            Vector2 positionB;
+            Vector2 positionA;
+            if (player.position.X > position.X)
+            {
+                positionA = Data.WorldToGrid(position, map.tileSize);
+                positionB = Data.WorldToGrid(player.position, map.tileSize);
+            }
+            else
+            {
+                positionA = Data.WorldToGrid(player.position, map.tileSize);
+                positionB = Data.WorldToGrid(position, map.tileSize);
+            }
+
+            for (int x = (int)positionA.X;x< positionB.X; x++)
+            {
+                int y = (int)(positionA.Y + (positionB.Y - positionA.Y)*(x - positionA.X) / (positionB.X - positionA.X));
+
+                if (map.foregroundTiles[y][x] > 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool SeesPlayer(Player player, Map map)
         {
             float distanceToPlayer = (float)Math.Sqrt(Math.Pow(player.position.X - position.X, 2) + Math.Pow(player.position.Y - position.Y, 2));
 
-            if (distanceToPlayer <= viewDistance)
+            if (distanceToPlayer <= viewDistance && Cansee(map, player))
             {
                 return true;
             }
