@@ -19,6 +19,7 @@ namespace Spelet
 
             texture = Data.textures["gear"];
             sourceRectangle = new Rectangle(new Point(0, 0), new Point(32, 32));
+            size = texture.Bounds.Size.ToVector2();
         }
 
         public bool PlayerCanPickup(Player player)

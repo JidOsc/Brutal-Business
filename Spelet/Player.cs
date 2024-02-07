@@ -43,7 +43,22 @@ namespace Spelet
                 return false;
             }
         }       
+        public bool TryingToDrop()
+        {
+            if (inventory.Count>0 && Data.keyboard.IsKeyDown(Keys.R))
+            {
+                return true;
+            }
+            return false;
+        }
+        public PickupObject GetDroptObjekt()
+        {
+            PickupObject tempobject = inventory[0];
+            inventory.Remove(tempobject);
+            tempobject.position = position;
+            return tempobject;
 
+        }
         public void PickedUp(PickupObject pickedupobject)
         {
             inventory.Add(pickedupobject);

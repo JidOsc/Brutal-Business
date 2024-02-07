@@ -18,6 +18,7 @@ namespace Spelet
 
         Map map;
 
+
         public MapManager()
         {
             map = new Map(32, 7);
@@ -59,11 +60,17 @@ namespace Spelet
                     {
                         player.PickedUp(pickupObject);
                         pickupObjects.Remove(pickupObject);
+                        break;
                     }
                 }
             }
 
             player.Update(_gameTime);
+
+            if (player.TryingToDrop())
+            {
+                pickupObjects.Add(player.GetDroptObjekt());
+            }
         }
 
         public void Draw(SpriteBatch _spriteBatch)
