@@ -19,12 +19,16 @@ namespace Spelet
 
         Vector2 direction;
 
+        Animation walkingAnimation;
+
         public Enemy(Vector2 position)
         {
             texture = Data.textures["enemy"];
             direction = new Vector2(1, 0);
             this.position = position;
             speed = 0.01f;
+
+            walkingAnimation = new Animation(0, 0.3f, 5, 64);
         }
 
         public bool SeesPlayer(Player player)
@@ -99,9 +103,12 @@ namespace Spelet
             return availableDirections[Data.random.Next(0, availableDirections.Count + 1)];
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             position += velocity;
+
+            walkingAnimation.Update(gameTime);
+            sourceRectangle = walkingAnimation.GetFrame();
         }
 
 
