@@ -12,6 +12,7 @@ namespace Spelet
     internal class MenuManager
     {
         Menu Mainmenu;
+
         public MenuManager()
         {
             Mainmenu = new Menu();
