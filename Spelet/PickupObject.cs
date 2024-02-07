@@ -12,9 +12,10 @@ namespace Spelet
     {
         float value;
 
-        public PickupObject()
+        public PickupObject(Vector2 position)
         {
             value = Data.random.Next(25,75);
+            this.position = position;
         }
 
         public bool PlayerCanPickup(Player player)

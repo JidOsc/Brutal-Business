@@ -28,7 +28,7 @@ namespace Spelet
             };
             pickupObjects = new List<PickupObject>()
             {
-                new PickupObject()
+                new PickupObject(new Vector2(300,200))
             };
             player = new Player();
         }
