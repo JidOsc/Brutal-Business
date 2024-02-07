@@ -49,8 +49,8 @@ namespace Spelet
                 if (spelAnimation)
                 {
                     frameNumber += 1;
-                    frameNumber %= (short)(lastFrame - firstFrame + 1);
-
+                    frameNumber %= (short)(lastFrame + 1);
+                    frameNumber += firstFrame;
                     lastAnimationSecond = (float)gameTime.TotalGameTime.TotalSeconds;
                 }
             }

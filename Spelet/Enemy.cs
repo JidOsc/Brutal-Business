@@ -13,7 +13,7 @@ namespace Spelet
 {
     internal class Enemy : HPEntity
     {
-        float viewDistance = 200f;
+        float viewDistance = 500f;
 
         List<Vector2> directionalDirections = new List<Vector2>();
 
@@ -134,6 +134,8 @@ namespace Spelet
         public void Update(GameTime gameTime)
         {
             position += velocity;
+            rotation = Data.RelationToRotation(Vector2.Zero,velocity);
+            rotation *= -1;
 
             walkingAnimation.Update(gameTime);
             sourceRectangle = walkingAnimation.GetFrame();

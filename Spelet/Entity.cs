@@ -23,7 +23,7 @@ namespace Spelet
         public Rectangle
             sourceRectangle;
 
-        public bool moving;
+        
 
 
         public void Draw(SpriteBatch _spriteBatch)

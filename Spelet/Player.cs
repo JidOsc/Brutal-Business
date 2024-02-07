@@ -67,6 +67,7 @@ namespace Spelet
 
         public void Update(GameTime gameTime)
         {
+            
             if (Data.keyboard.IsKeyDown(Keys.S))
             {
                 velocity.Y = speed;
@@ -93,6 +94,19 @@ namespace Spelet
                 velocity.X = 0;
             }
 
+            if(Math.Abs(velocity.X) > 0||Math.Abs(velocity.Y) >0)
+            {
+                moving = true;
+            }
+            else
+            {
+                moving = false;
+            }
+
+            if (moving == false)
+            {
+                walkingAnimation = new Animation(0, 0.1f, 5, 64);
+            }
             position += velocity;
 
             walkingAnimation.Update(gameTime);

@@ -18,6 +18,8 @@ namespace Spelet
             maxHealth = 1.5f,
             speed = 1.9f;
 
+        public bool moving;
+
         public void TakeDamage(float amount)
         {
             health -= amount;
