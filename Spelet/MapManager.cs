@@ -28,7 +28,7 @@ namespace Spelet
             };
             pickupObjects = new List<PickupObject>()
             {
-                new PickupObject(new Vector2(300,200))
+                new PickupObject(new Vector2(500, 300))
             };
             player = new Player();
         }
@@ -77,7 +77,7 @@ namespace Spelet
 
             foreach(PickupObject pickupObject in pickupObjects)
             {
-                //pickupObject.Draw(_spriteBatch);
+                pickupObject.Draw(_spriteBatch);
             }
 
             player.Draw(_spriteBatch);
