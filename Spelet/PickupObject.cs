@@ -16,6 +16,9 @@ namespace Spelet
         {
             value = Data.random.Next(25,75);
             this.position = position;
+
+            texture = Data.textures["gear"];
+            sourceRectangle = new Rectangle(new Point(0, 0), new Point(32, 32));
         }
 
         public bool PlayerCanPickup(Player player)
