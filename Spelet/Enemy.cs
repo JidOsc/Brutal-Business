@@ -13,7 +13,7 @@ namespace Spelet
 {
     internal class Enemy : HPEntity
     {
-        float viewDistance = 1.1f;
+        float viewDistance = 200f;
 
         List<Vector2> directionalDirections = new List<Vector2>();
 
