@@ -46,7 +46,7 @@ namespace Spelet
                 positionB = Data.WorldToGrid(position, map.tileSize);
             }
 
-            for (int x = (int)positionA.X;x< positionB.X; x++)
+            for (int x = (int)positionA.X; x < positionB.X; x++)
             {
                 int y = (int)(positionA.Y + (positionB.Y - positionA.Y)*(x - positionA.X) / (positionB.X - positionA.X));
 
