@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin money_trap-removebg-preview.png
+#begin boar_hound-sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,7 +23,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:money_trap-removebg-preview.png;enemy.png
+/build:boar_hound-sheet.png;enemy.png
 
 #begin player4-sheet.png
 /importer:TextureImporter
