@@ -39,7 +39,7 @@ namespace Spelet
             {
                 enemy.Update(_gameTime);
                 
-                if (enemy.SeesPlayer(player))
+                if (enemy.SeesPlayer(player,map))
                 {
                     enemy.ChasePlayer(player);
                 }
