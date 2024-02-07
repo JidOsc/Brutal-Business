@@ -14,7 +14,7 @@ namespace Spelet
 
         public PickupObject()
         {
-
+            value = Data.random.Next(25,75);
         }
 
         public bool PlayerCanPickup(Player player)
