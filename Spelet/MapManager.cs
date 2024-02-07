@@ -24,7 +24,7 @@ namespace Spelet
 
             enemyList = new List<Enemy>()
             {
-                new Enemy(new Vector2 (176, 96))
+                new Enemy(new Vector2 (325, 96))
             };
             pickupObjects = new List<PickupObject>()
             {
