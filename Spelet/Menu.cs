@@ -19,6 +19,16 @@ namespace Spelet
             new Button(new Vector2(1450, 200), new Vector2(300, 150))
         };
 
+        public bool IsInteractedWith()
+        {
+            return true;
+        }
+
+        public Button GetPressedButton()
+        {
+            return buttonList[0];
+        }
+
         public void Update(GameTime _gameTime)
         {
             foreach(Button button in buttonList)
