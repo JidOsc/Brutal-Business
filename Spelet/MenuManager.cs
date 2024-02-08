@@ -59,6 +59,8 @@ namespace Spelet
         public void Update(GameTime _gameTime)
         {
             currentMenu.Update(_gameTime);
+
+            currentMenu.IsInteractedWith();
         }
 
         public void Draw(SpriteBatch _spriteBatch)
