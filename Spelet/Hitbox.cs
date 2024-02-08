@@ -15,13 +15,30 @@ namespace Spelet
             position,
             size;
 
-        public bool IsInside(Vector2 otherPosition)
+        public bool IsInside(Hitbox hitbox)
+        {
+            Rectangle tempRectangle1 = new Rectangle(position.ToPoint(), size.ToPoint());
+            Rectangle tempRectangle2 = new Rectangle(hitbox.position.ToPoint(), hitbox.size.ToPoint());
+
+            return tempRectangle1.Intersects(tempRectangle2);
+        }
+        public bool IsInside(Vector2 position2)
         {
             return 
-                otherPosition.X >= position.X 
-                && otherPosition.X <= position.X + size.X
-                && otherPosition.Y >= position.Y
-                && otherPosition.Y <= position.Y + size.Y;
+                position2.X >= position.X 
+                && position2.X <= position.X + size.X
+                && position2.Y >= position.Y
+                && position2.Y <= position.Y + size.Y;
+
+            
         }
+
+        public void DrawHitbox(SpriteBatch _spritebatch)    
+        {
+            Rectangle hitboxdraw = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
+
+            _spritebatch.Draw(Data.textures["background"], hitboxdraw, Color.Red) ;
+        }
+        
     }
 }

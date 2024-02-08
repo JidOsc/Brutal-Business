@@ -38,6 +38,8 @@ namespace Spelet
                 1, 
                 SpriteEffects.None, 
                 0.5f);
+
+                DrawHitbox(_spriteBatch) ;
         }
     }
 }

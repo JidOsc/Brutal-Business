@@ -24,7 +24,7 @@ namespace Spelet
 
         public bool PlayerCanPickup(Player player)
         {
-            if (IsInside(player.position))
+            if (IsInside(player))
             {
                 return true;
             }
