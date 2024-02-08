@@ -49,7 +49,7 @@
 /processorParam:TextureFormat=Color
 /build:pixel.png;background.png
 
-#begin player4-sheet.png
+#begin playertilesheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,7 +59,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:player4-sheet.png;player.png
+/build:playertilesheet.png;player.png
 
 #begin tilemap.png
 /importer:TextureImporter
