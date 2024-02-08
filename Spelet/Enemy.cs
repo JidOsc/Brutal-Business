@@ -18,6 +18,7 @@ namespace Spelet
         List<Vector2> directionalDirections = new List<Vector2>();
 
         Vector2 direction;
+        int lastXChecked;
 
         Animation walkingAnimation;
 
@@ -50,7 +51,7 @@ namespace Spelet
             {
                 int y = (int)(positionA.Y + (positionB.Y - positionA.Y)*(x - positionA.X) / (positionB.X - positionA.X));
 
-                if (map.foregroundTiles[y][x] > 0)
+                if (y < map.foregroundTiles.Length && y >= 0 && x < map.foregroundTiles[0].Length && x >= 0 && map.foregroundTiles[y][x] > 0)
                 {
                     return false;
                 }
