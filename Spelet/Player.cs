@@ -13,14 +13,14 @@ namespace Spelet
     {
         public List<PickupObject> inventory;
         public short inventorySize = 3;
-        public Animation walkingAnimation;
-
+        public Animation walkingAnimation, runningAnimation;
+        float runningSpeed = 2;
         public Player()
         {
             inventory = new List<PickupObject>();
             texture = Data.textures["player"];
 
-            size = new Vector2(texture.Width / 6, texture.Height);
+            size = new Vector2(texture.Width / 12, texture.Height);
 
             walkingAnimation = new Animation(0, 0.01f, 5, 64);
         }
@@ -105,11 +105,16 @@ namespace Spelet
                 walkingAnimation.RestartAnimation();
                 moving = false;
             }
+            if (Data.keyboard.IsKeyDown(Keys.LeftShift))
+            {
+                velocity *= runningSpeed;
+            }
 
             walkingAnimation.playAnimation = moving;
             position += velocity;
 
             walkingAnimation.Update(gameTime);
+            //runningAnimation.Update(gameTime);
             sourceRectangle = walkingAnimation.GetFrame();
 
             rotation = Data.RelationToRotation(Data.mouse.Position.ToVector2(), position) * -1;
