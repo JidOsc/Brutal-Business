@@ -20,6 +20,7 @@ namespace Spelet
             this.size = size;
             CurrentColor = StartColor;
             backgroundBox = new(position.ToPoint(), size.ToPoint());
+            background = Data.textures["startbutton"];
         }
 
         public void Update(GameTime _gameTime)

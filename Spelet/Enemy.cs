@@ -107,7 +107,7 @@ namespace Spelet
                 directionalDirections.Add(new Vector2(-1, 0));
                 //Vänster
             }
-           
+            
             
                 if (map.foregroundTiles[(int)(posInGrid.Y - 1)][(int)posInGrid.X] == 0)
                 {
