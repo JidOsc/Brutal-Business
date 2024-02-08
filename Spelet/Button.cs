@@ -11,7 +11,7 @@ namespace Spelet
 {
     internal class Button : UIElement
     {
-        Color CurrentColor, StartColor = Color.Blue;
+        Color CurrentColor, StartColor = Color.White;
         Rectangle backgroundBox;
 
         public Button(Vector2 position, Vector2 size)
@@ -26,7 +26,7 @@ namespace Spelet
         {
             if (IsInside(Data.mouse.Position.ToVector2()))
             {
-                CurrentColor = Color.LightGreen;
+                CurrentColor = Color.LightGray;
             }
             else
             {
