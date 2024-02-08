@@ -17,6 +17,7 @@ namespace Spelet
         public Button(Vector2 position, Vector2 size)
         {
             this.position = position;
+            this.size = size;
             CurrentColor = StartColor;
             backgroundBox = new(position.ToPoint(), size.ToPoint());
         }
@@ -29,7 +30,7 @@ namespace Spelet
             }
             else
             {
-                //CurrentColor = StartColor;
+                CurrentColor = StartColor;
             }
         }
 
