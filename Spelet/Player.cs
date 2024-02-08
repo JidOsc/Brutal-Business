@@ -23,6 +23,7 @@ namespace Spelet
             size = new Vector2(texture.Width / 12, texture.Height);
 
             walkingAnimation = new Animation(0, 0.01f, 5, 64);
+            runningAnimation = new Animation(6, 1, 11, 64);
         }
 
         public bool PicksUp()
@@ -114,7 +115,7 @@ namespace Spelet
             position += velocity;
 
             walkingAnimation.Update(gameTime);
-            //runningAnimation.Update(gameTime);
+            runningAnimation.Update(gameTime);
             sourceRectangle = walkingAnimation.GetFrame();
 
             rotation = Data.RelationToRotation(Data.mouse.Position.ToVector2(), position) * -1;
