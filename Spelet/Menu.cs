@@ -13,7 +13,7 @@ namespace Spelet
     {
         List<Button> buttonList = new List<Button>() 
         { 
-            new Button(new Vector2(100, 100), new Vector2(200,50))
+            new Button(new Vector2(100, 100), new Vector2(500, 500))
         };
 
         public void Update(GameTime _gameTime)

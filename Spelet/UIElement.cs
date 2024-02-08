@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Spelet
 {
-    internal class UIelement : Hitbox
+    internal class UIElement : Hitbox
     {
         public Texture2D background;
         
-        public UIelement()
+        public UIElement()
         {
             background = Data.textures["background"];
         }

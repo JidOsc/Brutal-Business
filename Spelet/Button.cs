@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Spelet
 {
-    internal class Button : UIelement
+    internal class Button : UIElement
     {
-        Color CurrentColor, StartColor = Color.Black;
+        Color CurrentColor, StartColor = Color.Blue;
         Rectangle backgroundBox;
 
         public Button(Vector2 position, Vector2 size)
         {
             this.position = position;
-
+            CurrentColor = StartColor;
             backgroundBox = new(position.ToPoint(), size.ToPoint());
         }
 
@@ -24,15 +25,18 @@ namespace Spelet
         {
             if (IsInside(Data.mouse.Position.ToVector2()))
             {
-                CurrentColor = StartColor * 0.6f;
+                CurrentColor = Color.LightGreen;
+            }
+            else
+            {
+                //CurrentColor = StartColor;
             }
         }
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            _spriteBatch.Draw(background, new Vector2(100, 100), backgroundBox, Color.White);
-            
+            _spriteBatch.Draw(background, position, backgroundBox, CurrentColor);
         }
+
     }
 }
-
