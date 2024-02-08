@@ -11,27 +11,27 @@ namespace Spelet
 {
     internal class MenuManager
     {
-        Dictionary<string, Menu> menus;
-        public enum buttonStates { quit, start, settings }
-        public enum menuStates { main, settings, pause }
+        Dictionary<menuStates, Menu> menus;
+        public enum buttonStates { quit, start, settings, pause }
+        public enum menuStates { main, settings, pause, none }
 
 
-        menuStates currentMenu;
+        Menu currentMenu;
 
 
         public MenuManager()
         {
             menus = new()
             {
-                { "mainMenu", new Menu() }
+                { menuStates.main, new Menu() }
             };
 
-            currentMenu = menuStates.main;
+            ChangeMenu(menuStates.main);
         }
 
         public void ChangeMenu(menuStates menu)
         {
-            currentMenu = menu;
+            currentMenu = menus[menu];
         }
 
         public void ExecuteButton(buttonStates button)
@@ -39,53 +39,31 @@ namespace Spelet
             switch (button)
             {
                 case buttonStates.start:
+                    currentMenu = menus[menuStates.none];
+                    break;
 
+                case buttonStates.pause:
+                    currentMenu = menus[menuStates.pause];
                     break;
 
                 case buttonStates.settings:
-
+                    currentMenu = menus[menuStates.settings];
                     break;
 
                 case buttonStates.quit:
-
+                    //Quit();
                     break;
             }
         }
 
         public void Update(GameTime _gameTime)
         {
-            switch (currentMenu)
-            {
-                case menuStates.main:
-                    menus["mainMenu"].Update(_gameTime);
-                    break;
-
-                case menuStates.settings:
-
-                    break;
-
-                case menuStates.pause:
-
-                    break;
-            }
+            currentMenu.Update(_gameTime);
         }
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            switch (currentMenu)
-            {
-                case menuStates.main:
-                    menus["mainMenu"].Draw(_spriteBatch);
-                    break;
-
-                case menuStates.settings:
-
-                    break;
-
-                case menuStates.pause:
-
-                    break;
-            }
+            currentMenu.Draw(_spriteBatch);
         }
     }
 }

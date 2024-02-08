@@ -12,7 +12,7 @@ namespace Spelet
     {
         
 
-        bool spelAnimation; //ska animation spelas
+        public bool playAnimation; //ska animation spelas
         
         short 
             firstFrame, //första frame i animationen
@@ -28,7 +28,7 @@ namespace Spelet
 
         public Animation(short firstFrame,float timeBetweenFrames,short lastFrame,short frameSize)
         {
-            spelAnimation = true;
+            playAnimation = true;
 
             this.firstFrame = firstFrame;
             this.lastFrame = lastFrame;
@@ -46,7 +46,7 @@ namespace Spelet
         {
             if(lastAnimationSecond + timeBetweenFrames < gameTime.TotalGameTime.TotalSeconds)
             { 
-                if (spelAnimation)
+                if (playAnimation)
                 {
                     frameNumber += 1;
                     frameNumber %= (short)(lastFrame + 1);
@@ -54,6 +54,11 @@ namespace Spelet
                     lastAnimationSecond = (float)gameTime.TotalGameTime.TotalSeconds;
                 }
             }
+        }
+
+        public void RestartAnimation()
+        {
+            frameNumber = firstFrame;
         }
         
         public Rectangle GetFrame()

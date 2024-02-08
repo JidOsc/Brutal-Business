@@ -47,7 +47,7 @@ namespace Spelet
         }       
         public bool TryingToDrop()
         {
-            if (inventory.Count>0 && Data.keyboard.IsKeyDown(Keys.R))
+            if (inventory.Count > 0 && Data.keyboard.IsKeyDown(Keys.R))
             {
                 return true;
             }
@@ -102,13 +102,11 @@ namespace Spelet
             }
             else
             {
+                walkingAnimation.RestartAnimation();
                 moving = false;
             }
 
-            if (moving == false)
-            {
-                walkingAnimation = new Animation(0, 0.1f, 5, 64);
-            }
+            walkingAnimation.playAnimation = moving;
             position += velocity;
 
             walkingAnimation.Update(gameTime);
