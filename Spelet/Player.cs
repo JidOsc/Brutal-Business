@@ -20,6 +20,8 @@ namespace Spelet
             inventory = new List<PickupObject>();
             texture = Data.textures["player"];
 
+            size = new Vector2(texture.Width / 6, texture.Height);
+
             walkingAnimation = new Animation(0, 0.01f, 5, 64);
         }
 

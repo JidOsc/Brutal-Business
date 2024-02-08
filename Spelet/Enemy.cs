@@ -26,7 +26,10 @@ namespace Spelet
         {
             texture = Data.textures["enemy"];
             direction = new Vector2(1, 0);
+
             this.position = position;
+            this.size = new Vector2(texture.Width / 6, texture.Height);
+
             speed = 1f;
 
             walkingAnimation = new Animation(0, 0.3f, 5, 64);

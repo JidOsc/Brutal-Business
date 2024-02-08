@@ -26,7 +26,7 @@ namespace Spelet
             mapManager = new MapManager();
             menuManager = new MenuManager();
 
-            currentGameState = GameState.main;
+            currentGameState = GameState.ingame;
 
             //short[][] map = LoadMap();
         }

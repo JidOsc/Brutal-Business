@@ -37,7 +37,7 @@ namespace Spelet
         {
             Rectangle hitboxdraw = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
 
-            _spritebatch.Draw(Data.textures["background"], hitboxdraw, Color.Red) ;
+            _spritebatch.Draw(Data.textures["background"], hitboxdraw, Color.Red * 0.3f) ;
         }
         
     }
