@@ -9,7 +9,7 @@ namespace Spelet
 {
     internal class Collectible : PickupObject
     {
-        public Collectible(Vector2 position) : base(position)
+        public Collectible(Vector2 position, float scale) : base(position, scale)
         {
 
         }

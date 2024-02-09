@@ -15,15 +15,18 @@ namespace Spelet
         public short inventorySize = 3;
         public Animation walkingAnimation, runningAnimation;
         float runningSpeed = 2;
-        public Player()
+
+        public Player(Vector2 position, float scale) : base(position, scale)
         {
             inventory = new List<PickupObject>();
             texture = Data.textures["player"];
 
-            size = new Vector2(texture.Width / 12, texture.Height);
+            size = new Vector2(texture.Width / 12, texture.Height) * scale;
 
-            walkingAnimation = new Animation(0, 0.01f, 5, 64);
-            runningAnimation = new Animation(6, 1, 11, 64);
+            walkingAnimation = new Animation(0, 0.2f, 5, 64);
+            runningAnimation = new Animation(6, 0.2f, 11, 64);
+
+            AdjustPosition();
         }
 
         public bool PicksUp()

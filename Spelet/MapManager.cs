@@ -25,14 +25,14 @@ namespace Spelet
 
             enemyList = new List<Enemy>()
             {
-                new Enemy(new Vector2 (325, 96))
+                new Enemy(new Vector2 (325, 96), 0.8f)
             };
             pickupObjects = new List<PickupObject>()
             {
-                new PickupObject(new Vector2(500, 300)),
-                new PickupObject(Data.GridToWorld(new Vector2(3,3),16))
+                new PickupObject(new Vector2(500, 300), 0.5f),
+                new PickupObject(Data.GridToWorld(new Vector2(3,3),16), 0.5f)
             };
-            player = new Player();
+            player = new Player(Data.GridToWorld(new Vector2(3, 3), 16), 0.5f);
         }
 
         public void Update(GameTime _gameTime)

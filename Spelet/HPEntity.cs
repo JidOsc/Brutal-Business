@@ -20,6 +20,11 @@ namespace Spelet
 
         public bool moving;
 
+        public HPEntity(Vector2 position, float scale) : base(position, scale)
+        {
+
+        }
+
         public void TakeDamage(float amount)
         {
             health -= amount;

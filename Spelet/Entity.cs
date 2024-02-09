@@ -18,24 +18,33 @@ namespace Spelet
             texture;
 
         public float
-            rotation = 0f;
+            rotation = 0f,
+            scale = 1f;
 
         public Rectangle
             sourceRectangle;
 
-        
+        public Entity(Vector2 position, float scale)
+        {
+            this.scale = scale;
+            this.position = position;
+        }
 
+        public void AdjustPosition()
+        {
+            position += new Vector2(sourceRectangle.Width / 2, sourceRectangle.Height / 2) * scale;
+        }
 
         public void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.Draw(
                 texture, 
-                position + new Vector2(sourceRectangle.Width / 2, sourceRectangle.Height / 2), 
+                position, 
                 sourceRectangle, 
                 Color.White, 
                 rotation,
                 new Vector2(sourceRectangle.Width / 2, sourceRectangle.Height / 2), 
-                1, 
+                scale, 
                 SpriteEffects.None, 
                 0.5f);
 

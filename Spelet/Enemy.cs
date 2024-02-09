@@ -22,13 +22,12 @@ namespace Spelet
 
         Animation walkingAnimation;
 
-        public Enemy(Vector2 position)
+        public Enemy(Vector2 position, float scale) : base(position, scale)
         {
             texture = Data.textures["enemy"];
             direction = new Vector2(1, 0);
 
-            this.position = position;
-            this.size = new Vector2(texture.Width / 6, texture.Height);
+            this.size = new Vector2(texture.Width / 6, texture.Height) * scale;
 
             speed = 1f;
 
