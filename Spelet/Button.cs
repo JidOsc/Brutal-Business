@@ -37,7 +37,7 @@ namespace Spelet
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            _spriteBatch.Draw(background, position, backgroundBox, CurrentColor);
+            _spriteBatch.Draw(background, backgroundBox, CurrentColor);
         }
 
     }

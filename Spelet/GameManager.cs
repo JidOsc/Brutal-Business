@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
+using System.Text.Json;
 
 namespace Spelet
 {
@@ -19,6 +20,7 @@ namespace Spelet
         public GameState currentGameState = new();
 
         string filepathFolder;
+        string filepathMaps;
 
 
         public GameManager()
@@ -26,9 +28,10 @@ namespace Spelet
             mapManager = new MapManager();
             menuManager = new MenuManager();
 
-            currentGameState = GameState.main;
+            AccessFolder();
+            mapManager.map.InsertMap(LoadMap());
 
-            //short[][] map = LoadMap();
+            currentGameState = GameState.ingame;
         }
 
         public void Update(GameTime _gameTime)
@@ -62,7 +65,7 @@ namespace Spelet
 
         public void AccessFolder()
         {
-            filepathFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"BrutalBusiness\");
+            filepathFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Brutal Business\");
 
             if (!Directory.Exists(filepathFolder))
             {
@@ -70,14 +73,22 @@ namespace Spelet
             }
         }
 
-        public void SaveMap()
+        public short[][] LoadMap()
         {
+            filepathMaps = Path.Combine(filepathFolder, @"maps.txt");
 
+            if (File.Exists(filepathMaps))
+            {
+                return JsonSerializer.Deserialize<short[][]>(File.ReadAllText(filepathMaps));
+            }
+
+            short[][] tempMap;
+            tempMap = new short[34][];
+            for(int i = 0; i < tempMap.Length; i++)
+            {
+                tempMap[i] = new short[50];
+            }
+            return tempMap;
         }
-
-        /*public short[][] LoadMap()
-        {
-
-        }*/
     }
 }

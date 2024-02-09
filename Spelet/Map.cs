@@ -11,20 +11,7 @@ namespace Spelet
 {
     internal class Map
     {
-        public short[][] foregroundTiles = new short[][]
-        {
-            new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
-            new short[] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 }
-        };
-
+        public short[][] foregroundTiles;
         short[][] backgroundTiles;
 
         public short
@@ -46,11 +33,16 @@ namespace Spelet
             this.tileSize = tileSize;
             this.amountOfColumns = amountOfColumns;
 
-            this.sizeX = (short)foregroundTiles[0].Length;
-            this.sizeY = (short)foregroundTiles.Length;
-
             srcRect = new Rectangle(0, 0, tileSize, tileSize);
             spritesheet = Data.textures["tilemap"];
+        }
+
+        public void InsertMap(short[][] map)
+        {
+            foregroundTiles = map;
+
+            this.sizeX = (short)foregroundTiles[0].Length;
+            this.sizeY = (short)foregroundTiles.Length;
         }
 
         public void Draw(SpriteBatch _spriteBatch)
