@@ -28,8 +28,10 @@ namespace Spelet
                 new Enemy(new Vector2 (325, 96))
             };
             pickupObjects = new List<PickupObject>()
+            
             {
-                new PickupObject(new Vector2(500, 300))
+                new PickupObject(new Vector2(500, 300)),
+                new PickupObject(Data.GridToWorld(new Vector2(3,3),16))
             };
             player = new Player();
         }

@@ -51,5 +51,10 @@ namespace Spelet
             Debug.WriteLine(new Vector2((int)(position.X / tileSize), (int)(position.Y / tileSize)));
             return new Vector2((int)(position.X / tileSize),(int)(position.Y / tileSize));
         }
+        public static Vector2 GridToWorld(Vector2 position, short tileSize)
+        {
+            return new Vector2((int)(position.X * tileSize), (int)(position.Y * tileSize));
+
+        }
     }
 }
