@@ -13,12 +13,14 @@ namespace Spelet
 {
     internal class Enemy : HPEntity
     {
+        enum enemyStates { patrolling, tracking, chasing};
+        enemyStates currentEnemyState = enemyStates.patrolling;
+
         float viewDistance = 500f;
 
         List<Vector2> directionalDirections = new List<Vector2>();
 
         Vector2 direction;
-        int lastXChecked;
 
         Animation walkingAnimation;
 
@@ -27,17 +29,18 @@ namespace Spelet
             texture = Data.textures["enemy"];
             direction = new Vector2(1, 0);
 
-            hitbox.Size = hitbox.Size = new Point((int)(texture.Width / 6 * scale), (int)(texture.Height * scale));
+            hitbox.Size = new Point((int)(texture.Height * scale), (int)(texture.Height * scale));
 
             speed = 5f;
 
-            walkingAnimation = new Animation(0, 0.3f, 5, 64);
+            walkingAnimation = new Animation(0, 5, 0.3f, 64);
         }
         
-        public bool IsWallThere(Map map,Player player)
+        public bool IsWallThere(Map map, Player player)
         {
             Vector2 positionB;
             Vector2 positionA;
+
             if (player.position.X > position.X)
             {
                 positionA = Data.WorldToGrid(position);
@@ -51,7 +54,7 @@ namespace Spelet
 
             for (int x = (int)positionA.X; x < positionB.X; x++)
             {
-                int y = (int)(positionA.Y + (positionB.Y - positionA.Y)*(x - positionA.X) / (positionB.X - positionA.X));
+                int y = (int)(positionA.Y + (positionB.Y - positionA.Y) * (x - positionA.X) / (positionB.X - positionA.X));
 
                 if (y < map.foregroundTiles.Length && y >= 0 && x < map.foregroundTiles[0].Length && x >= 0 && map.foregroundTiles[y][x] > 0)
                 {
@@ -75,36 +78,37 @@ namespace Spelet
             }
         }
 
-        public void ChasePlayer(Player player)
+        void ChasePlayer(Player player)
         {
             velocity = Vector2.Normalize(position - player.position) * speed * -1;
         }
 
-        public void Patrol(Map map)
+        void Patrol()
         {
             if (controller.collisions.left || controller.collisions.right || controller.collisions.above || controller.collisions.below)
             {
-                direction = GetNewDirection(GetAvailableDirections(map));
+                direction = GetNewDirection(GetAvailableDirections());
             }
             velocity = direction * speed;
         }
         
-        public List<Vector2> GetAvailableDirections(Map map)
+        public List<Vector2> GetAvailableDirections()
         {
             List<Vector2> directionalDirections = new List<Vector2>();
-            if (controller.collisions.left == false)
+            
+            if (!controller.collisions.left)
             {
                 directionalDirections.Add(new Vector2(-1, 0));
             }
-            if (controller.collisions.right == false)
+            if (!controller.collisions.right)
             {
                 directionalDirections.Add(new Vector2(1, 0));
             }
-            if (controller.collisions.above == false)
+            if (!controller.collisions.above)
             {
                 directionalDirections.Add(new Vector2(0, -1));
             }
-            if (controller.collisions.below == false)
+            if (!controller.collisions.below)
             {
                 directionalDirections.Add(new Vector2(0, 1));
             }
@@ -119,10 +123,29 @@ namespace Spelet
 
         public void Update(GameTime gameTime)
         {
+            if (SeesPlayer())
+            {
+
+            }
+
+            switch (currentEnemyState)
+            {
+                case enemyStates.patrolling:
+                    Patrol();
+                    break;
+
+                case enemyStates.tracking:
+                    //
+                    break;
+
+                case enemyStates.chasing:
+                    ChasePlayer();
+                    break;
+            }
+
             UpdateHitboxVelocity();
 
-            rotation = Data.RelationToRotation(Vector2.Zero,velocity);
-            rotation *= -1;
+            rotation = Data.RelationToRotation(Vector2.Zero, velocity) * -1;
 
             walkingAnimation.Update(gameTime);
             sourceRectangle = walkingAnimation.GetFrame();

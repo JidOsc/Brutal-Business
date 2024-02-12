@@ -11,32 +11,39 @@ namespace Spelet
 {
     internal class Button : UIElement
     {
-        Color CurrentColor, StartColor = Color.White;
-        Rectangle backgroundBox;
+        public enum buttonStates { quit, start, settings, pause }
+        public buttonStates buttonState;
+
+        Color
+            currentColor, 
+            baseColor = Color.White;
+
+        Rectangle 
+            backgroundBox;
 
         public Button(Vector2 position, Vector2 size) : base(position, size)
         {
-            CurrentColor = StartColor;
+            currentColor = baseColor;
+
             backgroundBox = new(position.ToPoint(), size.ToPoint());
             background = Data.textures["startbutton"];
         }
 
-        public void Update(GameTime _gameTime)
+        public bool IsPressed()
         {
             if (IsInside(Data.mouse.Position.ToVector2()))
             {
-                CurrentColor = Color.LightGray;
+                currentColor = Color.LightGray;
+                return Data.mouse.LeftButton == ButtonState.Pressed;
             }
-            else
-            {
-                CurrentColor = StartColor;
-            }
+            currentColor = baseColor;
+            return false;
+
         }
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            _spriteBatch.Draw(background, backgroundBox, CurrentColor);
+            _spriteBatch.Draw(background, backgroundBox, currentColor);
         }
-
     }
 }

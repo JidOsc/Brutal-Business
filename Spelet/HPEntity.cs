@@ -12,13 +12,9 @@ namespace Spelet
     internal class HPEntity : Entity
     {
         public float
-            health;
-
-        public float
+            health,
             maxHealth = 1.5f,
             speed = 1.9f;
-
-        public bool moving;
 
         public PlatformController
             controller;

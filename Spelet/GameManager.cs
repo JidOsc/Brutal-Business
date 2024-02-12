@@ -16,8 +16,8 @@ namespace Spelet
         public MapManager mapManager;
         public MenuManager menuManager;
 
-        public enum GameState {main, ingame};
-        public GameState currentGameState = new();
+        enum GameState {main, ingame};
+        GameState currentGameState = new();
 
         string filepathFolder;
         string filepathMaps;

@@ -38,6 +38,5 @@ namespace Spelet
         { 
             _spritebatch.Draw(Data.textures["background"], hitbox, Color.Red * 0.3f) ;
         }
-        
     }
 }

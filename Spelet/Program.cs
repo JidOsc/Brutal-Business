@@ -1,3 +1,2 @@
-﻿
-using var game = new Spelet.Game1();
+﻿using var game = new Spelet.Game1();
 game.Run();

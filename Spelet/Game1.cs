@@ -20,7 +20,6 @@ namespace Spelet
 
         protected override void Initialize()
         {
-
             _graphics.PreferredBackBufferWidth = 1920;
             _graphics.PreferredBackBufferHeight = 1080;
             _graphics.ApplyChanges();
@@ -35,8 +34,6 @@ namespace Spelet
 
             Data.viewport = GraphicsDevice.Viewport;
             gameManager = new GameManager(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
         }
 
         protected override void Update(GameTime gameTime)
@@ -49,8 +46,6 @@ namespace Spelet
 
             gameManager.Update(gameTime);
 
-            // TODO: Add your update logic here
-
             Data.lastKeyboard = Data.keyboard;
             Data.lastMouse = Data.mouse;
             base.Update(gameTime);
@@ -62,8 +57,6 @@ namespace Spelet
 
             gameManager.Draw(_spriteBatch, GraphicsDevice);
             _spriteBatch.End();
-
-            // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         } 

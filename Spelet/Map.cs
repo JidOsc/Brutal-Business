@@ -55,7 +55,7 @@ namespace Spelet
             {
                 for(int y = 0; y < sizeY; y++)
                 {
-                    if (foregroundTiles[y][x] > 6)
+                    if (foregroundTiles[y][x] > Data.firstCollision)
                     {
                         Data.collisionMap[y, x] = true;
                     }
@@ -65,7 +65,6 @@ namespace Spelet
                     }
                 }
             }
-
         }
 
         public void Draw(SpriteBatch _spriteBatch)

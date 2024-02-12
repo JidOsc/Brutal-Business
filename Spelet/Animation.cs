@@ -10,11 +10,7 @@ namespace Spelet
 {
     internal class Animation
     {
-        
-
-        public bool playAnimation; //ska animation spelas
-        
-        short 
+        int 
             firstFrame, //första frame i animationen
             lastFrame, //sista 
             frameNumber, //nuvarande frame
@@ -26,33 +22,31 @@ namespace Spelet
 
         Rectangle sourcerect;
 
-        public Animation(short firstFrame,float timeBetweenFrames,short lastFrame,short frameSize)
+        public Animation(int firstFrame, int lastFrame, float timeBetweenFrames, int frameSize)
         {
-            playAnimation = true;
-
-            this.firstFrame = firstFrame;
+            this.firstFrame = this.frameNumber = firstFrame;
             this.lastFrame = lastFrame;
 
-            this.frameNumber = firstFrame;
             this.frameSize = frameSize;
-            
             
             this.timeBetweenFrames = timeBetweenFrames;
 
-            sourcerect = new Rectangle(firstFrame*frameSize, 0, frameSize, frameSize);
+            sourcerect = new Rectangle(firstFrame * frameSize, 0, frameSize, frameSize);
             
         }
         public void Update(GameTime gameTime)
         {
             if(lastAnimationSecond + timeBetweenFrames < gameTime.TotalGameTime.TotalSeconds)
             { 
-                if (playAnimation)
+                frameNumber += 1;
+                frameNumber %= lastFrame;
+
+                if(frameNumber == 0)
                 {
-                    frameNumber += 1;
-                    frameNumber %= (short)(lastFrame + 1);
                     frameNumber += firstFrame;
-                    lastAnimationSecond = (float)gameTime.TotalGameTime.TotalSeconds;
                 }
+
+                lastAnimationSecond = (float)gameTime.TotalGameTime.TotalSeconds;
             }
         }
 
@@ -66,6 +60,5 @@ namespace Spelet
             sourcerect.Location = new Point(frameNumber * frameSize, 0);
             return sourcerect;
         }
-
     }
 }

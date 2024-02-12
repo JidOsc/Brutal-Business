@@ -11,7 +11,6 @@ namespace Spelet
 {
     internal class MenuManager
     {
-        public enum buttonStates { quit, start, settings, pause }
         public enum menuStates { main, settings, pause, none }
 
         Dictionary<menuStates, Menu> menus;
@@ -33,33 +32,26 @@ namespace Spelet
             currentMenu = menus[menu];
         }
 
-        public void ExecuteButton(buttonStates button)
-        {
-            switch (button)
-            {
-                case buttonStates.start:
-                    currentMenu = menus[menuStates.none];
-                    break;
-
-                case buttonStates.pause:
-                    currentMenu = menus[menuStates.pause];
-                    break;
-
-                case buttonStates.settings:
-                    currentMenu = menus[menuStates.settings];
-                    break;
-
-                case buttonStates.quit:
-                    //Quit();
-                    break;
-            }
-        }
-
         public void Update(GameTime _gameTime)
         {
-            currentMenu.Update(_gameTime);
+            switch (currentMenu.UpdateButtons())
+            {
+                case Button.buttonStates.start:
 
-            currentMenu.IsInteractedWith();
+                    break;
+
+                case Button.buttonStates.settings:
+
+                    break;
+
+                case Button.buttonStates.pause:
+
+                    break;
+
+                case Button.buttonStates.quit:
+
+                    break;
+            }
         }
 
         public void Draw(SpriteBatch _spriteBatch)

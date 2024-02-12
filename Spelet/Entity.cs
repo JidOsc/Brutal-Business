@@ -42,7 +42,7 @@ namespace Spelet
                 SpriteEffects.None, 
                 0.5f);
 
-                DrawHitbox(_spriteBatch) ;
+            DrawHitbox(_spriteBatch) ;
         }
     }
 }

@@ -58,13 +58,9 @@ namespace Spelet
             {
                 enemy.Update(_gameTime);
                 
-                if (enemy.SeesPlayer(player,map))
+                if (enemy.SeesPlayer(player, map))
                 {
                     enemy.ChasePlayer(player);
-                }
-                else
-                {
-                    enemy.Patrol(map);
                 }
             }
 
@@ -84,7 +80,7 @@ namespace Spelet
             /*camera.position = player.position;
             camera.UpdateCamera(Data.viewport);*/
 
-            if (player.TryingToDrop())
+            if (player.CanDrop())
             {
                 pickupObjects.Add(player.GetDroppedObject());
             }

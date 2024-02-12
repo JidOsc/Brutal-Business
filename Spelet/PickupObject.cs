@@ -14,7 +14,7 @@ namespace Spelet
 
         public PickupObject(Vector2 position, float scale) : base(position, scale)
         {
-            value = Data.random.Next(25,75);
+            value = Data.random.Next(25, 75);
             this.position = position;
 
             texture = Data.textures["gear"];
