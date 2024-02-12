@@ -25,9 +25,6 @@ namespace Spelet
 
             walkingAnimation = new Animation(0, 0.2f, 5, 64);
             runningAnimation = new Animation(6, 0.2f, 11, 64);
-
-            AdjustPosition();
-
         }
 
         public bool CanPickUp(PickupObject pickupObject)

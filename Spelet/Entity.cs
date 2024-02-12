@@ -29,11 +29,6 @@ namespace Spelet
             this.scale = scale;
         }
 
-        public void AdjustPosition()
-        {
-            position += new Vector2(sourceRectangle.Width / 2, sourceRectangle.Height / 2) * scale;
-        }
-
         public void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.Draw(
