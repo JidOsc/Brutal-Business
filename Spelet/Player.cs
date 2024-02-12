@@ -21,12 +21,13 @@ namespace Spelet
             inventory = new List<PickupObject>();
             texture = Data.textures["player"];
 
-            size = new Vector2(texture.Width / 12, texture.Height) * scale;
+            hitbox.Size = new Point((int)(texture.Width / 12 * scale), (int)(texture.Height * scale));
 
             walkingAnimation = new Animation(0, 0.2f, 5, 64);
             runningAnimation = new Animation(6, 0.2f, 11, 64);
 
             AdjustPosition();
+
         }
 
         public bool PicksUp()

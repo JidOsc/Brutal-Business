@@ -29,6 +29,10 @@ namespace Spelet
             {"startbutton", null}
         };
 
+        public static int tilesize;
+
+        public static bool[,] collisionMap;
+
         public static void LoadContent(ContentManager _contentManager)
         {
             foreach (string imagename in textures.Keys)

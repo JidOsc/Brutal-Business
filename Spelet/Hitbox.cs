@@ -12,32 +12,31 @@ namespace Spelet
     internal class Hitbox
     {
         public Vector2
-            position,
-            size;
+            position;
 
-        public bool IsInside(Hitbox hitbox)
+        public Rectangle
+            hitbox;
+
+        public Hitbox(Vector2 position)
         {
-            Rectangle tempRectangle1 = new Rectangle(position.ToPoint(), size.ToPoint());
-            Rectangle tempRectangle2 = new Rectangle(hitbox.position.ToPoint(), hitbox.size.ToPoint());
+            this.position = position;
 
-            return tempRectangle1.Intersects(tempRectangle2);
+            hitbox = new Rectangle(position.ToPoint(), new Point(0, 0));
         }
+
+        
         public bool IsInside(Vector2 position2)
         {
             return 
-                position2.X >= position.X 
-                && position2.X <= position.X + size.X
-                && position2.Y >= position.Y
-                && position2.Y <= position.Y + size.Y;
-
-            
+                position2.X >= hitbox.Left 
+                && position2.X <= hitbox.Right
+                && position2.Y >= hitbox.Top
+                && position2.Y <= hitbox.Bottom;
         }
 
-        public void DrawHitbox(SpriteBatch _spritebatch)    
-        {
-            Rectangle hitboxdraw = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
-
-            _spritebatch.Draw(Data.textures["background"], hitboxdraw, Color.Red * 0.3f) ;
+        public void DrawHitbox(SpriteBatch _spritebatch)
+        { 
+            _spritebatch.Draw(Data.textures["background"], hitbox, Color.Red * 0.3f) ;
         }
         
     }

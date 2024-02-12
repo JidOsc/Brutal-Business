@@ -12,8 +12,9 @@ namespace Spelet
     {
         public Texture2D background;
         
-        public UIElement()
+        public UIElement(Vector2 position, Vector2 size) : base(position)
         {
+            hitbox.Size = size.ToPoint();
             background = Data.textures["background"];
         }
     }

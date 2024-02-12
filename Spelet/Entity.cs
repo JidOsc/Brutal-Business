@@ -24,10 +24,9 @@ namespace Spelet
         public Rectangle
             sourceRectangle;
 
-        public Entity(Vector2 position, float scale)
+        public Entity(Vector2 position, float scale) : base(position)
         {
             this.scale = scale;
-            this.position = position;
         }
 
         public void AdjustPosition()

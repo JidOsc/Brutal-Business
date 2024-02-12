@@ -20,9 +20,13 @@ namespace Spelet
 
         public bool moving;
 
+        public PlatformController
+            controller;
+
         public HPEntity(Vector2 position, float scale) : base(position, scale)
         {
-
+            controller.Initialize(hitbox, 3, 3, Data.tilesize);
+            controller.SetCollisionMap(Data.collisionMap);
         }
 
         public void TakeDamage(float amount)

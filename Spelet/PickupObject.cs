@@ -19,12 +19,12 @@ namespace Spelet
 
             texture = Data.textures["gear"];
             sourceRectangle = new Rectangle(new Point(0, 0), new Point(32, 32));
-            size = texture.Bounds.Size.ToVector2();
+            hitbox.Size = texture.Bounds.Size;
         }
 
         public bool PlayerCanPickup(Player player)
         {
-            if (IsInside(player))
+            if (hitbox.Intersects(player.hitbox))
             {
                 return true;
             }

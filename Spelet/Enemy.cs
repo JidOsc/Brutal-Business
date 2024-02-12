@@ -27,7 +27,7 @@ namespace Spelet
             texture = Data.textures["enemy"];
             direction = new Vector2(1, 0);
 
-            this.size = new Vector2(texture.Width / 6, texture.Height) * scale;
+            hitbox.Size = hitbox.Size = new Point((int)(texture.Width / 6 * scale), (int)(texture.Height * scale));
 
             speed = 1f;
 

@@ -14,10 +14,8 @@ namespace Spelet
         Color CurrentColor, StartColor = Color.White;
         Rectangle backgroundBox;
 
-        public Button(Vector2 position, Vector2 size)
+        public Button(Vector2 position, Vector2 size) : base(position, size)
         {
-            this.position = position;
-            this.size = size;
             CurrentColor = StartColor;
             backgroundBox = new(position.ToPoint(), size.ToPoint());
             background = Data.textures["startbutton"];
