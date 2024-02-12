@@ -29,7 +29,7 @@ namespace Spelet
             {"startbutton", null}
         };
 
-        public static int tilesize;
+        public static int tileSize;
 
         public static bool[,] collisionMap;
 
@@ -49,11 +49,11 @@ namespace Spelet
             return (float)Math.Atan2(firstPos.X - secondPos.X, firstPos.Y - secondPos.Y);
         }
 
-        public static Vector2 WorldToGrid(Vector2 position, short tileSize)
+        public static Vector2 WorldToGrid(Vector2 position)
         {
 
-            Debug.WriteLine(new Vector2((int)(position.X / tileSize), (int)(position.Y / tileSize)));
-            return new Vector2((int)(position.X / tileSize),(int)(position.Y / tileSize));
+            Debug.WriteLine(new Vector2((int)(position.X / Data.tileSize), (int)(position.Y / Data.tileSize)));
+            return new Vector2((int)(position.X / Data.tileSize),(int)(position.Y / Data.tileSize));
         }
         public static Vector2 GridToWorld(Vector2 position, short tileSize)
         {

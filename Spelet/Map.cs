@@ -14,7 +14,7 @@ namespace Spelet
         public short[][] foregroundTiles;
         short[][] backgroundTiles;
 
-        public short
+        public int
             tileSize;
 
         short
@@ -28,9 +28,10 @@ namespace Spelet
         Rectangle 
             srcRect = new Rectangle();
 
-        public Map(short tileSize, short amountOfColumns)
+        public Map(int tileSize, short amountOfColumns)
         {
-            this.tileSize = tileSize;
+            this.tileSize = Data.tileSize = tileSize;
+
             this.amountOfColumns = amountOfColumns;
 
             srcRect = new Rectangle(0, 0, tileSize, tileSize);

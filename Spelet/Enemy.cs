@@ -40,13 +40,13 @@ namespace Spelet
             Vector2 positionA;
             if (player.position.X > position.X)
             {
-                positionA = Data.WorldToGrid(position, map.tileSize);
-                positionB = Data.WorldToGrid(player.position, map.tileSize);
+                positionA = Data.WorldToGrid(position);
+                positionB = Data.WorldToGrid(player.position);
             }
             else
             {
-                positionA = Data.WorldToGrid(player.position, map.tileSize);
-                positionB = Data.WorldToGrid(position, map.tileSize);
+                positionA = Data.WorldToGrid(player.position);
+                positionB = Data.WorldToGrid(position);
             }
 
             for (int x = (int)positionA.X; x < positionB.X; x++)
@@ -82,7 +82,7 @@ namespace Spelet
 
         public void Patrol(Map map)
         {
-            Vector2 currentTilePosition = Data.WorldToGrid(position, map.tileSize);
+            Vector2 currentTilePosition = Data.WorldToGrid(position);
 
             Debug.WriteLine(currentTilePosition);
 
@@ -99,7 +99,7 @@ namespace Spelet
         public List<Vector2> GetAvailableDirections(Map map)
         {
             List<Vector2> directionalDirections = new List<Vector2>();
-            Vector2 posInGrid = Data.WorldToGrid(position, map.tileSize);
+            Vector2 posInGrid = Data.WorldToGrid(position);
             
             if (map.foregroundTiles[(int)(posInGrid.Y)][(int)posInGrid.X - 1] == 0)
             {
