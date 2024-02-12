@@ -55,6 +55,18 @@
 /processorParam:Quality=Best
 /build:mixkit-footsteps-in-a-tunnel-loop-543.wav
 
+#begin mixkit-haunted-slow-orchestra-634.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:mixkit-haunted-slow-orchestra-634.wav
+
+#begin mixkit-horror-ambience-2482.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:mixkit-horror-ambience-2482.wav
+
 #begin mixkit-sphinx-cat-purr-and-quiet-growl-3092.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
