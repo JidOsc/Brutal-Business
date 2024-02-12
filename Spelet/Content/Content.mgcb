@@ -13,12 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../../../Users/melvin.pettersson1/Downloads/mixkit-horror-impact-773.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:../../../../Users/melvin.pettersson1/Downloads/mixkit-horror-impact-773.wav;mixkit-horror-impact-773.wav
-
 #begin boar_hound-sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
