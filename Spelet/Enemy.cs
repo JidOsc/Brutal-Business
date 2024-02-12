@@ -29,7 +29,7 @@ namespace Spelet
 
             hitbox.Size = hitbox.Size = new Point((int)(texture.Width / 6 * scale), (int)(texture.Height * scale));
 
-            speed = 1f;
+            speed = 5f;
 
             walkingAnimation = new Animation(0, 0.3f, 5, 64);
         }
@@ -82,18 +82,6 @@ namespace Spelet
 
         public void Patrol(Map map)
         {
-            /*Vector2 currentTilePosition = Data.WorldToGrid(position);
-
-            Debug.WriteLine(currentTilePosition);
-
-            if(map.foregroundTiles[(int)(currentTilePosition.Y + direction.Y)][(int)(currentTilePosition.X + direction.X)] > 0)
-            {
-                //om ruta inte är ledig
-                direction = GetNewDirection(GetAvailableDirections(map));
-            }*/
-            
-            
-
             if (controller.collisions.left || controller.collisions.right || controller.collisions.above || controller.collisions.below)
             {
                 direction = GetNewDirection(GetAvailableDirections(map));

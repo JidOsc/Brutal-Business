@@ -31,6 +31,8 @@ namespace Spelet
 
         public static int tileSize;
 
+        public static Viewport viewport;
+
         public static bool[,] collisionMap;
 
         public static void LoadContent(ContentManager _contentManager)
@@ -55,9 +57,9 @@ namespace Spelet
             Debug.WriteLine(new Vector2((int)(position.X / Data.tileSize), (int)(position.Y / Data.tileSize)));
             return new Vector2((int)(position.X / Data.tileSize),(int)(position.Y / Data.tileSize));
         }
-        public static Vector2 GridToWorld(Vector2 position, short tileSize)
+        public static Vector2 GridToWorld(Vector2 position)
         {
-            return new Vector2((int)(position.X * tileSize), (int)(position.Y * tileSize));
+            return new Vector2((int)(position.X * Data.tileSize), (int)(position.Y * Data.tileSize));
 
         }
     }

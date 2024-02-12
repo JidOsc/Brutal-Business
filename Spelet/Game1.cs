@@ -33,7 +33,8 @@ namespace Spelet
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Data.LoadContent(Content);
 
-            gameManager = new GameManager();
+            Data.viewport = GraphicsDevice.Viewport;
+            gameManager = new GameManager(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -57,12 +58,9 @@ namespace Spelet
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
-            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-
-            gameManager.Draw(_spriteBatch);
-
+            gameManager.Draw(_spriteBatch, GraphicsDevice);
             _spriteBatch.End();
 
             // TODO: Add your drawing code here

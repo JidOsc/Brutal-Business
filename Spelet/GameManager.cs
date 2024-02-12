@@ -23,10 +23,10 @@ namespace Spelet
         string filepathMaps;
 
 
-        public GameManager()
+        public GameManager(GraphicsDevice _graphics)
         {
             AccessFolder();
-            mapManager = new MapManager(LoadMap());
+            mapManager = new MapManager(LoadMap(), _graphics);
 
             menuManager = new MenuManager();
 
@@ -47,7 +47,7 @@ namespace Spelet
             }
         }
 
-        public void Draw(SpriteBatch _spriteBatch)
+        public void Draw(SpriteBatch _spriteBatch, GraphicsDevice _graphics)
         {
             switch (currentGameState)
             {
@@ -56,7 +56,7 @@ namespace Spelet
                     break;
 
                 case GameState.ingame:
-                    mapManager.Draw(_spriteBatch);
+                    mapManager.Draw(_spriteBatch, _graphics);
                     break;
             }
         }
