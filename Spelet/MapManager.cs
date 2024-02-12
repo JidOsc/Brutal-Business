@@ -29,7 +29,17 @@ namespace Spelet
             };
             pickupObjects = new List<PickupObject>()
             {
-                new PickupObject(new Vector2(500, 300), 0.5f),
+                new PickupObject(new Vector2(1430, 360), 0.5f),
+                new PickupObject(new Vector2(1000, 700), 0.5f),
+                new PickupObject(new Vector2(600, 520), 0.5f),
+                new PickupObject(new Vector2(649, 550), 0.5f),
+                new PickupObject(new Vector2(890, 400), 0.5f),
+                new PickupObject(new Vector2(1186, 1010), 0.5f),
+                new PickupObject(new Vector2(1200, 940), 0.5f),
+                new PickupObject(new Vector2(1500, 400), 0.5f),
+                new PickupObject(new Vector2(250, 1000), 0.5f),
+                new PickupObject(new Vector2(592, 640), 0.5f),
+
                 new PickupObject(Data.GridToWorld(new Vector2(3,3),16), 0.5f)
             };
             player = new Player(Data.GridToWorld(new Vector2(3, 3), 16), 0.5f);
