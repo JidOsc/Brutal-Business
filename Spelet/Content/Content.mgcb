@@ -97,7 +97,7 @@
 /processorParam:TextureFormat=Color
 /build:startbutton_menu-1.png;startbutton.png
 
-#begin tilemap.png
+#begin tileset2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,5 +107,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:tilemap.png
+/build:tileset2.png;tilemap.png
 

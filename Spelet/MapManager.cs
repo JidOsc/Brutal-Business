@@ -21,7 +21,7 @@ namespace Spelet
 
         public MapManager(short[][] map)
         {
-            this.map = new Map(32, 7);
+            this.map = new Map(32, 10);
             this.map.InsertMap(map);
 
             enemyList = new List<Enemy>()

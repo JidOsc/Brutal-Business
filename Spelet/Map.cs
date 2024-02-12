@@ -55,7 +55,7 @@ namespace Spelet
             {
                 for(int y = 0; y < sizeY; y++)
                 {
-                    if (foregroundTiles[y][x] > 0)
+                    if (foregroundTiles[y][x] > 6)
                     {
                         Data.collisionMap[y, x] = true;
                     }
