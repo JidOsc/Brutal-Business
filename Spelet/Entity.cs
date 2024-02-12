@@ -38,7 +38,7 @@ namespace Spelet
         {
             _spriteBatch.Draw(
                 texture, 
-                position, 
+                position + new Vector2(sourceRectangle.Width / 2, sourceRectangle.Height / 2) * scale, 
                 sourceRectangle, 
                 Color.White, 
                 rotation,

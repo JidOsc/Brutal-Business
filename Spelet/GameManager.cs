@@ -25,11 +25,10 @@ namespace Spelet
 
         public GameManager()
         {
-            mapManager = new MapManager();
-            menuManager = new MenuManager();
-
             AccessFolder();
-            mapManager.map.InsertMap(LoadMap());
+            mapManager = new MapManager(LoadMap());
+
+            menuManager = new MenuManager();
 
             currentGameState = GameState.ingame;
         }

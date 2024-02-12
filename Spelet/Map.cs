@@ -44,6 +44,8 @@ namespace Spelet
 
             this.sizeX = (short)foregroundTiles[0].Length;
             this.sizeY = (short)foregroundTiles.Length;
+
+            CreateCollisionMap();
         }
 
         public void CreateCollisionMap()
@@ -51,7 +53,7 @@ namespace Spelet
             Data.collisionMap = new bool[sizeY, sizeX];
             for (int x = 0; x < sizeX; x++)
             {
-                for(int y = 0; y< sizeY; x++)
+                for(int y = 0; y < sizeY; y++)
                 {
                     if (foregroundTiles[y][x] > 0)
                     {

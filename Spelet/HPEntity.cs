@@ -26,7 +26,7 @@ namespace Spelet
         public HPEntity(Vector2 position, float scale) : base(position, scale)
         {
             controller = new PlatformController();
-            controller.Initialize(hitbox, 3, 3, Data.tileSize);
+            controller.Initialize(hitbox, 5, 5, Data.tileSize);
             controller.SetCollisionMap(Data.collisionMap);
         }
 

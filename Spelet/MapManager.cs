@@ -19,10 +19,10 @@ namespace Spelet
         public Map map;
 
 
-        public MapManager()
+        public MapManager(short[][] map)
         {
-            map = new Map(32, 7);
-            map.CreateCollisionMap();
+            this.map = new Map(32, 7);
+            this.map.InsertMap(map);
 
             enemyList = new List<Enemy>()
             {
