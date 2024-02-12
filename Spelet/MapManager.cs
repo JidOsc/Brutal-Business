@@ -22,6 +22,7 @@ namespace Spelet
         public MapManager()
         {
             map = new Map(32, 7);
+            map.CreateCollisionMap();
 
             enemyList = new List<Enemy>()
             {
@@ -65,14 +66,11 @@ namespace Spelet
             {
                 //pickupObject.Update();
 
-                if (pickupObject.PlayerCanPickup(player))
+                if (player.CanPickUp(pickupObject))
                 {
-                    if (player.PicksUp())
-                    {
-                        player.PickedUp(pickupObject);
-                        pickupObjects.Remove(pickupObject);
-                        break;
-                    }
+                    player.PickedUp(pickupObject);
+                    pickupObjects.Remove(pickupObject);
+                    break;
                 }
             }
 
@@ -80,7 +78,7 @@ namespace Spelet
 
             if (player.TryingToDrop())
             {
-                pickupObjects.Add(player.GetDroptObjekt());
+                pickupObjects.Add(player.GetDroppedObject());
             }
         }
 

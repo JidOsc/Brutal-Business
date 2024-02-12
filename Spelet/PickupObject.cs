@@ -21,18 +21,6 @@ namespace Spelet
             sourceRectangle = new Rectangle(new Point(0, 0), new Point(32, 32));
             hitbox.Size = texture.Bounds.Size;
         }
-
-        public bool PlayerCanPickup(Player player)
-        {
-            if (hitbox.Intersects(player.hitbox))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
     }
 }
 

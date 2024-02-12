@@ -137,7 +137,8 @@ namespace Spelet
 
         public void Update(GameTime gameTime)
         {
-            position += velocity;
+            UpdateHitboxVelocity();
+
             rotation = Data.RelationToRotation(Vector2.Zero,velocity);
             rotation *= -1;
 

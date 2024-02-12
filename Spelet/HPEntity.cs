@@ -29,6 +29,13 @@ namespace Spelet
             controller.SetCollisionMap(Data.collisionMap);
         }
 
+        public void UpdateHitboxVelocity()
+        {
+            velocity = controller.CalculateVelocity(velocity, hitbox);
+            position += velocity;
+            hitbox.Location = position.ToPoint();
+        }
+
         public void TakeDamage(float amount)
         {
             health -= amount;

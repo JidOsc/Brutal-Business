@@ -30,42 +30,27 @@ namespace Spelet
 
         }
 
-        public bool PicksUp()
+        public bool CanPickUp(PickupObject pickupObject)
         {
-            if (Data.keyboard.IsKeyDown(Keys.E))
-            {
-                return true;
-            }
-            return false;
-            //kollar om knapp trycks på och skickar tillbaka true om den gör det
+            return inventory.Count < inventorySize && Data.keyboard.IsKeyDown(Keys.E) && hitbox.Intersects(pickupObject.hitbox);
         }
-        public bool HasInventorySpace()
-        {
-            if (inventory.Count < inventorySize)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }       
+
         public bool TryingToDrop()
         {
-            if (inventory.Count > 0 && Data.keyboard.IsKeyDown(Keys.R))
-            {
-                return true;
-            }
-            return false;
+            return inventory.Count > 0 && Data.keyboard.IsKeyDown(Keys.R);
         }
-        public PickupObject GetDroptObjekt()
+
+        public PickupObject GetDroppedObject()
         {
             PickupObject tempobject = inventory[0];
             inventory.Remove(tempobject);
-            tempobject.position = position;
-            return tempobject;
 
+            tempobject.position = position;
+            tempobject.hitbox.Location = position.ToPoint();
+
+            return tempobject;
         }
+
         public void PickedUp(PickupObject pickedupobject)
         {
             inventory.Add(pickedupobject);
@@ -74,7 +59,6 @@ namespace Spelet
 
         public void Update(GameTime gameTime)
         {
-            
             if (Data.keyboard.IsKeyDown(Keys.S))
             {
                 velocity.Y = speed;
@@ -101,7 +85,7 @@ namespace Spelet
                 velocity.X = 0;
             }
 
-            if(Math.Abs(velocity.X) > 0||Math.Abs(velocity.Y) >0)
+            if(Math.Abs(velocity.X) > 0||Math.Abs(velocity.Y) > 0)
             {
                 moving = true;
             }
@@ -116,17 +100,14 @@ namespace Spelet
             }
 
             walkingAnimation.playAnimation = moving;
-            position += velocity;
+
+            UpdateHitboxVelocity();
 
             walkingAnimation.Update(gameTime);
             runningAnimation.Update(gameTime);
             sourceRectangle = walkingAnimation.GetFrame();
 
             rotation = Data.RelationToRotation(Data.mouse.Position.ToVector2(), position) * -1;
-
-
-
-
         }
 
         public void Draw()
