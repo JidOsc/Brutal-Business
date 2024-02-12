@@ -37,6 +37,30 @@
 /processorParam:TextureFormat=Color
 /build:gear.png
 
+#begin mixkit-angry-dragon-growl-309.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:mixkit-angry-dragon-growl-309.wav
+
+#begin mixkit-big-wild-cat-slow-moan-90.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:mixkit-big-wild-cat-slow-moan-90.wav
+
+#begin mixkit-footsteps-in-a-tunnel-loop-543.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:mixkit-footsteps-in-a-tunnel-loop-543.wav
+
+#begin mixkit-sphinx-cat-purr-and-quiet-growl-3092.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:mixkit-sphinx-cat-purr-and-quiet-growl-3092.wav
+
 #begin pixel.png
 /importer:TextureImporter
 /processor:TextureProcessor
