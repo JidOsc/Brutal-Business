@@ -15,7 +15,9 @@ namespace Spelet
         public short inventorySize = 3;
         public Animation walkingAnimation, runningAnimation;
         float runningSpeed = 2;
-
+        bool isRunning;
+        int hasStammina = 5;
+        float stamminaDdepletionRate = 0.5f;
         public Player(Vector2 position, float scale) : base(position, scale)
         {
             inventory = new List<PickupObject>();
@@ -91,18 +93,34 @@ namespace Spelet
                 walkingAnimation.RestartAnimation();
                 moving = false;
             }
-            if (Data.keyboard.IsKeyDown(Keys.LeftShift))
+            if (Data.keyboard.IsKeyDown(Keys.LeftShift) && hasStammina > 0&&moving)
             {
                 velocity *= runningSpeed;
+                isRunning = true;
+                
             }
-
-            walkingAnimation.playAnimation = moving;
-
-            UpdateHitboxVelocity();
+            else
+            {
+                runningAnimation.RestartAnimation();
+                isRunning = false;
+            }
 
             walkingAnimation.Update(gameTime);
             runningAnimation.Update(gameTime);
-            sourceRectangle = walkingAnimation.GetFrame();
+
+            if (moving && isRunning)
+            {
+
+                sourceRectangle = runningAnimation.GetFrame();
+            }
+            else if (moving)
+            {
+                sourceRectangle = walkingAnimation.GetFrame();
+            }
+            walkingAnimation.playAnimation = moving;
+            runningAnimation.playAnimation = isRunning;
+            UpdateHitboxVelocity();
+            
 
             rotation = Data.RelationToRotation(Data.mouse.Position.ToVector2(), position) * -1;
         }
