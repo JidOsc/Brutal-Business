@@ -55,12 +55,6 @@
 /processorParam:Quality=Best
 /build:mixkit-footsteps-in-a-tunnel-loop-543.wav
 
-#begin mixkit-horror-impact-773.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:mixkit-horror-impact-773.wav
-
 #begin mixkit-sphinx-cat-purr-and-quiet-growl-3092.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
