@@ -33,7 +33,7 @@ namespace Spelet
 
             walkingAnimation = new Animation(0, 0.3f, 5, 64);
         }
-
+        
         public bool IsWallThere(Map map,Player player)
         {
             Vector2 positionB;
@@ -82,7 +82,7 @@ namespace Spelet
 
         public void Patrol(Map map)
         {
-            Vector2 currentTilePosition = Data.WorldToGrid(position);
+            /*Vector2 currentTilePosition = Data.WorldToGrid(position);
 
             Debug.WriteLine(currentTilePosition);
 
@@ -90,43 +90,37 @@ namespace Spelet
             {
                 //om ruta inte är ledig
                 direction = GetNewDirection(GetAvailableDirections(map));
-            }
+            }*/
             
-            velocity = direction * speed;
+            
 
+            if (controller.collisions.left || controller.collisions.right || controller.collisions.above || controller.collisions.below)
+            {
+                direction = GetNewDirection(GetAvailableDirections(map));
+            }
+            velocity = direction * speed;
         }
         
         public List<Vector2> GetAvailableDirections(Map map)
         {
             List<Vector2> directionalDirections = new List<Vector2>();
-            Vector2 posInGrid = Data.WorldToGrid(position);
-            
-            if (map.foregroundTiles[(int)(posInGrid.Y)][(int)posInGrid.X - 1] == 0)
+            if (controller.collisions.left == false)
             {
                 directionalDirections.Add(new Vector2(-1, 0));
-                //Vänster
             }
-            
-            
-                if (map.foregroundTiles[(int)(posInGrid.Y - 1)][(int)posInGrid.X] == 0)
-                {
-                    directionalDirections.Add(new Vector2(0, -1));
-                    //Upp
-                }
-           
-
-
-            if (map.foregroundTiles[(int)(posInGrid.Y)][(int)posInGrid.X + 1] == 0)
+            if (controller.collisions.right == false)
             {
                 directionalDirections.Add(new Vector2(1, 0));
-                //Höger
             }
-
-            if (map.foregroundTiles[(int)(posInGrid.Y + 1)][(int)posInGrid.X] == 0)
+            if (controller.collisions.above == false)
+            {
+                directionalDirections.Add(new Vector2(0, -1));
+            }
+            if (controller.collisions.below == false)
             {
                 directionalDirections.Add(new Vector2(0, 1));
-                //Ner
             }
+            
             return directionalDirections;
         }
 
@@ -145,7 +139,5 @@ namespace Spelet
             walkingAnimation.Update(gameTime);
             sourceRectangle = walkingAnimation.GetFrame();
         }
-
-
     }
 }
