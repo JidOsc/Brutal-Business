@@ -45,6 +45,26 @@ namespace Spelet
             this.sizeY = (short)foregroundTiles.Length;
         }
 
+        public void CreateCollisionMap()
+        {
+            Data.collisionMap = new bool[sizeY, sizeX];
+            for (int x = 0; x < sizeX; x++)
+            {
+                for(int y = 0; y< sizeY; x++)
+                {
+                    if (foregroundTiles[y][x] > 0)
+                    {
+                        Data.collisionMap[y, x] = true;
+                    }
+                    else
+                    {
+                        Data.collisionMap[y, x] = false;
+                    }
+                }
+            }
+
+        }
+
         public void Draw(SpriteBatch _spriteBatch)
         {
             for(int y = 0; y < sizeY; y++)
