@@ -33,7 +33,7 @@ namespace Spelet
 
             uiManager = new UIManager();
 
-            currentGameState = GameState.ingame;
+            currentGameState = GameState.main;
         }
 
         public void Update(GameTime _gameTime)
@@ -41,7 +41,24 @@ namespace Spelet
             switch (currentGameState)
             {
                 case GameState.main:
-                    menuManager.Update(_gameTime);
+                    switch (menuManager.GetInteraction())
+                    {
+                        case Button.buttonStates.start:
+                            currentGameState = GameState.ingame;
+                            break;
+
+                        case Button.buttonStates.pause:
+                            menuManager.ChangeMenu(MenuManager.menuStates.pause);
+                            break;
+
+                        case Button.buttonStates.settings:
+                            menuManager.ChangeMenu(MenuManager.menuStates.settings);
+                            break;
+
+                        case Button.buttonStates.quit:
+                            
+                            break;
+                    }
                     break;
 
                 case GameState.ingame:

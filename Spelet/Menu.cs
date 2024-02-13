@@ -13,10 +13,10 @@ namespace Spelet
     {
         List<Button> buttonList = new List<Button>()
         {
-            new Button(new Vector2(100, 200), new Vector2(300, 150)), 
-            new Button(new Vector2(550, 200), new Vector2(300, 150)),
-            new Button(new Vector2(1000, 200), new Vector2(300, 150)),
-            new Button(new Vector2(1450, 200), new Vector2(300, 150))
+            new Button(new Vector2(100, 200), new Vector2(300, 150), Button.buttonStates.start), 
+            new Button(new Vector2(550, 200), new Vector2(300, 150), Button.buttonStates.start),
+            new Button(new Vector2(1000, 200), new Vector2(300, 150), Button.buttonStates.settings),
+            new Button(new Vector2(1450, 200), new Vector2(300, 150), Button.buttonStates.pause)
         };
 
         public Button.buttonStates? UpdateButtons()

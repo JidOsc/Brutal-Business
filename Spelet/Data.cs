@@ -30,7 +30,7 @@ namespace Spelet
             {"tilemap", null },
             {"gear", null },
             {"background", null },
-            {"startbutton", null},
+            {"buttonstart", null},
             {"healthbar",null }
         };
 

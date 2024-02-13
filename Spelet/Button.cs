@@ -21,12 +21,14 @@ namespace Spelet
         Rectangle 
             backgroundBox;
 
-        public Button(Vector2 position, Vector2 size) : base(position, size)
+        public Button(Vector2 position, Vector2 size, buttonStates buttonState) : base(position, size)
         {
             currentColor = baseColor;
 
             backgroundBox = new(position.ToPoint(), size.ToPoint());
-            background = Data.textures["startbutton"];
+            background = Data.textures["buttonstart"];
+
+            this.buttonState = buttonState;
         }
 
         public bool IsPressed()

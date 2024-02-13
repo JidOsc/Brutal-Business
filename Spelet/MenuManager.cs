@@ -32,30 +32,14 @@ namespace Spelet
             currentMenu = menus[menu];
         }
 
-        public void Update(GameTime _gameTime)
+        public Button.buttonStates? GetInteraction()
         {
-            switch (currentMenu.UpdateButtons())
-            {
-                case Button.buttonStates.start:
-
-                    break;
-
-                case Button.buttonStates.settings:
-
-                    break;
-
-                case Button.buttonStates.pause:
-
-                    break;
-
-                case Button.buttonStates.quit:
-
-                    break;
-            }
+            return currentMenu.UpdateButtons();
         }
 
         public void Draw(SpriteBatch _spriteBatch)
         {
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             currentMenu.Draw(_spriteBatch);
         }
     }
