@@ -16,12 +16,14 @@ namespace Spelet
         enum enemyStates { patrolling, tracking, chasing};
         enemyStates currentEnemyState = enemyStates.patrolling;
 
-        float viewDistance = 500f;
+        float viewDistance = 5f;
 
         List<Vector2> directionalDirections = new List<Vector2>();
 
         Vector2
-            direction,
+            direction;
+
+        Vector2
             lastSeenPlayerPosition;
 
         Animation walkingAnimation;
@@ -33,12 +35,12 @@ namespace Spelet
 
             hitbox.Size = new Point((int)(texture.Height * scale), (int)(texture.Height * scale));
 
-            speed = 500f;
+            speed = 1f;
 
             walkingAnimation = new Animation(0, 5, 0.3f, 64);
         }
         
-        public bool IsWallThere(Map map, Player player)
+        bool IsWallThere(Map map, Player player)
         {
             Vector2 positionB;
             Vector2 positionA;
@@ -58,27 +60,66 @@ namespace Spelet
             {
                 int y = (int)(positionA.Y + (positionB.Y - positionA.Y) * (x - positionA.X) / (positionB.X - positionA.X));
 
-                if (y < map.foregroundTiles.Length && y >= 0 && x < map.foregroundTiles[0].Length && x >= 0 && map.foregroundTiles[y][x] > 0)
+                if (PositionIsValid(map, x, y) && Data.collisionMap[y, x])
                 {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
 
-        public void SeesPlayer(Player player, Map map)
+        bool PositionIsValid(Map map, int x, int y)
+        {
+            return x >= 0 && x < map.foregroundTiles[0].Length && y >= 0 && y < map.foregroundTiles.Length;
+        }
+
+        bool SeesPlayer(Player player, Map map)
         {
             float distanceToPlayer = Vector2.Distance(player.position, position);
 
-            if (distanceToPlayer <= viewDistance && IsWallThere(map, player))
+            return distanceToPlayer <= viewDistance && !IsWallThere(map, player);
+        }
+
+        public void UpdateEnemyState(Player player, Map map)
+        {
+            if(SeesPlayer(player, map))
             {
                 lastSeenPlayerPosition = player.position;
+                currentEnemyState = enemyStates.chasing;
+            }
+            else if(currentEnemyState == enemyStates.chasing && lastSeenPlayerPosition != position)
+            {
+                currentEnemyState = enemyStates.tracking;
+            }
+            else
+            {
+                currentEnemyState = enemyStates.patrolling;
             }
         }
 
-        void ChasePlayer()
+        public void Update(GameTime gameTime)
         {
-            velocity = Vector2.Normalize(position - lastSeenPlayerPosition) * speed * -1;
+            switch (currentEnemyState)
+            {
+                case enemyStates.patrolling:
+                    Patrol();
+                    break;
+
+                case enemyStates.tracking:
+                    TrackPlayer();
+                    break;
+
+                case enemyStates.chasing:
+                    ChasePlayer();
+                    break;
+            }
+
+            UpdateHitboxVelocity();
+
+            rotation = Data.RelationToRotation(Vector2.Zero, velocity) * -1;
+
+            walkingAnimation.Update(gameTime);
+            sourceRectangle = walkingAnimation.GetFrame();
         }
 
         void Patrol()
@@ -89,11 +130,16 @@ namespace Spelet
             }
             velocity = direction * speed;
         }
-        
-        public List<Vector2> GetAvailableDirections()
+
+        Vector2 GetNewDirection(List<Vector2> availableDirections)
+        {
+            return availableDirections[Data.random.Next(0, availableDirections.Count)];
+        }
+
+        List<Vector2> GetAvailableDirections()
         {
             List<Vector2> directionalDirections = new List<Vector2>();
-            
+
             if (!controller.collisions.left)
             {
                 directionalDirections.Add(new Vector2(-1, 0));
@@ -110,38 +156,18 @@ namespace Spelet
             {
                 directionalDirections.Add(new Vector2(0, 1));
             }
-            
+
             return directionalDirections;
         }
 
-        public Vector2 GetNewDirection(List<Vector2> availableDirections)
+        void TrackPlayer()
         {
-            return availableDirections[Data.random.Next(0, availableDirections.Count)];
+            velocity = Vector2.Normalize(position - lastSeenPlayerPosition) * speed * -1;
         }
 
-        public void Update(GameTime gameTime)
+        void ChasePlayer()
         {
-            switch (currentEnemyState)
-            {
-                case enemyStates.patrolling:
-                    Patrol();
-                    break;
-
-                case enemyStates.tracking:
-                    //
-                    break;
-
-                case enemyStates.chasing:
-                    ChasePlayer();
-                    break;
-            }
-
-            UpdateHitboxVelocity();
-
-            rotation = Data.RelationToRotation(Vector2.Zero, velocity) * -1;
-
-            walkingAnimation.Update(gameTime);
-            sourceRectangle = walkingAnimation.GetFrame();
+            velocity = Vector2.Normalize(position - lastSeenPlayerPosition) * speed * -1;
         }
     }
 }

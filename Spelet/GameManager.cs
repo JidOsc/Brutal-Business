@@ -15,9 +15,10 @@ namespace Spelet
     {
         public MapManager mapManager;
         public MenuManager menuManager;
+        public UIManager uiManager;
 
         enum GameState {main, ingame};
-        GameState currentGameState = new();
+        GameState currentGameState = GameState.main;
 
         string filepathFolder;
         string filepathMaps;
@@ -29,6 +30,8 @@ namespace Spelet
             mapManager = new MapManager(LoadMap(), _graphics);
 
             menuManager = new MenuManager();
+
+            uiManager = new UIManager();
 
             currentGameState = GameState.ingame;
         }
@@ -43,6 +46,7 @@ namespace Spelet
 
                 case GameState.ingame:
                     mapManager.Update(_gameTime);
+                    uiManager.Update(_gameTime, mapManager.player);
                     break;
             }
         }
@@ -57,6 +61,7 @@ namespace Spelet
 
                 case GameState.ingame:
                     mapManager.Draw(_spriteBatch, _graphics);
+                    uiManager.Draw(_spriteBatch);
                     break;
             }
         }
