@@ -21,7 +21,8 @@ namespace Spelet
         }
         public InventoryView(Vector2 position ,Vector2 size) : base(position, size)
         {
-
+            
         }
+       
     }
 }
