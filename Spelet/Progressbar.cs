@@ -68,7 +68,8 @@ namespace Spelet
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(foreground,position, foregroundHitbox,Color.AliceBlue);
+            spriteBatch.Draw(foreground, position, foregroundHitbox,Color.White);
+            
         }
 
     }

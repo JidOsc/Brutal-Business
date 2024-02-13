@@ -30,7 +30,8 @@ namespace Spelet
             {"tilemap", null },
             {"gear", null },
             {"background", null },
-            {"startbutton", null}
+            {"startbutton", null},
+            {"healthbar",null }
         };
 
         public static int tileSize;
