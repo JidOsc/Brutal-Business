@@ -20,7 +20,9 @@ namespace Spelet
 
         List<Vector2> directionalDirections = new List<Vector2>();
 
-        Vector2 direction;
+        Vector2
+            direction,
+            lastSeenPlayerPosition;
 
         Animation walkingAnimation;
 
@@ -31,7 +33,7 @@ namespace Spelet
 
             hitbox.Size = new Point((int)(texture.Height * scale), (int)(texture.Height * scale));
 
-            speed = 5f;
+            speed = 500f;
 
             walkingAnimation = new Animation(0, 5, 0.3f, 64);
         }
@@ -64,23 +66,19 @@ namespace Spelet
             return true;
         }
 
-        public bool SeesPlayer(Player player, Map map)
+        public void SeesPlayer(Player player, Map map)
         {
             float distanceToPlayer = Vector2.Distance(player.position, position);
 
             if (distanceToPlayer <= viewDistance && IsWallThere(map, player))
             {
-                return true;
-            }
-            else
-            {
-                return false;
+                lastSeenPlayerPosition = player.position;
             }
         }
 
-        void ChasePlayer(Player player)
+        void ChasePlayer()
         {
-            velocity = Vector2.Normalize(position - player.position) * speed * -1;
+            velocity = Vector2.Normalize(position - lastSeenPlayerPosition) * speed * -1;
         }
 
         void Patrol()
@@ -123,11 +121,6 @@ namespace Spelet
 
         public void Update(GameTime gameTime)
         {
-            if (SeesPlayer())
-            {
-
-            }
-
             switch (currentEnemyState)
             {
                 case enemyStates.patrolling:

@@ -57,11 +57,7 @@ namespace Spelet
             foreach(Enemy enemy in enemyList)
             {
                 enemy.Update(_gameTime);
-                
-                if (enemy.SeesPlayer(player, map))
-                {
-                    enemy.ChasePlayer(player);
-                }
+                enemy.SeesPlayer(player, map);
             }
 
             foreach(PickupObject pickupObject in pickupObjects)
