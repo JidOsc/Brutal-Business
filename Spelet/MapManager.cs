@@ -14,7 +14,7 @@ namespace Spelet
         List<Enemy> enemyList;
         
         List<PickupObject> pickupObjects;
-        Player player;
+        public Player player;
 
         public Map map;
         Camera camera;
@@ -32,7 +32,7 @@ namespace Spelet
 
             enemyList = new List<Enemy>()
             {
-                new Enemy(new Vector2 (325, 96), 1f)
+                new Enemy(Data.GridToWorld(new Vector2(13, 13) + new Vector2(1, 1)), 1f)
             };
             pickupObjects = new List<PickupObject>()
             {
@@ -56,14 +56,12 @@ namespace Spelet
         {
             foreach(Enemy enemy in enemyList)
             {
+                enemy.UpdateEnemyState(player, map);
                 enemy.Update(_gameTime);
-                enemy.SeesPlayer(player, map);
             }
 
             foreach(PickupObject pickupObject in pickupObjects)
             {
-                //pickupObject.Update();
-
                 if (player.CanPickUp(pickupObject))
                 {
                     player.PickedUp(pickupObject);

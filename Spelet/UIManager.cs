@@ -12,7 +12,21 @@ namespace Spelet
 {
     internal class UIManager
     {
-        List<InventoryView> inventorybar = new List<InventoryView>();
+        InventoryView[] inventorybar;
+
+        Progressbar
+            playerHealth,
+            playerStamina;
+
+        public UIManager()
+        {
+            inventorybar = new InventoryView[3];
+        }
+
+        public void Update(GameTime _gameTime, Player player)
+        {
+            
+        }
 
         public void Draw(SpriteBatch _spriteBatch)
         {
@@ -20,6 +34,9 @@ namespace Spelet
             {
                 inventory.Draw(_spriteBatch);
             }
+
+            playerHealth.Draw(_spriteBatch);
+            playerStamina.Draw(_spriteBatch);
         }
         
     }
