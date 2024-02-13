@@ -21,6 +21,9 @@ namespace Spelet
         public UIManager()
         {
             inventorybar = new InventoryView[3];
+
+            playerHealth = new Progressbar(Data.textures["healthBar"], new Vector2(10, 10), new Vector2(50, 10), 5f, Data.textures["pixel"]);
+            playerStamina = new Progressbar(Data.textures["healthBar"], new Vector2(10, 10), new Vector2(50, 10), 5f, Data.textures["pixel"]);
         }
 
         public void Update(GameTime _gameTime, Player player)
