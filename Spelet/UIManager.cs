@@ -21,7 +21,7 @@ namespace Spelet
                 inventory.Draw(_spriteBatch);
             }
         }
-
+        
     }
     
 }
