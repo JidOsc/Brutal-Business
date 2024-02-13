@@ -101,10 +101,16 @@ namespace Spelet
                 {
                     currentPlayerState = playerStates.running;
                     velocity *= runningModifier;
+                    currentStamina -= staminaDepletionRate;
                 }
                 else
                 {
                     currentPlayerState = playerStates.walking;
+
+                    if (currentStamina < maxStamina && Data.keyboard.IsKeyDown(Keys.LeftShift) == false)
+                    {
+                        currentStamina += staminaDepletionRate;
+                    }
                 }
             }
             else
@@ -113,6 +119,11 @@ namespace Spelet
                 runningAnimation.RestartAnimation();
 
                 currentPlayerState = playerStates.idle;
+
+                if (currentStamina < maxStamina && Data.keyboard.IsKeyDown(Keys.LeftShift) ==false)
+                {
+                    currentStamina += staminaDepletionRate;
+                }
             }
 
             switch (currentPlayerState)
