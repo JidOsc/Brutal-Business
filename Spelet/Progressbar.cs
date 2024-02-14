@@ -39,7 +39,7 @@ namespace Spelet
             maxValue = currentvalue;
             this.currentValue = currentvalue;
             this.position = position;
-            foregroundHitbox = new((int)(position.X + fillingOffSet), (int)position.Y, foreground.Width, (int)(foreground.Height - fillingOffSet));
+            foregroundHitbox = new((int)(position.X + fillingOffSet), (int)position.Y,(int) (foreground.Width - fillingOffSet), (int)(foreground.Height - fillingOffSet));
             backgroundHitbox = new((int)position.X, (int)position.Y, foreground.Width, (int)foreground.Height);
         }
 
