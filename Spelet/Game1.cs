@@ -31,6 +31,7 @@ namespace Spelet
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Data.LoadContent(Content);
+            Data.money = Content.Load<SpriteFont>("money");
 
             Data.viewport = GraphicsDevice.Viewport;
             gameManager = new GameManager(GraphicsDevice);

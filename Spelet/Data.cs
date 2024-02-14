@@ -36,6 +36,8 @@ namespace Spelet
 
         public static int tileSize;
 
+        public static SpriteFont money;
+
         public static Viewport viewport;
 
         public static bool[,] collisionMap;

@@ -10,7 +10,7 @@ namespace Spelet
 {
     internal class PickupObject : Entity
     {
-        float value;
+       public float value;
 
         public PickupObject(Vector2 position, float scale) : base(position, scale)
         {

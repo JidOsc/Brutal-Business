@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:Bar.png;healthbar.png
 
-#begin Bar.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bar.png;healthbar.png
-
 #begin boar_hound-sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -120,6 +108,13 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:mixkit-sphinx-cat-purr-and-quiet-growl-3092.wav
+
+#begin money.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:money.spritefont
 
 #begin pixel.png
 /importer:TextureImporter

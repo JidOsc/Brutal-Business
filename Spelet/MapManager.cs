@@ -19,7 +19,7 @@ namespace Spelet
         public Map map;
         Camera camera;
         RenderTarget2D mainTarget;
-
+        public float TotalValue;
 
         public MapManager(short[][] map, GraphicsDevice _graphics)
         {
@@ -29,6 +29,7 @@ namespace Spelet
 
             this.map = new Map(32, 10);
             this.map.InsertMap(map);
+            
 
             enemyList = new List<Enemy>()
             {
@@ -48,8 +49,12 @@ namespace Spelet
                 new PickupObject(new Vector2(592, 640), 0.5f),
 
                 new PickupObject(Data.GridToWorld(new Vector2(3,3)), 0.5f)
+                
+                
+            
             };
             player = new Player(Data.GridToWorld(new Vector2(3, 3)), 0.5f);
+           
         }
 
         public void Update(GameTime _gameTime)
@@ -68,6 +73,14 @@ namespace Spelet
                     pickupObjects.Remove(pickupObject);
                     break;
                 }
+                Vector2 Temppos = Data.WorldToGrid(pickupObject.position);
+                if (map.foregroundTiles[(int)Temppos.Y][(int)Temppos.X] == 5)
+                {
+                    TotalValue += pickupObject.value;
+                }
+
+
+
             }
 
             player.Update(_gameTime);
@@ -85,6 +98,8 @@ namespace Spelet
             _graphics.SetRenderTarget(mainTarget);
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp /*transformMatrix: camera.transform*/);
             map.Draw(_spriteBatch);
+            _spriteBatch.DrawString( Data.money, "money",new Vector2(1550,10), Color.Green);
+            
 
             foreach(Enemy enemy in enemyList)
             {
