@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Spelet
 {
@@ -43,6 +44,17 @@ namespace Spelet
             {"stamina_bar_capsule", null },
             {"titel", null }
 
+        };
+
+        public static Dictionary<string, SoundEffect> soundeffects = new Dictionary<string, SoundEffect>()
+        {
+            {"mixkit-horror-ambience-2482",null },
+            {"mixkit-footsteps-in-a-tunnel-loop-543",null },
+            {"mixkit-angry-dragon-growl-309",null },
+            {"mixkit-big-wild-cat-slow-moan-90",null },
+            {"mixkit-sphinx-cat-purr-and-quiet-growl-3092",null },
+            {"mixkit-horror-impact-773",null },
+            {"mixkit-haunted-slow-orchestra-634",null }
         };
 
         public static int tileSize;

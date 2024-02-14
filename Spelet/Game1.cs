@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Spelet
 {
@@ -8,6 +10,7 @@ namespace Spelet
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        List<SoundEffect> soundEffects;
 
         GameManager gameManager;
 
