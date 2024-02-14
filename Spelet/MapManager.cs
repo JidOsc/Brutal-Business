@@ -98,7 +98,7 @@ namespace Spelet
             _graphics.SetRenderTarget(mainTarget);
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp /*transformMatrix: camera.transform*/);
             map.Draw(_spriteBatch);
-            _spriteBatch.DrawString( Data.money, "money",new Vector2(1550,10), Color.Green);
+            _spriteBatch.DrawString( Data.money, TotalValue.ToString(),new Vector2(1700,10), Color.Green);
             
 
             foreach(Enemy enemy in enemyList)
