@@ -17,45 +17,44 @@ namespace Spelet
         Rectangle
             backgroundHitbox;
 
+        
+
         float
             maxValue = 5f,
             currentValue,
             oldValue,
             slideSpeed = 0.1f,
             newValue,
+            maxWidth,
 
             fillingOffSet = 45,
-            fillingOffSetPosX = 13,
-            fillingOffSetPosY = 11,
+            fillingOffSetPosX = 22,
+            fillingOffSetPosY = 21,
 
             slide;
 
-        
+        Color backgroundColor;
 
-        public Progressbar(Texture2D foreground, Vector2 position, Vector2 size, float currentvalue, Texture2D background) : base(position,size)
+        public Progressbar(Texture2D foreground, Vector2 position, Vector2 size, float currentValue, Texture2D background, Color backgroundColor) : base(position,size)
         {
             this.foreground = foreground;
             this.background = background;
 
-            maxValue = currentvalue;
-            this.currentValue = currentvalue;
+            this.backgroundColor = backgroundColor;
+
+            maxWidth = foreground.Width;
+            newValue = currentValue;
+            maxValue = currentValue;
+            this.currentValue = currentValue;
             this.position = position;
-            backgroundHitbox = new((int)position.X, (int)position.Y, foreground.Width, (int)foreground.Height);
+            backgroundHitbox = new((int)(position.X +fillingOffSetPosX), (int)(position.Y + fillingOffSetPosY), (int)(foreground.Width - fillingOffSet), (int)(foreground.Height - fillingOffSet));
+            maxWidth = backgroundHitbox.Width;
         }
 
         public void Update(GameTime gameTime)
         {
-           /* if (Data.keyboard.IsKeyDown(Keys.LeftShift) && currentValue>0)
-            {
-                SlideValue(currentValue - 0.2f);
-            }
-            else
-            {
-                if (currentValue < maxValue)
-                {
-                    SlideValue(currentValue + 0.2f);
-                }
-            }*/
+            
+
             UpdateSlider();
         }
 
@@ -66,7 +65,7 @@ namespace Spelet
                 slide += slideSpeed;
 
                 currentValue = oldValue + (newValue - oldValue) * slide;
-                backgroundHitbox.Width = (int)(currentValue);
+                backgroundHitbox.Width = (int)(currentValue /maxValue* maxWidth);
             }
             else
             {
@@ -86,10 +85,11 @@ namespace Spelet
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Data.textures["background"], backgroundHitbox, Color.Green);
+            spriteBatch.Draw(Data.textures["background"], backgroundHitbox, backgroundColor);
             spriteBatch.Draw(foreground, position, Color.White);
+            
 
-            spriteBatch.DrawString(Data.money, maxValue + " \n " + currentValue + " \n " + oldValue + " \n " + slideSpeed + " \n " + newValue, new Vector2(500, 500), Color.White);
+            
         }
     }
 }

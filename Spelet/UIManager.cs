@@ -24,8 +24,8 @@ namespace Spelet
             inventorybar = new InventoryView[3];
             InitializeInventory();
 
-            playerHealth = new Progressbar(Data.textures["healthbar"], new Vector2(10, 10), new Vector2(50, 10), 5f, Data.textures["background"]);
-            playerStamina = new Progressbar(Data.textures["healthbar"], new Vector2(10, 10), new Vector2(50, 10), 5f, Data.textures["background"]);
+            playerHealth = new Progressbar(Data.textures["healthbar"], new Vector2(10, 10), new Vector2(50, 10), 5f, Data.textures["background"], Color.LawnGreen);
+            playerStamina = new Progressbar(Data.textures["stamina_bar_capsule"], new Vector2(10, 85), new Vector2(50, 10), 5f, Data.textures["background"], Color.Orange);
         }
 
         public void Update(GameTime _gameTime, Player player)
@@ -47,7 +47,13 @@ namespace Spelet
             {
                 playerHealth.SlideValue(-0.1f);
             }
+            if (Data.keyboard.IsKeyDown(Keys.LeftShift))
+            {
+                playerStamina.SlideValue(-0.1f);
+            }
+            
 
+            playerStamina.Update(_gameTime);
             playerHealth.Update(_gameTime);
         }
 
