@@ -16,7 +16,10 @@ namespace Spelet
         enum enemyStates { patrolling, tracking, chasing};
         enemyStates currentEnemyState = enemyStates.patrolling;
 
-        float viewDistance = 5f;
+        float
+            viewDistance = 200f,
+            updateRate = 250f,
+            lastTimeChecked = 0f;
 
         List<Vector2> directionalDirections = new List<Vector2>();
 
@@ -70,12 +73,14 @@ namespace Spelet
 
         bool PositionIsValid(Map map, int x, int y)
         {
+            Debug.WriteLine(x >= 0 && x < map.foregroundTiles[0].Length && y >= 0 && y < map.foregroundTiles.Length);
             return x >= 0 && x < map.foregroundTiles[0].Length && y >= 0 && y < map.foregroundTiles.Length;
         }
 
         bool SeesPlayer(Player player, Map map)
         {
             float distanceToPlayer = Vector2.Distance(player.position, position);
+            Debug.WriteLine(distanceToPlayer.ToString());
 
             return distanceToPlayer <= viewDistance && !IsWallThere(map, player);
         }
@@ -87,11 +92,11 @@ namespace Spelet
                 lastSeenPlayerPosition = player.position;
                 currentEnemyState = enemyStates.chasing;
             }
-            else if(currentEnemyState == enemyStates.chasing && lastSeenPlayerPosition != position)
+            else if(currentEnemyState == enemyStates.chasing)
             {
                 currentEnemyState = enemyStates.tracking;
             }
-            else
+            else if(Math.Abs(position.X - lastSeenPlayerPosition.X) < 2 && Math.Abs(position.Y - lastSeenPlayerPosition.Y) < 2)
             {
                 currentEnemyState = enemyStates.patrolling;
             }

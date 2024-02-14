@@ -121,30 +121,6 @@
 /processorParam:TextureFormat=Color
 /build:gear.png
 
-#begin gear.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:gear.png
-
-#begin gear.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:gear.png
-
 #begin Inframe.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -265,18 +241,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:settings_button.png
-
-#begin stamina_bar_capsule.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:stamina_bar_capsule.png
 
 #begin stamina_bar_capsule.png
 /importer:TextureImporter

@@ -33,7 +33,9 @@ namespace Spelet
 
             enemyList = new List<Enemy>()
             {
-                new Enemy(Data.GridToWorld(new Vector2(13, 13) + new Vector2(1, 1)), 1f)
+                new Enemy(Data.GridToWorld(new Vector2(13, 13) + new Vector2(1, 1)), 1f),
+                new Enemy(Data.GridToWorld(new Vector2(28, 5) + new Vector2(1, 1)), 1f),
+                new Enemy(Data.GridToWorld(new Vector2(20, 25)), 1f)
             };
             pickupObjects = new List<PickupObject>()
             {
