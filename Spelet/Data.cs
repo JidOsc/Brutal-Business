@@ -46,7 +46,7 @@ namespace Spelet
 
         };
 
-        public static Dictionary<string, SoundEffect> soundeffects = new Dictionary<string, SoundEffect>()
+        public static Dictionary<string, SoundEffect> SoundEffects = new Dictionary<string, SoundEffect>()
         {
             {"mixkit-horror-ambience-2482",null },
             {"mixkit-footsteps-in-a-tunnel-loop-543",null },
