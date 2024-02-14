@@ -74,11 +74,11 @@ namespace Spelet
             
         }
 
-        public void SlideValue(float Value)
+        public void SetNewValue(float Value)
         {
             slide = 0;
 
-            newValue += Value;
+            newValue = Value;
             oldValue = currentValue;
             
         }

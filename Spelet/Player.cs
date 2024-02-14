@@ -25,10 +25,10 @@ namespace Spelet
         float 
             runningModifier = 2;
 
-        float
+        public float
             currentStamina = 5f,
             maxStamina = 5f,
-            staminaDepletionRate = 0.2f;
+            staminaDepletionRate = 0.05f;
 
         public Player(Vector2 position, float scale) : base(position, scale)
         {
@@ -109,7 +109,7 @@ namespace Spelet
 
                     if (currentStamina < maxStamina && Data.keyboard.IsKeyDown(Keys.LeftShift) == false)
                     {
-                        currentStamina += staminaDepletionRate;
+                        currentStamina += 0.5f * staminaDepletionRate;
                     }
                 }
             }
