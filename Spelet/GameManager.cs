@@ -94,20 +94,22 @@ namespace Spelet
             }
         }
 
-        public short[][] LoadMap()
+        public Dictionary<string, short[][]> LoadMap()
         {
             filepathMaps = Path.Combine(filepathFolder, @"maps.txt");
 
             if (File.Exists(filepathMaps))
             {
-                return JsonSerializer.Deserialize<short[][]>(File.ReadAllText(filepathMaps));
+                return JsonSerializer.Deserialize<Dictionary<string, short[][]>>(File.ReadAllText(filepathMaps));
             }
 
-            short[][] tempMap;
-            tempMap = new short[34][];
-            for(int i = 0; i < tempMap.Length; i++)
+            
+            Dictionary<string, short[][]> tempMap = new();
+            tempMap.Add("tilemap", new short[34][]);
+
+            for(int i = 0; i < tempMap["tilemap"].Length; i++)
             {
-                tempMap[i] = new short[50];
+                tempMap["tilemap"][i] = new short[50];
             }
             return tempMap;
         }

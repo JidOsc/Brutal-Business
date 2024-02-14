@@ -13,7 +13,7 @@ namespace Spelet
     {
         List<Enemy> enemyList;
         
-        List<PickupObject> pickupObjects;
+        List<PickupObject> pickupObjectList;
         public Player player;
 
         public Map map;
@@ -21,42 +21,46 @@ namespace Spelet
         RenderTarget2D mainTarget;
         public float TotalValue;
 
-        public MapManager(short[][] map, GraphicsDevice _graphics)
+        public MapManager(Dictionary<string, short[][]> loadedMap, GraphicsDevice _graphics)
         {
-
             //camera = new Camera(Data.viewport);
             mainTarget = new RenderTarget2D(_graphics, 1920, 1080);
 
             this.map = new Map(32, 10);
-            this.map.InsertMap(map);
-            
+            LoadMap(loadedMap);
+        }
 
-            enemyList = new List<Enemy>()
-            {
-                new Enemy(Data.GridToWorld(new Vector2(13, 13) + new Vector2(1, 1)), 0.9f),
-                new Enemy(Data.GridToWorld(new Vector2(28, 5) + new Vector2(1, 1)), 0.9f),
-                new Enemy(Data.GridToWorld(new Vector2(20, 25)), 0.9f)
-            };
-            pickupObjects = new List<PickupObject>()
-            {
-                new PickupObject(new Vector2(1430, 360), 1f),
-                new PickupObject(new Vector2(1000, 700), 1f),
-                new PickupObject(new Vector2(600, 520), 1f),
-                new PickupObject(new Vector2(649, 550), 1f),
-                new PickupObject(new Vector2(890, 400), 1f),
-                new PickupObject(new Vector2(1186, 1010), 1f),
-                new PickupObject(new Vector2(1200, 940), 1f),
-                new PickupObject(new Vector2(1500, 400), 1f),
-                new PickupObject(new Vector2(250, 1000), 1f),
-                new PickupObject(new Vector2(592, 640), 1f),
+        void LoadMap(Dictionary<string, short[][]> loadedMap)
+        {
+            this.map.InsertMap(loadedMap["tilemap"]);
+            InsertEntities(loadedMap["markers"]);
+        }
 
-                new PickupObject(Data.GridToWorld(new Vector2(3,3)), 1f)
-                
-                
-            
-            };
-            player = new Player(Data.GridToWorld(new Vector2(3, 3)), 0.5f);
-           
+        void InsertEntities(short[][] markers)
+        {
+            enemyList = new List<Enemy>();
+            pickupObjectList = new List<PickupObject>();
+
+            for(int x = 0; x < markers[0].Length; x++)
+            {
+                for(int y = 0; y < markers.Length; y++)
+                {
+                    switch (markers[y][x])
+                    {
+                        case 1: //pickupobject
+                            pickupObjectList.Add(new PickupObject(Data.GridToWorld(new Vector2(x, y)), 0.5f));
+                            break;
+
+                        case 2: //spelare
+                            player = new Player(Data.GridToWorld(new Vector2(x, y)), 0.5f);
+                            break;
+
+                        case 3: //fiende
+                            enemyList.Add(new Enemy(Data.GridToWorld(new Vector2(x, y)), 0.9f));
+                            break;
+                    }
+                }
+            }
         }
 
         public void Update(GameTime _gameTime)
@@ -72,12 +76,12 @@ namespace Spelet
                 enemy.Update(_gameTime);
             }
 
-            foreach(PickupObject pickupObject in pickupObjects)
+            foreach(PickupObject pickupObject in pickupObjectList)
             {
                 if (player.CanPickUp(pickupObject))
                 {
                     player.PickedUp(pickupObject);
-                    pickupObjects.Remove(pickupObject);
+                    pickupObjectList.Remove(pickupObject);
                     break;
 
                 }
@@ -92,8 +96,6 @@ namespace Spelet
                 {
                     pickupObject.value = 0;
                 }
-
-
             } 
 
             player.Update(_gameTime);
@@ -102,7 +104,7 @@ namespace Spelet
 
             if (player.CanDrop())
             {
-                pickupObjects.Add(player.GetDroppedObject());
+                pickupObjectList.Add(player.GetDroppedObject());
             }
         }
 
@@ -119,7 +121,7 @@ namespace Spelet
                 enemy.Draw(_spriteBatch);
             }
 
-            foreach(PickupObject pickupObject in pickupObjects)
+            foreach(PickupObject pickupObject in pickupObjectList)
             {
                 pickupObject.Draw(_spriteBatch);
             }

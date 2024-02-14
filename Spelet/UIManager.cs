@@ -24,7 +24,7 @@ namespace Spelet
             inventorybar = new InventoryView[3];
             InitializeInventory();
 
-            playerHealth = new Progressbar(Data.textures["healthbar"], new Vector2(10, 10), new Vector2(50, 10), 5f, Data.textures["background"], Color.LawnGreen);
+            playerHealth = new Progressbar(Data.textures["Bar"], new Vector2(10, 10), new Vector2(50, 10), 5f, Data.textures["background"], Color.LawnGreen);
             playerStamina = new Progressbar(Data.textures["stamina_bar_capsule"], new Vector2(10, 85), new Vector2(50, 10), 5f, Data.textures["background"], Color.Orange);
         }
 
