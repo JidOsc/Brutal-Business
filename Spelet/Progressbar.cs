@@ -11,14 +11,11 @@ namespace Spelet
 {
     internal class Progressbar:UIElement
     {
-        Texture2D foreground;
+        Texture2D 
+            foreground;
 
         Rectangle
-            foregroundHitbox,
             backgroundHitbox;
-
-
-
 
         float
             maxValue = 5f,
@@ -26,7 +23,11 @@ namespace Spelet
             oldValue,
             slideSpeed = 0.1f,
             newValue,
-            fillingOffSet = 20,
+
+            fillingOffSet = 45,
+            fillingOffSetPosX = 13,
+            fillingOffSetPosY = 11,
+
             slide;
 
         
@@ -39,13 +40,12 @@ namespace Spelet
             maxValue = currentvalue;
             this.currentValue = currentvalue;
             this.position = position;
-            foregroundHitbox = new((int)(position.X + fillingOffSet), (int)position.Y,(int) (foreground.Width - fillingOffSet), (int)(foreground.Height - fillingOffSet));
             backgroundHitbox = new((int)position.X, (int)position.Y, foreground.Width, (int)foreground.Height);
         }
 
         public void Update(GameTime gameTime)
         {
-            if (Data.keyboard.IsKeyDown(Keys.LeftShift) && currentValue>0)
+           /* if (Data.keyboard.IsKeyDown(Keys.LeftShift) && currentValue>0)
             {
                 SlideValue(currentValue - 0.2f);
             }
@@ -55,7 +55,7 @@ namespace Spelet
                 {
                     SlideValue(currentValue + 0.2f);
                 }
-            }
+            }*/
             UpdateSlider();
         }
 
@@ -66,7 +66,7 @@ namespace Spelet
                 slide += slideSpeed;
 
                 currentValue = oldValue + (newValue - oldValue) * slide;
-                foregroundHitbox.Width = (int)(currentValue * foreground.Width);
+                backgroundHitbox.Width = (int)(currentValue);
             }
             else
             {
@@ -79,15 +79,17 @@ namespace Spelet
         {
             slide = 0;
 
-            newValue = Value;
+            newValue += Value;
             oldValue = currentValue;
             
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Data.textures["background"],foregroundHitbox, Color.Green);
-            spriteBatch.Draw(foreground, position, backgroundHitbox,Color.White);
+            spriteBatch.Draw(Data.textures["background"], backgroundHitbox, Color.Green);
+            spriteBatch.Draw(foreground, position, Color.White);
+
+            spriteBatch.DrawString(Data.money, maxValue + " \n " + currentValue + " \n " + oldValue + " \n " + slideSpeed + " \n " + newValue, new Vector2(500, 500), Color.White);
         }
     }
 }

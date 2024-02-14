@@ -42,7 +42,13 @@ namespace Spelet
                 {
                     inventorybar[i].Update(_gameTime, null);
                 }
+            } 
+            if(Data.keyboard.IsKeyDown(Keys.U)&& !Data.lastKeyboard.IsKeyDown(Keys.U))
+            {
+                playerHealth.SlideValue(-0.1f);
             }
+
+            playerHealth.Update(_gameTime);
         }
 
         void InitializeInventory()
