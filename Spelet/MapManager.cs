@@ -33,24 +33,24 @@ namespace Spelet
 
             enemyList = new List<Enemy>()
             {
-                new Enemy(Data.GridToWorld(new Vector2(13, 13) + new Vector2(1, 1)), 1f),
-                new Enemy(Data.GridToWorld(new Vector2(28, 5) + new Vector2(1, 1)), 1f),
-                new Enemy(Data.GridToWorld(new Vector2(20, 25)), 1f)
+                new Enemy(Data.GridToWorld(new Vector2(13, 13) + new Vector2(1, 1)), 0.9f),
+                new Enemy(Data.GridToWorld(new Vector2(28, 5) + new Vector2(1, 1)), 0.9f),
+                new Enemy(Data.GridToWorld(new Vector2(20, 25)), 0.9f)
             };
             pickupObjects = new List<PickupObject>()
             {
-                new PickupObject(new Vector2(1430, 360), 0.5f),
-                new PickupObject(new Vector2(1000, 700), 0.5f),
-                new PickupObject(new Vector2(600, 520), 0.5f),
-                new PickupObject(new Vector2(649, 550), 0.5f),
-                new PickupObject(new Vector2(890, 400), 0.5f),
-                new PickupObject(new Vector2(1186, 1010), 0.5f),
-                new PickupObject(new Vector2(1200, 940), 0.5f),
-                new PickupObject(new Vector2(1500, 400), 0.5f),
-                new PickupObject(new Vector2(250, 1000), 0.5f),
-                new PickupObject(new Vector2(592, 640), 0.5f),
+                new PickupObject(new Vector2(1430, 360), 1f),
+                new PickupObject(new Vector2(1000, 700), 1f),
+                new PickupObject(new Vector2(600, 520), 1f),
+                new PickupObject(new Vector2(649, 550), 1f),
+                new PickupObject(new Vector2(890, 400), 1f),
+                new PickupObject(new Vector2(1186, 1010), 1f),
+                new PickupObject(new Vector2(1200, 940), 1f),
+                new PickupObject(new Vector2(1500, 400), 1f),
+                new PickupObject(new Vector2(250, 1000), 1f),
+                new PickupObject(new Vector2(592, 640), 1f),
 
-                new PickupObject(Data.GridToWorld(new Vector2(3,3)), 0.5f)
+                new PickupObject(Data.GridToWorld(new Vector2(3,3)), 1f)
                 
                 
             
@@ -63,7 +63,12 @@ namespace Spelet
         {
             foreach(Enemy enemy in enemyList)
             {
-                enemy.UpdateEnemyState(player, map);
+                if (enemy.lastTimeChecked + enemy.updateRate <= _gameTime.TotalGameTime.TotalMilliseconds)
+                {
+                    enemy.UpdateEnemyState(player, map);
+                    enemy.lastTimeChecked = (float)_gameTime.TotalGameTime.TotalMilliseconds;
+                }
+                
                 enemy.Update(_gameTime);
             }
 

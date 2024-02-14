@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using System.Collections.Generic;
 
 namespace Spelet
@@ -10,6 +10,8 @@ namespace Spelet
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+
         List<SoundEffect> soundEffects;
 
         GameManager gameManager;
@@ -19,6 +21,7 @@ namespace Spelet
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            soundEffects = new List<SoundEffect>();
         }
 
         protected override void Initialize()
@@ -35,11 +38,17 @@ namespace Spelet
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Data.LoadContent(Content);
             Data.money = Content.Load<SpriteFont>("money");
-
+            soundEffects.Add(Content.Load<SoundEffect>("mixkit-horror-ambience-2482"));
             Data.viewport = GraphicsDevice.Viewport;
             gameManager = new GameManager(GraphicsDevice);
-        }
+            soundEffects[0].Play();
 
+            var instance = soundEffects[0].CreateInstance();
+            instance.IsLooped = true;
+            instance.Play();
+        }
+      
+       
         protected override void Update(GameTime gameTime)
         {
             Data.keyboard = Keyboard.GetState();
@@ -48,10 +57,13 @@ namespace Spelet
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            
+            
             gameManager.Update(gameTime);
 
             Data.lastKeyboard = Data.keyboard;
             Data.lastMouse = Data.mouse;
+            SoundEffect.MasterVolume = 1.0f;
             base.Update(gameTime);
         }
 
