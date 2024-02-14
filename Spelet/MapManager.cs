@@ -72,16 +72,22 @@ namespace Spelet
                     player.PickedUp(pickupObject);
                     pickupObjects.Remove(pickupObject);
                     break;
+
                 }
                 Vector2 Temppos = Data.WorldToGrid(pickupObject.position);
-                if (map.foregroundTiles[(int)Temppos.Y][(int)Temppos.X] == 5)
+                if (map.foregroundTiles[(int)Temppos.Y][(int)Temppos.X] == 1)
                 {
                     TotalValue += pickupObject.value;
+                    
+                    
+                }
+                if (map.foregroundTiles[(int)Temppos.Y][(int)Temppos.X] == 1)
+                {
+                    pickupObject.value = 0;
                 }
 
 
-
-            }
+            } 
 
             player.Update(_gameTime);
             /*camera.position = player.position;
