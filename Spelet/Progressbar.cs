@@ -13,7 +13,10 @@ namespace Spelet
     {
         Texture2D foreground;
 
-        Rectangle foregroundHitbox;
+        Rectangle
+            foregroundHitbox,
+            backgroundHitbox;
+
 
 
 
@@ -23,6 +26,7 @@ namespace Spelet
             oldValue,
             slideSpeed = 0.1f,
             newValue,
+            fillingOffSet = 20,
             slide;
 
         
@@ -32,10 +36,11 @@ namespace Spelet
             this.foreground = foreground;
             this.background = background;
 
+            maxValue = currentvalue;
             this.currentValue = currentvalue;
             this.position = position;
-            foregroundHitbox = new(0, 0, foreground.Width, foreground.Height);
-
+            foregroundHitbox = new((int)(position.X + fillingOffSet), (int)position.Y, foreground.Width, (int)(foreground.Height - fillingOffSet));
+            backgroundHitbox = new((int)position.X, (int)position.Y, foreground.Width, (int)foreground.Height);
         }
 
         public void Update(GameTime gameTime)
@@ -82,8 +87,7 @@ namespace Spelet
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Data.textures["background"],foregroundHitbox, Color.Green);
-            spriteBatch.Draw(Data.textures["background"], foregroundHitbox, Color.Red);
-            spriteBatch.Draw(foreground, position, foregroundHitbox,Color.White);
+            spriteBatch.Draw(foreground, position, backgroundHitbox,Color.White);
         }
     }
 }
