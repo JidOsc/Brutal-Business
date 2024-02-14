@@ -14,12 +14,12 @@ namespace Spelet
 
         public InventoryView(Vector2 position, Vector2 size) : base(position, size)
         {
-
+            background = Data.textures["inventory_frame"];
         }
 
-        public void Update(GameTime _gameTime)
+        public void Update(GameTime _gameTime, PickupObject pickupObject)
         {
-
+            this.pickupObject = pickupObject;
         }
 
         public void Draw(SpriteBatch _spriteBatch)
@@ -28,7 +28,8 @@ namespace Spelet
 
             if(pickupObject != null)
             {
-                _spriteBatch.Draw(pickupObject.texture, position, Color.White);
+                Vector2 offset = hitbox.Size.ToVector2() / 2 - pickupObject.texture.Bounds.Size.ToVector2() / 2;
+                _spriteBatch.Draw(pickupObject.texture, hitbox, Color.White);
             }
         }
     }

@@ -31,7 +31,18 @@ namespace Spelet
             {"gear", null },
             {"background", null },
             {"buttonstart", null},
-            {"healthbar",null }
+            {"healthbar",null },
+            {"broken_combat_knife", null },
+            {"credits_button", null },
+            {"credits_menu", null },
+            {"dark_catcher_egg", null },
+            {"endbutton", null },
+            {"inventory_frame", null },
+            {"mystery_bottle", null },
+            {"settings_button", null },
+            {"stamina_bar_capsule", null },
+            {"titel", null }
+
         };
 
         public static int tileSize;
