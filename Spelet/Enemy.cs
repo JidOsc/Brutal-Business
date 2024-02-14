@@ -16,10 +16,11 @@ namespace Spelet
         enum enemyStates { patrolling, tracking, chasing};
         enemyStates currentEnemyState = enemyStates.patrolling;
 
-        float
+        public float
             viewDistance = 200f,
             updateRate = 250f,
-            lastTimeChecked = 0f;
+            lastTimeChecked = 0f,
+            chaseModifier = 1.5f;
 
         List<Vector2> directionalDirections = new List<Vector2>();
 
@@ -96,7 +97,7 @@ namespace Spelet
             {
                 currentEnemyState = enemyStates.tracking;
             }
-            else if(Math.Abs(position.X - lastSeenPlayerPosition.X) < 2 && Math.Abs(position.Y - lastSeenPlayerPosition.Y) < 2)
+            else if(Math.Abs(position.X - lastSeenPlayerPosition.X) < 20 && Math.Abs(position.Y - lastSeenPlayerPosition.Y) < 20)
             {
                 currentEnemyState = enemyStates.patrolling;
             }
@@ -172,7 +173,7 @@ namespace Spelet
 
         void ChasePlayer()
         {
-            velocity = Vector2.Normalize(position - lastSeenPlayerPosition) * speed * -1;
+            velocity = Vector2.Normalize(position - lastSeenPlayerPosition) * speed * -1 * chaseModifier;
         }
     }
 }
