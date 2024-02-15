@@ -37,6 +37,7 @@ namespace Spelet
             {
                 button.Draw(_spriteBatch);
             }
+            
         }
     }
 }

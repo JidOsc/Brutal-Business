@@ -41,6 +41,7 @@ namespace Spelet
         {
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             currentMenu.Draw(_spriteBatch);
+            
         }
     }
 }
