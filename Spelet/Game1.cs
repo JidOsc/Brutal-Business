@@ -67,16 +67,9 @@ namespace Spelet
             Data.lastMouse = Data.mouse;
             SoundEffect.MasterVolume = 1.0f;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))   
-            {
-                if (SoundEffect.MasterVolume == 0.0f)
-                    
-                    SoundEffect.MasterVolume = 1.0f;
-               
-                else
-                    
-                    SoundEffect.MasterVolume = 0.0f;
-            }
+            
+
+
 
 
             base.Update(gameTime);
