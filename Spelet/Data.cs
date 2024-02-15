@@ -75,7 +75,7 @@ namespace Spelet
             }
             foreach(string soundname in soundEffects.Keys)
             {
-                soundEffects["soundname"] = _contentManager.Load<SoundEffect>(soundname);
+                soundEffects[soundname] = _contentManager.Load<SoundEffect>(soundname);
             }
             //loopa igenom dictionary för att med hjälp av contentmanager ladda in alla texturer
         }

@@ -64,6 +64,11 @@ namespace Spelet
                 case GameState.ingame:
                     mapManager.Update(_gameTime);
                     uiManager.Update(_gameTime, mapManager.player);
+
+                    /*if (mapManager.player.IsDead())
+                    {
+                        menuManager.ChangeMenu(MenuManager.menuStates.dead);
+                    }*/
                     break;
             }
         }
