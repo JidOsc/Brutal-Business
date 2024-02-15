@@ -11,7 +11,7 @@ namespace Spelet
 {
     internal class Button : UIElement
     {
-        public enum buttonStates { quit, start, settings, pause }
+        public enum buttonStates { quit, start, settings, pause, main }
         public buttonStates buttonState;
 
         Color

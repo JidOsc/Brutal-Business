@@ -17,7 +17,7 @@ namespace Spelet
         public MenuManager menuManager;
         public UIManager uiManager;
 
-        enum GameState {main, ingame};
+        enum GameState {main, gamealive, gamedead};
         GameState currentGameState = GameState.main;
 
         string filepathFolder;
@@ -44,7 +44,7 @@ namespace Spelet
                     switch (menuManager.GetInteraction())
                     {
                         case Button.buttonStates.start:
-                            currentGameState = GameState.ingame;
+                            currentGameState = GameState.gamealive;
                             break;
 
                         case Button.buttonStates.pause:
@@ -61,14 +61,32 @@ namespace Spelet
                     }
                     break;
 
-                case GameState.ingame:
+                case GameState.gamealive:
                     mapManager.Update(_gameTime);
                     uiManager.Update(_gameTime, mapManager.player);
 
-                    /*if (mapManager.player.IsDead())
+                    if (mapManager.player.IsDead())
                     {
                         menuManager.ChangeMenu(MenuManager.menuStates.dead);
-                    }*/
+                        currentGameState = GameState.gamedead;
+                    }
+                    break;
+
+                case GameState.gamedead:
+                    switch (menuManager.GetInteraction())
+                    {
+                        case Button.buttonStates.start:
+                            currentGameState = GameState.gamealive;
+                            break;
+
+                        case Button.buttonStates.main:
+                            currentGameState= GameState.main;
+                            break;
+
+                        case Button.buttonStates.quit:
+
+                            break;
+                    }
                     break;
             }
         }
@@ -81,9 +99,15 @@ namespace Spelet
                     menuManager.Draw(_spriteBatch);
                     break;
 
-                case GameState.ingame:
+                case GameState.gamealive:
                     mapManager.Draw(_spriteBatch, _graphics);
                     uiManager.Draw(_spriteBatch);
+                    break;
+
+                case GameState.gamedead:
+                    mapManager.Draw(_spriteBatch,_graphics);
+                    uiManager.Draw(_spriteBatch);
+                    menuManager.Draw(_spriteBatch);
                     break;
             }
         }
