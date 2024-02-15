@@ -46,7 +46,7 @@ namespace Spelet
 
         };
 
-        public static Dictionary<string, SoundEffect> SoundEffects = new Dictionary<string, SoundEffect>()
+        public static Dictionary<string, SoundEffect> soundEffects = new Dictionary<string, SoundEffect>()
         {
             {"mixkit-horror-ambience-2482",null },
             {"mixkit-footsteps-in-a-tunnel-loop-543",null },
@@ -72,6 +72,10 @@ namespace Spelet
             foreach (string imagename in textures.Keys)
             {
                 textures[imagename] = _contentManager.Load<Texture2D>(imagename);
+            }
+            foreach(string soundname in soundEffects.Keys)
+            {
+                soundEffects["soundname"] = _contentManager.Load<SoundEffect>(soundname);
             }
             //loopa igenom dictionary för att med hjälp av contentmanager ladda in alla texturer
         }
