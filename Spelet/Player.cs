@@ -35,6 +35,7 @@ namespace Spelet
             inventory = new List<PickupObject>();
             texture = Data.textures["player"];
 
+            health = 5;
             hitbox.Size = new Point((int)(texture.Height * scale), (int)(texture.Height * scale));
 
             walkingAnimation = new Animation(0, 5, 0.2f, 64);
@@ -60,11 +61,16 @@ namespace Spelet
         {
             PickupObject tempobject = inventory[0];
             inventory.Remove(tempobject);
-
+            health = maxHealth;
             tempobject.position = position;
             tempobject.hitbox.Location = position.ToPoint();
 
             return tempobject;
+        }
+
+        public void PlayerHit()
+        {
+            TakeDamage(0.2f);
         }
 
         public void Update(GameTime gameTime)
@@ -126,6 +132,7 @@ namespace Spelet
                 }
             }
 
+
             switch (currentPlayerState)
             {
                 case playerStates.walking:
@@ -138,6 +145,8 @@ namespace Spelet
                     sourceRectangle = runningAnimation.GetFrame();
                     break;
             }
+
+            
 
             UpdateHitboxVelocity();
             rotation = Data.RelationToRotation(Data.mouse.Position.ToVector2(), position) * -1;
