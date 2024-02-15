@@ -68,9 +68,14 @@ namespace Spelet
             return tempobject;
         }
 
+        public bool IsDead()
+        {
+           return health <= 0;
+        }
+
         public void PlayerHit()
         {
-            TakeDamage(0.2f);
+            TakeDamage(0.4f);
         }
 
         public void Update(GameTime gameTime)

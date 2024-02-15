@@ -37,14 +37,8 @@ namespace Spelet
         {
             health -= amount;
 
-            /*if(health <= 0)
-            {
-                Die();
-            }*/
+            
         }
-        public void Die()
-        {
 
-        }
     }
 }
