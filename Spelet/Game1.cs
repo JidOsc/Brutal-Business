@@ -39,6 +39,8 @@ namespace Spelet
             Data.LoadContent(Content);
             Data.money = Content.Load<SpriteFont>("money");
             soundEffects.Add(Content.Load<SoundEffect>("mixkit-horror-ambience-2482"));
+            soundEffects.Add(Content.Load<SoundEffect>("mixkit-footsteps-in-a-tunnel-loop-543"));
+            soundEffects.Add(Content.Load<SoundEffect>("mixkit-angry-dragon-growl-309"));
             Data.viewport = GraphicsDevice.Viewport;
             gameManager = new GameManager(GraphicsDevice);
             soundEffects[0].Play();
@@ -64,6 +66,19 @@ namespace Spelet
             Data.lastKeyboard = Data.keyboard;
             Data.lastMouse = Data.mouse;
             SoundEffect.MasterVolume = 1.0f;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))   
+            {
+                if (SoundEffect.MasterVolume == 0.0f)
+                    
+                    SoundEffect.MasterVolume = 1.0f;
+               
+                else
+                    
+                    SoundEffect.MasterVolume = 0.0f;
+            }
+
+
             base.Update(gameTime);
         }
 
