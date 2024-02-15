@@ -44,10 +44,6 @@ namespace Spelet
             Data.viewport = GraphicsDevice.Viewport;
             gameManager = new GameManager(GraphicsDevice);
             soundEffects[0].Play();
-
-            var instance = soundEffects[0].CreateInstance();
-            instance.IsLooped = true;
-            instance.Play();
         }
       
        
