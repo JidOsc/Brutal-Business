@@ -30,6 +30,11 @@ namespace Spelet
             maxStamina = 5f,
             staminaDepletionRate = 0.05f;
 
+        float
+        lastTimesoundplay = 0,
+        timebetwensound = 2;
+        
+
         public Player(Vector2 position, float scale) : base(position, scale)
         {
             inventory = new List<PickupObject>();
@@ -78,6 +83,8 @@ namespace Spelet
             TakeDamage(0.4f);
         }
 
+        
+
         public void Update(GameTime gameTime)
         {
             if (Data.keyboard.IsKeyDown(Keys.W)) //uppåt
@@ -108,6 +115,7 @@ namespace Spelet
 
             if(Math.Abs(velocity.X) > 0 || Math.Abs(velocity.Y) > 0)
             {
+                SoundManager.PlaySound(position, Data.soundEffects["mixkit-footsteps-in-a-tunnel-loop-543"]);
                 if(Data.keyboard.IsKeyDown(Keys.LeftShift) && currentStamina > 0)
                 {
                     currentPlayerState = playerStates.running;
@@ -150,7 +158,11 @@ namespace Spelet
                     sourceRectangle = runningAnimation.GetFrame();
                     break;
             }
-
+            if (lastTimesoundplay + timebetwensound < gameTime.TotalGameTime.TotalSeconds)
+            {
+                lastTimesoundplay = (float)gameTime.TotalGameTime.TotalSeconds;
+                SoundManager.PlaySound(position, Data.soundEffects["mixkit-footsteps-in-a-tunnel-loop-543"]);
+            }
             
 
             UpdateHitboxVelocity();
