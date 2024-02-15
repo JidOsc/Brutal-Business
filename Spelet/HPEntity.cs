@@ -42,5 +42,9 @@ namespace Spelet
                 Die();
             }*/
         }
+        public void Die()
+        {
+
+        }
     }
 }
