@@ -11,7 +11,7 @@ namespace Spelet
 {
     internal class MenuManager
     {
-        public enum menuStates { main, settings, pause, none }
+        public enum menuStates { main, settings, pause, dead, none }
 
         Dictionary<menuStates, Menu> menus;
         Menu currentMenu;

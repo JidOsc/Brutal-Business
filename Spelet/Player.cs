@@ -30,6 +30,11 @@ namespace Spelet
             maxStamina = 5f,
             staminaDepletionRate = 0.05f;
 
+        float
+        lastTimesoundplay = 0,
+        timebetwensound = 8;
+        
+
         public Player(Vector2 position, float scale) : base(position, scale)
         {
             inventory = new List<PickupObject>();
@@ -77,6 +82,8 @@ namespace Spelet
         {
             TakeDamage(0.4f);
         }
+
+        
 
         public void Update(GameTime gameTime)
         {
@@ -150,7 +157,11 @@ namespace Spelet
                     sourceRectangle = runningAnimation.GetFrame();
                     break;
             }
-
+            if (lastTimesoundplay + timebetwensound < gameTime.TotalGameTime.TotalSeconds)
+            {
+                lastTimesoundplay = (float)gameTime.TotalGameTime.TotalSeconds;
+                SoundManager.PlaySound(position, Data.soundEffects["mixkit-footsteps-in-a-tunnel-loop-543"]);
+            }
             
 
             UpdateHitboxVelocity();
