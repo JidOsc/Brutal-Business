@@ -55,6 +55,10 @@ namespace Spelet
         public void ChangeMenu(menuStates menu)
         {
             currentMenu = menus[menu];
+            if (currentMenu == menus[menuStates.main])
+            {
+                SoundManager.PlaySound(Vector2.Zero, Data.soundEffects["mixkit-haunted-slow-orchestra-634"]);
+            }
         }
 
         public Button.buttonStates? GetInteraction()
