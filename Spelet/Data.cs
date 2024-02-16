@@ -61,6 +61,8 @@ namespace Spelet
         public static int tileSize;
         public static int cameraScale;
 
+        public static float darkness = 0.6f;
+
         public static SpriteFont money;
 
         public static Viewport viewport;

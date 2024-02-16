@@ -147,6 +147,9 @@ namespace Spelet
             _graphics.SetRenderTarget(null);
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: camera.transform);
             _spriteBatch.Draw(mainTarget, Vector2.Zero, null, Color.White, 0, Vector2.Zero, Data.cameraScale, SpriteEffects.None, 0.5f);
+            _spriteBatch.Draw(Data.textures["background"], Vector2.Zero, mainTarget.Bounds, Color.Black * Data.darkness, 0, Vector2.Zero, Data.cameraScale, SpriteEffects.None, 0.4f);
+            _spriteBatch.End();
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
         }
     }
 }
