@@ -67,13 +67,13 @@ namespace Spelet
         {
             PickupObject tempobject = inventory[0];
             inventory.Remove(tempobject);
-            health = maxHealth;
+          
             tempobject.position = position;
             tempobject.hitbox.Location = position.ToPoint();
 
             return tempobject;
         }
-
+        
         public bool IsDead()
         {
            return health <= 0;
