@@ -44,8 +44,8 @@ namespace Spelet
             health = 5;
             hitbox.Size = new Point((int)(texture.Height * scale), (int)(texture.Height * scale));
 
-            walkingAnimation = new Animation(0, 5, 0.2f, 64);
-            runningAnimation = new Animation(6, 11, 0.2f, 64);
+            walkingAnimation = new Animation(0, 6, 0.2f, 64);
+            runningAnimation = new Animation(7, 11, 0.2f, 64);
         }
 
         public bool CanPickUp(PickupObject pickupObject)

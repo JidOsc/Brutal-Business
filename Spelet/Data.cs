@@ -59,6 +59,7 @@ namespace Spelet
         };
 
         public static int tileSize;
+        public static int cameraScale;
 
         public static SpriteFont money;
 

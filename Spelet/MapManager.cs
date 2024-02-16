@@ -23,7 +23,11 @@ namespace Spelet
 
         public MapManager(Dictionary<string, short[][]> loadedMap, GraphicsDevice _graphics)
         {
-            //camera = new Camera(Data.viewport);
+            Data.viewport.Width = 1920 / Data.cameraScale;
+            Data.viewport.Height = 1080 / Data.cameraScale;
+
+            camera = new Camera(Data.viewport);
+
             mainTarget = new RenderTarget2D(_graphics, 1920, 1080);
             totalValue = 0;
 
@@ -110,8 +114,9 @@ namespace Spelet
             } 
 
             player.Update(_gameTime);
-            /*camera.position = player.position;
-            camera.UpdateCamera(Data.viewport);*/
+            
+            camera.position = player.position * Data.cameraScale - Data.viewport.Bounds.Size.ToVector2() * 2;
+            camera.UpdateCamera(Data.viewport);
 
             if (player.CanDrop())
             {
@@ -123,7 +128,7 @@ namespace Spelet
         {
             _graphics.SetRenderTarget(mainTarget);
             map.Draw(_spriteBatch);
-            _spriteBatch.DrawString( Data.money, totalValue.ToString(),new Vector2(1700,10), Color.Green);
+            _spriteBatch.DrawString( Data.money, totalValue.ToString(),new Vector2(1700, 10), Color.Green);
             
 
             foreach(Enemy enemy in enemyList)
@@ -140,8 +145,8 @@ namespace Spelet
             _spriteBatch.End();
 
             _graphics.SetRenderTarget(null);
-            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            _spriteBatch.Draw(mainTarget, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0.5f);
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: camera.transform);
+            _spriteBatch.Draw(mainTarget, Vector2.Zero, null, Color.White, 0, Vector2.Zero, Data.cameraScale, SpriteEffects.None, 0.5f);
         }
     }
 }
