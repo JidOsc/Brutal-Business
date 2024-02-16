@@ -58,7 +58,7 @@ namespace Spelet
                     switch (markers[y][x])
                     {
                         case 1: //pickupobject
-                            pickupObjectList.Add(new PickupObject(Data.GridToWorld(new Vector2(x, y)), 0.5f));
+                            pickupObjectList.Add(new PickupObject(Data.GridToWorld(new Vector2(x, y)), 1f));
                             break;
 
                         case 2: //spelare
@@ -66,7 +66,7 @@ namespace Spelet
                             break;
 
                         case 3: //fiende
-                            enemyList.Add(new Enemy(Data.GridToWorld(new Vector2(x, y)), 0.9f));
+                            enemyList.Add(new Enemy(Data.GridToWorld(new Vector2(x, y)), 0.8f));
                             break;
                     }
                 }
