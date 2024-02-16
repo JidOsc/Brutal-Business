@@ -11,9 +11,6 @@ namespace Spelet
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-
-        List<SoundEffect> soundEffects;
-
         GameManager gameManager;
 
         public Game1()
@@ -21,7 +18,6 @@ namespace Spelet
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            soundEffects = new List<SoundEffect>();
         }
 
         protected override void Initialize()
@@ -37,13 +33,13 @@ namespace Spelet
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Data.LoadContent(Content);
+
+            Data.cameraScale = 8;
+
             Data.money = Content.Load<SpriteFont>("money");
-            soundEffects.Add(Content.Load<SoundEffect>("mixkit-horror-ambience-2482"));
-            soundEffects.Add(Content.Load<SoundEffect>("mixkit-footsteps-in-a-tunnel-loop-543"));
-            soundEffects.Add(Content.Load<SoundEffect>("mixkit-angry-dragon-growl-309"));
             Data.viewport = GraphicsDevice.Viewport;
+            
             gameManager = new GameManager(GraphicsDevice);
-            soundEffects[0].Play();
         }
       
        
