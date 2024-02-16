@@ -101,14 +101,10 @@ namespace Spelet
 
                 }
                 Vector2 Temppos = Data.WorldToGrid(pickupObject.position);
+
                 if (map.foregroundTiles[(int)Temppos.Y][(int)Temppos.X] == 1)
                 {
                     totalValue += pickupObject.value;
-                    
-                    
-                }
-                if (map.foregroundTiles[(int)Temppos.Y][(int)Temppos.X] == 1)
-                {
                     pickupObject.value = 0;
                 }
             } 

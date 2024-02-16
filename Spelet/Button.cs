@@ -65,7 +65,7 @@ namespace Spelet
 
         }
 
-        public void Draw(SpriteBatch _spriteBatch)
+        public override void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.Draw(background, backgroundBox, currentColor);
         }

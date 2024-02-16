@@ -17,5 +17,10 @@ namespace Spelet
             hitbox.Size = size.ToPoint();
             background = Data.textures["background"];
         }
+
+        public virtual void Draw(SpriteBatch _spriteBatch)
+        {
+            _spriteBatch.Draw(background, hitbox, Color.White);
+        }
     }
 }
