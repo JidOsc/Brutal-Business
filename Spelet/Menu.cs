@@ -11,13 +11,12 @@ namespace Spelet
 {
     internal class Menu
     {
-        List<Button> buttonList = new List<Button>()
+        List<Button> buttonList;
+
+        public Menu (List<Button> buttonList)
         {
-            new Button(new Vector2(100, 200), new Vector2(300, 150), Button.buttonStates.start), 
-            new Button(new Vector2(550, 200), new Vector2(300, 150), Button.buttonStates.start),
-            new Button(new Vector2(1000, 200), new Vector2(300, 150), Button.buttonStates.settings),
-            new Button(new Vector2(1450, 200), new Vector2(300, 150), Button.buttonStates.pause)
-        };
+            this.buttonList = buttonList;
+        }
 
         public Button.buttonStates? UpdateButtons()
         {

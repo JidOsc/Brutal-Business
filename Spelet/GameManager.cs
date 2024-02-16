@@ -76,6 +76,9 @@ namespace Spelet
                     switch (menuManager.GetInteraction())
                     {
                         case Button.buttonStates.start:
+
+                            mapManager.Restart(LoadMap());
+
                             currentGameState = GameState.gamealive;
                             break;
 
@@ -93,6 +96,8 @@ namespace Spelet
 
         public void Draw(SpriteBatch _spriteBatch, GraphicsDevice _graphics)
         {
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+
             switch (currentGameState)
             {
                 case GameState.main:
@@ -110,6 +115,8 @@ namespace Spelet
                     menuManager.Draw(_spriteBatch);
                     break;
             }
+
+            _spriteBatch.End();
         }
 
 

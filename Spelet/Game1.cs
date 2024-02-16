@@ -76,7 +76,6 @@ namespace Spelet
             GraphicsDevice.Clear(Color.Black);
 
             gameManager.Draw(_spriteBatch, GraphicsDevice);
-            _spriteBatch.End();
 
             base.Draw(gameTime);
         } 
