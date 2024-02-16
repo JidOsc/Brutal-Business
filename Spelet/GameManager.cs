@@ -87,7 +87,7 @@ namespace Spelet
                             break;
 
                         case Button.buttonStates.quit:
-
+                            
                             break;
                     }
                     break;

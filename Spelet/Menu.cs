@@ -13,6 +13,7 @@ namespace Spelet
     {
         List<Button> buttonList;
         List<Image> imageList;
+
         public Menu(List<Button> buttonList, List<Image> imageList)
         {
             this.buttonList = buttonList;
@@ -44,9 +45,12 @@ namespace Spelet
             {
                 button.Draw(_spriteBatch);
             }
-            foreach (Image image in imageList)
+            if (imageList != null)
             {
-                image.Draw(_spriteBatch);
+                foreach (Image image in imageList)
+                {
+                    image.Draw(_spriteBatch);
+                }
             }
         }
     }
