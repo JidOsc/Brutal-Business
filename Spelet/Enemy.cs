@@ -33,6 +33,9 @@ namespace Spelet
         Animation walkingAnimation;
         Animation attackAnimation;
 
+        float
+       lastTimesoundplay = 0,
+       timebetwensound = 8;
         public Enemy(Vector2 position, float scale) : base(position, scale)
         {
             texture = Data.textures["boarattack"];
@@ -88,8 +91,14 @@ namespace Spelet
             return distanceToPlayer <= viewDistance && !IsWallThere(map, player);
         }
 
-        public void UpdateEnemyState(Player player, Map map)
+        public void UpdateEnemyState(Player player, Map map,GameTime gameTime)
         {
+            if (lastTimesoundplay + timebetwensound < gameTime.TotalGameTime.TotalSeconds)
+            {
+                lastTimesoundplay = (float)gameTime.TotalGameTime.TotalSeconds;
+                SoundManager.PlaySound(position, Data.soundEffects["mixkit-footsteps-in-a-tunnel-loop-543"]);
+
+            }
             if (hitbox.Intersects(player.hitbox))
             {
                 currentEnemyState = enemyStates.attacking;
@@ -108,6 +117,7 @@ namespace Spelet
                 currentEnemyState = enemyStates.patrolling;
             }
             
+
         }
 
         public void Update(GameTime gameTime)
