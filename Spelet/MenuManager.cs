@@ -21,7 +21,32 @@ namespace Spelet
         {
             menus = new()
             {
-                { menuStates.main, new Menu() }
+                {
+                    menuStates.main,
+                    new Menu(new List<Button>(){
+                    new Button(new Vector2(100, 200), new Vector2(300, 150), Button.buttonStates.start),
+                    new Button(new Vector2(550, 200), new Vector2(300, 150), Button.buttonStates.start),
+                    new Button(new Vector2(1000, 200), new Vector2(300, 150), Button.buttonStates.settings),
+                    new Button(new Vector2(1450, 200), new Vector2(300, 150), Button.buttonStates.pause)
+                })
+                },
+
+                {
+                    menuStates.settings,
+                    new Menu(new List<Button>(){
+                    new Button(new Vector2(100, 200), new Vector2(300, 150), Button.buttonStates.start),
+                    new Button(new Vector2(550, 200), new Vector2(300, 150), Button.buttonStates.start)
+                })
+                },
+
+                {
+                    menuStates.dead,
+                    new Menu(new List<Button>()
+                    {
+                        new Button(new Vector2(800, 600), new Vector2(300, 150), Button.buttonStates.start),
+                        new Button(new Vector2(800, 800), new Vector2(300, 150), Button.buttonStates.quit)
+                    })
+                }
             };
 
             ChangeMenu(menuStates.main);
@@ -39,9 +64,7 @@ namespace Spelet
 
         public void Draw(SpriteBatch _spriteBatch)
         {
-            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             currentMenu.Draw(_spriteBatch);
-            
         }
     }
 }

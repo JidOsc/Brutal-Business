@@ -19,14 +19,20 @@ namespace Spelet
         public Map map;
         Camera camera;
         RenderTarget2D mainTarget;
-        public float TotalValue;
+        public float totalValue;
 
         public MapManager(Dictionary<string, short[][]> loadedMap, GraphicsDevice _graphics)
         {
             //camera = new Camera(Data.viewport);
             mainTarget = new RenderTarget2D(_graphics, 1920, 1080);
+            totalValue = 0;
 
             this.map = new Map(32, 10);
+            LoadMap(loadedMap);
+        }
+
+        public void Restart(Dictionary<string, short[][]> loadedMap)
+        {
             LoadMap(loadedMap);
         }
 
@@ -93,7 +99,7 @@ namespace Spelet
                 Vector2 Temppos = Data.WorldToGrid(pickupObject.position);
                 if (map.foregroundTiles[(int)Temppos.Y][(int)Temppos.X] == 1)
                 {
-                    TotalValue += pickupObject.value;
+                    totalValue += pickupObject.value;
                     
                     
                 }
@@ -116,9 +122,8 @@ namespace Spelet
         public void Draw(SpriteBatch _spriteBatch, GraphicsDevice _graphics)
         {
             _graphics.SetRenderTarget(mainTarget);
-            _spriteBatch.Begin(samplerState: SamplerState.PointClamp /*transformMatrix: camera.transform*/);
             map.Draw(_spriteBatch);
-            _spriteBatch.DrawString( Data.money, TotalValue.ToString(),new Vector2(1700,10), Color.Green);
+            _spriteBatch.DrawString( Data.money, totalValue.ToString(),new Vector2(1700,10), Color.Green);
             
 
             foreach(Enemy enemy in enemyList)
