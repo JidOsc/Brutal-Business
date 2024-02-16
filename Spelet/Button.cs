@@ -26,7 +26,29 @@ namespace Spelet
             currentColor = baseColor;
 
             backgroundBox = new(position.ToPoint(), size.ToPoint());
-            background = Data.textures["buttonstart"];
+
+            switch (buttonState)
+            {
+                case buttonStates.start:
+                    background = Data.textures["buttonstart"];
+                    break;
+
+                case buttonStates.settings:
+                    background = Data.textures["settings_button"];
+                    break;
+
+                case buttonStates.quit:
+                    background = Data.textures["endbutton"];
+                    break;
+
+                case buttonStates.pause:
+                    background = Data.textures["buttonstart"]; //
+                    break;
+
+                case buttonStates.main:
+                    background = Data.textures["buttonstart"]; //
+                    break;
+            }
 
             this.buttonState = buttonState;
         }
