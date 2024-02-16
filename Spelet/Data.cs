@@ -42,7 +42,8 @@ namespace Spelet
             {"mystery_bottle", null },
             {"settings_button", null },
             {"stamina_bar_capsule", null },
-            {"titel", null }
+            {"titel", null },
+            {"boarattack", null }
 
         };
 
