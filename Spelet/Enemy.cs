@@ -13,7 +13,7 @@ namespace Spelet
 {
     internal class Enemy : HPEntity
     {
-        enum enemyStates { patrolling, tracking, chasing};
+        enum enemyStates { patrolling, attacking, tracking, chasing};
         enemyStates currentEnemyState = enemyStates.patrolling;
 
         public float
@@ -31,17 +31,19 @@ namespace Spelet
             lastSeenPlayerPosition;
 
         Animation walkingAnimation;
+        Animation attackAnimation;
 
         public Enemy(Vector2 position, float scale) : base(position, scale)
         {
-            texture = Data.textures["enemy"];
+            texture = Data.textures["boarattack"];
             direction = new Vector2(1, 0);
 
             hitbox.Size = new Point((int)(texture.Height * scale), (int)(texture.Height * scale));
 
             speed = 1f;
 
-            walkingAnimation = new Animation(0, 5, 0.3f, 64);
+            walkingAnimation = new Animation(0, 6, 0.3f, 64);
+            attackAnimation = new Animation(7, 13, 0.3f, 64);
         }
         
         bool IsWallThere(Map map, Player player)
@@ -88,7 +90,11 @@ namespace Spelet
 
         public void UpdateEnemyState(Player player, Map map)
         {
-            if(SeesPlayer(player, map))
+            if (hitbox.Intersects(player.hitbox))
+            {
+                currentEnemyState = enemyStates.attacking;
+            }
+            else if (SeesPlayer(player, map))
             {
                 lastSeenPlayerPosition = player.position;
                 currentEnemyState = enemyStates.chasing;
@@ -101,6 +107,7 @@ namespace Spelet
             {
                 currentEnemyState = enemyStates.patrolling;
             }
+            
         }
 
         public void Update(GameTime gameTime)
@@ -108,15 +115,27 @@ namespace Spelet
             switch (currentEnemyState)
             {
                 case enemyStates.patrolling:
+                    walkingAnimation.Update(gameTime);
+                    sourceRectangle = walkingAnimation.GetFrame();
                     Patrol();
                     break;
 
                 case enemyStates.tracking:
+                    walkingAnimation.Update(gameTime);
+                    sourceRectangle = walkingAnimation.GetFrame();
                     TrackPlayer();
                     break;
 
                 case enemyStates.chasing:
+                    walkingAnimation.Update(gameTime);
+                    sourceRectangle = walkingAnimation.GetFrame();
                     ChasePlayer();
+                    break;
+
+                case enemyStates.attacking:
+                    attackAnimation.Update(gameTime);
+                    sourceRectangle = attackAnimation.GetFrame();
+                    AttackPlayer();
                     break;
             }
 
@@ -124,8 +143,9 @@ namespace Spelet
 
             rotation = Data.RelationToRotation(Vector2.Zero, velocity) * -1;
 
-            walkingAnimation.Update(gameTime);
-            sourceRectangle = walkingAnimation.GetFrame();
+            
+            
+            
         }
 
         void Patrol()
@@ -169,6 +189,11 @@ namespace Spelet
         void TrackPlayer()
         {
             velocity = Vector2.Normalize(position - lastSeenPlayerPosition) * speed * -1;
+        }
+
+        void AttackPlayer()
+        {
+            sourceRectangle = attackAnimation.GetFrame();
         }
 
         void ChasePlayer()
