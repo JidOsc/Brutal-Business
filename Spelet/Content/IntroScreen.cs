@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,12 @@ namespace Spelet.Content
             intro = new Animation(0, 6, 0.3f, 0);
         }
 
-         
-
+        public void AnimationStart(GameTime gameTime)
+        {
+            intro.Update(gameTime);
+            intro.GetFrame();
+        }
+        
 
 
 
