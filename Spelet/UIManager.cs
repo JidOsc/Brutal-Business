@@ -19,6 +19,8 @@ namespace Spelet
             playerHealth,
             playerStamina;
 
+        const int inventoryMargin = 50;
+
         public UIManager()
         {
             inventorybar = new InventoryView[3];
