@@ -96,7 +96,7 @@ namespace Spelet
             if (lastTimesoundplay + timebetwensound < gameTime.TotalGameTime.TotalSeconds)
             {
                 lastTimesoundplay = (float)gameTime.TotalGameTime.TotalSeconds;
-                SoundManager.PlaySound(position, Data.soundEffects["mixkit-footsteps-in-a-tunnel-loop-543"]);
+                SoundManager.PlaySound(position, Data.soundEffects["mixkit-big-wild-cat-slow-moan-90"]);
 
             }
             if (hitbox.Intersects(player.hitbox))
