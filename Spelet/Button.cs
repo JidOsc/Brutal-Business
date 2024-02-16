@@ -34,7 +34,7 @@ namespace Spelet
                     break;
 
                 case buttonStates.settings:
-                    background = Data.textures["settings_button"];
+                    background = Data.textures["credits_button"];
                     break;
 
                 case buttonStates.quit:

@@ -24,14 +24,14 @@ namespace Spelet
                 {
                     menuStates.main,
                     new Menu(new List<Button>(){
-                    new Button(new Vector2(100, 200), new Vector2(300, 150), Button.buttonStates.start),
-                    new Button(new Vector2(550, 200), new Vector2(300, 150), Button.buttonStates.start),
-                    new Button(new Vector2(1000, 200), new Vector2(300, 150), Button.buttonStates.settings),
-                    new Button(new Vector2(1450, 200), new Vector2(300, 150), Button.buttonStates.pause)
+                    new Button(new Vector2(100, 700), new Vector2(300, 150), Button.buttonStates.start),
+                    new Button(new Vector2(550, 700), new Vector2(300, 150), Button.buttonStates.start),
+                    new Button(new Vector2(1000, 700), new Vector2(300, 150), Button.buttonStates.settings),
+                    new Button(new Vector2(1450, 700), new Vector2(300, 150), Button.buttonStates.quit)
                 },
                     new List<Image>()
                     {
-                        new Image(new Vector2(100, 100), new Vector2(100, 100), Data.textures["titel"])
+                        new Image(new Vector2(672, 100), new Vector2(600, 400), Data.textures["titel"])
                     })
                 },
 
@@ -39,8 +39,12 @@ namespace Spelet
                     menuStates.settings,
                     new Menu(new List<Button>(){
                     new Button(new Vector2(100, 200), new Vector2(300, 150), Button.buttonStates.start),
-                    new Button(new Vector2(550, 200), new Vector2(300, 150), Button.buttonStates.start)
-                })
+                    
+                },
+                    new List<Image>()
+                    {
+                        new Image(new Vector2(672, 100), new Vector2(600, 400), Data.textures["credits_menu"])
+                    })
                 },
 
                 {

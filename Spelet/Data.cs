@@ -44,7 +44,7 @@ namespace Spelet
             {"stamina_bar_capsule", null },
             {"titel", null },
             {"boarattack", null }
-
+           
         };
 
         public static Dictionary<string, SoundEffect> soundEffects = new Dictionary<string, SoundEffect>()
