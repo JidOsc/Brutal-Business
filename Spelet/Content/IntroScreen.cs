@@ -9,20 +9,24 @@ namespace Spelet.Content
 {
     internal class IntroScreen
     {
-        Animation intro;
+        Animation introAnimation;
+
 
         public IntroScreen()
         {
-            intro = new Animation(0, 6, 0.3f, 0);
+            introAnimation = new Animation(0, 4, 0.3f, 96);
         }
 
-        public void AnimationStart(GameTime gameTime)
+        public void AnimationStart()
         {
-            intro.Update(gameTime);
-            intro.GetFrame();
+            introAnimation.GetFrame();
+            
         }
         
-
+        public void Update(GameTime gameTime)
+        {
+            introAnimation.GetFrame();
+        }
 
 
 
