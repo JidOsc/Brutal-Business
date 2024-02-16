@@ -33,7 +33,8 @@ namespace Spelet
         float
         lastTimesoundplay = 0,
         timebetwensound = 8;
-        
+
+       
 
         public Player(Vector2 position, float scale) : base(position, scale)
         {
@@ -115,7 +116,13 @@ namespace Spelet
 
             if(Math.Abs(velocity.X) > 0 || Math.Abs(velocity.Y) > 0)
             {
-                if(Data.keyboard.IsKeyDown(Keys.LeftShift) && currentStamina > 0)
+                if (lastTimesoundplay + timebetwensound < gameTime.TotalGameTime.TotalSeconds)
+                {
+                    lastTimesoundplay = (float)gameTime.TotalGameTime.TotalSeconds;
+                    SoundManager.PlaySound(position, Data.soundEffects["mixkit-footsteps-in-a-tunnel-loop-543"]);
+
+                }
+                if (Data.keyboard.IsKeyDown(Keys.LeftShift) && currentStamina > 0)
                 {
                     currentPlayerState = playerStates.running;
                     velocity *= runningModifier;
@@ -157,12 +164,7 @@ namespace Spelet
                     sourceRectangle = runningAnimation.GetFrame();
                     break;
             }
-            if (lastTimesoundplay + timebetwensound < gameTime.TotalGameTime.TotalSeconds)
-            {
-                lastTimesoundplay = (float)gameTime.TotalGameTime.TotalSeconds;
-                SoundManager.PlaySound(position, Data.soundEffects["mixkit-footsteps-in-a-tunnel-loop-543"]);
-               
-            }
+           
            
 
             UpdateHitboxVelocity();
