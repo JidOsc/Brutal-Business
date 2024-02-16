@@ -27,6 +27,7 @@ namespace Spelet
             playerHealth = new Progressbar(Data.textures["Bar"], new Vector2(10, 10), new Vector2(50, 10), 5f, Data.textures["background"], Color.LawnGreen);
             playerStamina = new Progressbar(Data.textures["stamina_bar_capsule"], new Vector2(10, 85), new Vector2(50, 10), 5f, Data.textures["background"], Color.Orange);
         }
+
         public void Update(GameTime _gameTime, Player player)
         {
             pickupObjects = player.inventory;
