@@ -12,11 +12,18 @@ namespace Spelet
     internal class Menu
     {
         List<Button> buttonList;
+        List<Texture2D> texture2DList;
+        public Menu(List<Button> buttonList, List<Texture2D> texture2DList)
+        {
+            this.buttonList = buttonList;
+            this.texture2DList = texture2DList;
+        }
 
-        public Menu (List<Button> buttonList)
+        public Menu(List<Button> buttonList)
         {
             this.buttonList = buttonList;
         }
+
 
         public Button.buttonStates? UpdateButtons()
         {
