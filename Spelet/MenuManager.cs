@@ -29,9 +29,9 @@ namespace Spelet
                     new Button(new Vector2(1000, 200), new Vector2(300, 150), Button.buttonStates.settings),
                     new Button(new Vector2(1450, 200), new Vector2(300, 150), Button.buttonStates.pause)
                 },
-                    new List<Texture2D>()
+                    new List<Image>()
                     {
-                        Data.textures["titel"]
+                        new Image(new Vector2(100, 100), new Vector2(100, 100), Data.textures["titel"])
                     })
                 },
 

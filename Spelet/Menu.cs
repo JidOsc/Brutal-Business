@@ -12,12 +12,13 @@ namespace Spelet
     internal class Menu
     {
         List<Button> buttonList;
-        List<Texture2D> texture2DList;
-        public Menu(List<Button> buttonList, List<Texture2D> texture2DList)
+        List<Image> imageList;
+        public Menu(List<Button> buttonList, List<Image> imageList)
         {
             this.buttonList = buttonList;
-            this.texture2DList = texture2DList;
+            this.imageList = imageList;
         }
+
 
         public Menu(List<Button> buttonList)
         {
@@ -43,7 +44,10 @@ namespace Spelet
             {
                 button.Draw(_spriteBatch);
             }
-            
+            foreach (Image image in imageList)
+            {
+                image.Draw(_spriteBatch);
+            }
         }
     }
 }
