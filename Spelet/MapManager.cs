@@ -79,7 +79,7 @@ namespace Spelet
             {
                 if (enemy.lastTimeChecked + enemy.updateRate <= _gameTime.TotalGameTime.TotalMilliseconds)
                 {
-                    enemy.UpdateEnemyState(player, map);
+                    enemy.UpdateEnemyState(player, map, _gameTime);
                     enemy.lastTimeChecked = (float)_gameTime.TotalGameTime.TotalMilliseconds;
 
                     if (enemy.hitbox.Intersects(player.hitbox))
