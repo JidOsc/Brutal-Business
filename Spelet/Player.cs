@@ -161,8 +161,9 @@ namespace Spelet
             {
                 lastTimesoundplay = (float)gameTime.TotalGameTime.TotalSeconds;
                 SoundManager.PlaySound(position, Data.soundEffects["mixkit-footsteps-in-a-tunnel-loop-543"]);
+               
             }
-            
+           
 
             UpdateHitboxVelocity();
             rotation = Data.RelationToRotation(Data.mouse.Position.ToVector2(), position) * -1;
