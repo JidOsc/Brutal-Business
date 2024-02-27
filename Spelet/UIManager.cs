@@ -19,6 +19,8 @@ namespace Spelet
             playerHealth,
             playerStamina;
 
+        float totalValue;
+
         const int inventoryMargin = 50;
 
         public UIManager()
@@ -30,7 +32,7 @@ namespace Spelet
             playerStamina = new Progressbar(Data.textures["stamina_bar_capsule"], new Vector2(10, 85), new Vector2(50, 10), 5f, Data.textures["background"], Color.Orange);
         }
 
-        public void Update(GameTime _gameTime, Player player)
+        public void Update(GameTime _gameTime, Player player, float totalValue)
         {
             pickupObjects = player.inventory;
 
@@ -46,7 +48,7 @@ namespace Spelet
                 }
             }
 
-
+            this.totalValue = totalValue;
 
             playerStamina.SetNewValue(player.currentStamina);
             playerHealth.SetNewValue(player.health);
@@ -65,6 +67,8 @@ namespace Spelet
 
         public void Draw(SpriteBatch _spriteBatch)
         {
+            _spriteBatch.DrawString(Data.money, "Total value collected: " + totalValue.ToString(), new Vector2(Data.viewport.Width - 30, 10) * Data.cameraScale, Color.White);
+
             foreach(InventoryView inventory in inventorybar)
             {
                inventory.Draw(_spriteBatch);

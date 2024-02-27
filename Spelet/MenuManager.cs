@@ -11,7 +11,7 @@ namespace Spelet
 {
     internal class MenuManager
     {
-        public enum menuStates { main, settings, pause, dead, none }
+        public enum menuStates { main, settings, pause, dead, winner, none }
 
         Dictionary<menuStates, Menu> menus;
         Menu currentMenu;
@@ -24,7 +24,6 @@ namespace Spelet
                 {
                     menuStates.main,
                     new Menu(new List<Button>(){
-                    new Button(new Vector2(100, 700), new Vector2(300, 150), Button.buttonStates.start),
                     new Button(new Vector2(550, 700), new Vector2(300, 150), Button.buttonStates.start),
                     new Button(new Vector2(1000, 700), new Vector2(300, 150), Button.buttonStates.settings),
                     new Button(new Vector2(1450, 700), new Vector2(300, 150), Button.buttonStates.quit)
@@ -37,8 +36,9 @@ namespace Spelet
 
                 {
                     menuStates.settings,
-                    new Menu(new List<Button>(){
-                    new Button(new Vector2(100, 200), new Vector2(300, 150), Button.buttonStates.start),
+                    new Menu(new List<Button>()
+                    {
+                        new Button(new Vector2(100, 200), new Vector2(300, 150), Button.buttonStates.start),
                     
                 },
                     new List<Image>()
@@ -53,6 +53,19 @@ namespace Spelet
                     {
                         new Button(new Vector2(800, 600), new Vector2(300, 150), Button.buttonStates.start),
                         new Button(new Vector2(800, 800), new Vector2(300, 150), Button.buttonStates.quit)
+                    })
+                },
+
+                {
+                    menuStates.winner,
+                    new Menu(new List<Button>()
+                    {
+                        new Button(new Vector2(600, 600), new Vector2(300, 150), Button.buttonStates.start),
+                    },
+
+                    new List<Image>()
+                    {
+                        new Image(new Vector2(500, 200), new Vector2(600, 400), Data.textures["congrats"])
                     })
                 }
             };

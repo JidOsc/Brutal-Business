@@ -17,7 +17,7 @@ namespace Spelet
         public MenuManager menuManager;
         public UIManager uiManager;
 
-        enum GameState {main, gamealive, gamedead};
+        enum GameState {main, gamealive, gamedead, gamewinner};
         GameState currentGameState = GameState.main;
 
         string filepathFolder;
@@ -63,12 +63,17 @@ namespace Spelet
 
                 case GameState.gamealive:
                     mapManager.Update(_gameTime);
-                    uiManager.Update(_gameTime, mapManager.player);
+                    uiManager.Update(_gameTime, mapManager.player, mapManager.totalValue);
 
                     if (mapManager.player.IsDead())
                     {
                         menuManager.ChangeMenu(MenuManager.menuStates.dead);
                         currentGameState = GameState.gamedead;
+                    }
+                    else if(mapManager.objectsLeft <= 0)
+                    {
+                        currentGameState = GameState.gamewinner;
+                        menuManager.ChangeMenu(MenuManager.menuStates.winner);
                     }
                     break;
 
@@ -78,7 +83,7 @@ namespace Spelet
                         case Button.buttonStates.start:
 
                             mapManager.Restart(LoadMap());
-
+                            mapManager.totalValue = 0;
                             currentGameState = GameState.gamealive;
                             break;
 
@@ -88,6 +93,16 @@ namespace Spelet
 
                         case Button.buttonStates.quit:
                             
+                            break;
+                    }
+                    break;
+
+                case GameState.gamewinner:
+                    switch(menuManager.GetInteraction())
+                    {
+                        case Button.buttonStates.start:
+                            mapManager.Restart(LoadMap());
+                            currentGameState = GameState.gamealive;
                             break;
                     }
                     break;
@@ -111,6 +126,12 @@ namespace Spelet
 
                 case GameState.gamedead:
                     mapManager.Draw(_spriteBatch,_graphics);
+                    uiManager.Draw(_spriteBatch);
+                    menuManager.Draw(_spriteBatch);
+                    break;
+
+                case GameState.gamewinner:
+                    mapManager.Draw(_spriteBatch, _graphics);
                     uiManager.Draw(_spriteBatch);
                     menuManager.Draw(_spriteBatch);
                     break;

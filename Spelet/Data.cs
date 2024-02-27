@@ -43,7 +43,8 @@ namespace Spelet
             {"settings_button", null },
             {"stamina_bar_capsule", null },
             {"titel", null },
-            {"boarattack", null }
+            {"boarattack", null },
+            {"congrats", null }
            
         };
 

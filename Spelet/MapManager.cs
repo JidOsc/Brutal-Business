@@ -14,6 +14,8 @@ namespace Spelet
         List<Enemy> enemyList;
         
         List<PickupObject> pickupObjectList;
+        public short objectsLeft;
+
         public Player player;
 
         public Map map;
@@ -30,6 +32,7 @@ namespace Spelet
 
             mainTarget = new RenderTarget2D(_graphics, 1920, 1080);
             totalValue = 0;
+            objectsLeft = 0;
 
             this.map = new Map(32, 10);
             LoadMap(loadedMap);
@@ -59,10 +62,11 @@ namespace Spelet
                     {
                         case 1: //pickupobject
                             pickupObjectList.Add(new PickupObject(Data.GridToWorld(new Vector2(x, y)), 1f));
+                            objectsLeft += 1;
                             break;
 
                         case 2: //spelare
-                            player = new Player(Data.GridToWorld(new Vector2(x, y)), 0.5f);
+                            player = new Player(Data.GridToWorld(new Vector2(x, y)), 0.4f);
                             break;
 
                         case 3: //fiende
@@ -98,14 +102,15 @@ namespace Spelet
                     player.PickedUp(pickupObject);
                     pickupObjectList.Remove(pickupObject);
                     break;
-
                 }
+
                 Vector2 Temppos = Data.WorldToGrid(pickupObject.position);
 
-                if (map.foregroundTiles[(int)Temppos.Y][(int)Temppos.X] == 1)
+                if (map.foregroundTiles[(int)Temppos.Y][(int)Temppos.X] == 1 && pickupObject.value > 0)
                 {
                     totalValue += pickupObject.value;
                     pickupObject.value = 0;
+                    objectsLeft -= 1;
                 }
             } 
 
@@ -124,8 +129,6 @@ namespace Spelet
         {
             _graphics.SetRenderTarget(mainTarget);
             map.Draw(_spriteBatch);
-            _spriteBatch.DrawString( Data.money, totalValue.ToString(),new Vector2(1700, 10), Color.Green);
-            
 
             foreach(Enemy enemy in enemyList)
             {
