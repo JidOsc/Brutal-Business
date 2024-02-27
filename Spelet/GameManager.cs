@@ -20,7 +20,7 @@ namespace Spelet
         enum GameState {main, gamealive, gamedead, gamewinner};
         GameState currentGameState = GameState.main;
 
-        string filepathFolder;
+        string filepathFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         string filepathMaps;
 
 
@@ -143,7 +143,7 @@ namespace Spelet
 
         public void AccessFolder()
         {
-            filepathFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Brutal Business\");
+            //filepathFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Brutal Business\");
 
             if (!Directory.Exists(filepathFolder))
             {
