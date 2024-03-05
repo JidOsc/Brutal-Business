@@ -53,7 +53,7 @@ namespace Spelet
         {
             enemyList = new List<Enemy>();
             pickupObjectList = new List<PickupObject>();
-
+            //Kod som placerar ut spelare fiende och object
             for(int x = 0; x < markers[0].Length; x++)
             {
                 for(int y = 0; y < markers.Length; y++)
@@ -81,6 +81,7 @@ namespace Spelet
         {
             foreach(Enemy enemy in enemyList)
             {
+                //Updaterar fienden bara ibland så att det inte laggar
                 if (enemy.lastTimeChecked + enemy.updateRate <= _gameTime.TotalGameTime.TotalMilliseconds)
                 {
                     enemy.UpdateEnemyState(player, map, _gameTime);
