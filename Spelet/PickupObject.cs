@@ -13,7 +13,8 @@ namespace Spelet
        public float value;
         
         public PickupObject(Vector2 position, float scale) : base(position, scale)
-        {
+        {   
+            //Ger objeck en position, valuta och en texture
             value = Data.random.Next(25, 75);
             this.position = position;
             switch (Data.random.Next(0, 4))
