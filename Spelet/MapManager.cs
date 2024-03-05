@@ -114,7 +114,7 @@ namespace Spelet
                 }
             } 
 
-            player.Update(_gameTime);
+            player.Update(_gameTime, camera);
             
             camera.position = player.position * Data.cameraScale - Data.viewport.Bounds.Size.ToVector2() * 2;
             camera.UpdateCamera(Data.viewport);

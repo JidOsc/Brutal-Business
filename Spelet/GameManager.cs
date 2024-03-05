@@ -23,7 +23,6 @@ namespace Spelet
         string filepathFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         string filepathMaps;
 
-
         public GameManager(GraphicsDevice _graphics)
         {
             AccessFolder();
@@ -38,8 +37,8 @@ namespace Spelet
 
         public void Update(GameTime _gameTime)
         {
-            switch (currentGameState)
-            {
+           switch (currentGameState)
+           {
                 case GameState.main:
                     switch (menuManager.GetInteraction())
                     {

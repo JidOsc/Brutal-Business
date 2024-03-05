@@ -31,10 +31,8 @@ namespace Spelet
             staminaDepletionRate = 0.05f;
 
         float
-        lastTimesoundplay = 0,
-        timebetwensound = 8;
-
-       
+            lastTimesoundplay = 0,
+            timebetwensound = 8; 
 
         public Player(Vector2 position, float scale) : base(position, scale)
         {
@@ -84,9 +82,7 @@ namespace Spelet
             TakeDamage(0.4f);
         }
 
-        
-
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Camera camera)
         {
             if (Data.keyboard.IsKeyDown(Keys.W)) //uppåt
             {
@@ -151,7 +147,6 @@ namespace Spelet
                 }
             }
 
-
             switch (currentPlayerState)
             {
                 case playerStates.walking:
@@ -163,18 +158,14 @@ namespace Spelet
                     runningAnimation.Update(gameTime);
                     sourceRectangle = runningAnimation.GetFrame();
                     break;
+
+                case playerStates.idle:
+                    sourceRectangle = walkingAnimation.GetFrame();
+                    break;
             }
-           
-           
-
+                      
             UpdateHitboxVelocity();
-            rotation = Data.RelationToRotation(Data.mouse.Position.ToVector2(), position) * -1;
-        }
-
-        public void Draw()
-        {
-            
-            //lär inte behövas här
+            rotation = Data.RelationToRotation((Data.mouse.Position.ToVector2() + camera.position) / Data.cameraScale, position + new Vector2(texture.Height/2, texture.Height / 2)) * -1;
         }
     }
 }
