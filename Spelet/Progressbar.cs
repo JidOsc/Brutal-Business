@@ -53,13 +53,12 @@ namespace Spelet
 
         public void Update(GameTime gameTime)
         {
-            
-
             UpdateSlider();
         }
 
         void UpdateSlider()
         {
+
             if(currentValue != newValue)
             {
                 slide += slideSpeed;

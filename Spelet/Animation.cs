@@ -36,6 +36,7 @@ namespace Spelet
         }
         public void Update(GameTime gameTime)
         {
+            //Updaterar till en ny frame på en animation
             if(lastAnimationSecond + timeBetweenFrames < gameTime.TotalGameTime.TotalSeconds)
             { 
                 frameNumber += 1;
