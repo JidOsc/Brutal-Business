@@ -29,6 +29,7 @@ namespace Spelet
 
             switch (buttonState)
             {
+                //Sätter in rätt Textures
                 case buttonStates.start:
                     background = Data.textures["buttonstart"];
                     break;
@@ -42,17 +43,18 @@ namespace Spelet
                     break;
 
                 case buttonStates.pause:
-                    background = Data.textures["buttonstart"]; //
+                    background = Data.textures["buttonstart"]; 
                     break;
 
                 case buttonStates.main:
-                    background = Data.textures["buttonstart"]; //
+                    background = Data.textures["buttonstart"]; 
                     break;
             }
-
+            
             this.buttonState = buttonState;
         }
 
+        //Byter färg på kanpparna
         public bool IsPressed()
         {
             if (IsInside(Data.mouse.Position.ToVector2()))
