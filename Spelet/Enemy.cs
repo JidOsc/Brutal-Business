@@ -104,7 +104,7 @@ namespace Spelet
 
             }
 
-            //Ändrar vad enemy gör beroende på vilken state blir true
+            //Ändrar fiende state
             if (hitbox.Intersects(player.hitbox))
             {
                 currentEnemyState = enemyStates.attacking;
