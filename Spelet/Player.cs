@@ -109,7 +109,7 @@ namespace Spelet
             {
                 velocity.X = 0;
             }
-
+            //Matte som kollar om spelaren rör sig
             if(Math.Abs(velocity.X) > 0 || Math.Abs(velocity.Y) > 0)
             {
                 if (lastTimesoundplay + timebetwensound < gameTime.TotalGameTime.TotalSeconds)
