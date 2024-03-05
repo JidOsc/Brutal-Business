@@ -12,7 +12,6 @@ namespace Spelet
     internal class Map
     {
         public short[][] foregroundTiles;
-        short[][] backgroundTiles;
 
         public int
             tileSize;
@@ -69,6 +68,8 @@ namespace Spelet
 
         public void Draw(SpriteBatch _spriteBatch)
         {
+            //ritar ut kartan med hjälp av en jagged array samt vår tilemap
+
             for(int y = 0; y < sizeY; y++)
             {
                 for(int x = 0; x < sizeX; x++)

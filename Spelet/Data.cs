@@ -66,6 +66,8 @@ namespace Spelet
 
         public static SpriteFont money;
 
+        public static bool willExit;
+
         public static Viewport viewport;
 
         public static bool[,] collisionMap;
@@ -83,11 +85,13 @@ namespace Spelet
                 soundEffects[soundname] = _contentManager.Load<SoundEffect>(soundname);
             }
             //loopa igenom dictionary för att med hjälp av contentmanager ladda in alla texturer
+            //gör detsamma med ljud
         }
 
         public static float RelationToRotation(Vector2 firstPos, Vector2 secondPos)
         {
             return (float)Math.Atan2(firstPos.X - secondPos.X, firstPos.Y - secondPos.Y);
+            //matte för vector2-relation till en float
         }
 
         public static Vector2 WorldToGrid(Vector2 position)
