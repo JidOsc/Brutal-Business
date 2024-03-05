@@ -49,11 +49,14 @@ namespace Spelet
             attackAnimation = new Animation(7, 13, 0.3f, 64);
         }
         
+
         bool IsWallThere(Map map, Player player)
         {
+
             Vector2 positionB;
             Vector2 positionA;
-
+            
+            //Gör positionerna till rutor
             if (player.position.X > position.X)
             {
                 positionA = Data.WorldToGrid(position);
@@ -65,6 +68,7 @@ namespace Spelet
                 positionB = Data.WorldToGrid(position);
             }
 
+            //Tittar ifall det finns en väg ruta mellan spelar rutan och fiende rutan
             for (int x = (int)positionA.X; x < positionB.X; x++)
             {
                 int y = (int)(positionA.Y + (positionB.Y - positionA.Y) * (x - positionA.X) / (positionB.X - positionA.X));
@@ -99,6 +103,8 @@ namespace Spelet
                 SoundManager.PlaySound(position, Data.soundEffects["mixkit-big-wild-cat-slow-moan-90"]);
 
             }
+
+            //Ändrar vad enemy gör beroende på vilken state blir true
             if (hitbox.Intersects(player.hitbox))
             {
                 currentEnemyState = enemyStates.attacking;
@@ -152,10 +158,6 @@ namespace Spelet
             UpdateHitboxVelocity();
 
             rotation = Data.RelationToRotation(Vector2.Zero, velocity) * -1;
-
-            
-            
-            
         }
 
         void Patrol()
@@ -169,11 +171,13 @@ namespace Spelet
 
         Vector2 GetNewDirection(List<Vector2> availableDirections)
         {
+            //Använder GetAvailableDirections för att ge fienden en ny rikting at gå till
             return availableDirections[Data.random.Next(0, availableDirections.Count)];
         }
 
         List<Vector2> GetAvailableDirections()
         {
+            //Kollar var fienden inte kolliderar och lägger dem i en lista som ändrar rikting
             List<Vector2> directionalDirections = new List<Vector2>();
 
             if (!controller.collisions.left)
