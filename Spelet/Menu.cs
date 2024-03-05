@@ -14,6 +14,7 @@ namespace Spelet
         List<Button> buttonList;
         List<Image> imageList;
 
+        //Listor flr button och image
         public Menu(List<Button> buttonList, List<Image> imageList)
         {
             this.buttonList = buttonList;
@@ -25,6 +26,7 @@ namespace Spelet
             this.buttonList = buttonList;
         }
 
+        //updaterar button
         public Button.buttonStates? UpdateButtons()
         {
             foreach(Button button in buttonList)
@@ -37,6 +39,7 @@ namespace Spelet
             return null;
         }
 
+        //ritar ut buttonimage
         public void Draw(SpriteBatch _spriteBatch)
         {
             foreach(Button button in buttonList)
