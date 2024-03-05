@@ -20,12 +20,10 @@ namespace Spelet
             this.imageList = imageList;
         }
 
-
         public Menu(List<Button> buttonList)
         {
             this.buttonList = buttonList;
         }
-
 
         public Button.buttonStates? UpdateButtons()
         {

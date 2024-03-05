@@ -42,7 +42,6 @@ namespace Spelet
             gameManager = new GameManager(GraphicsDevice);
         }
       
-       
         protected override void Update(GameTime gameTime)
         {
             Data.keyboard = Keyboard.GetState();
@@ -50,19 +49,12 @@ namespace Spelet
 
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            
             
             gameManager.Update(gameTime);
 
             Data.lastKeyboard = Data.keyboard;
             Data.lastMouse = Data.mouse;
             SoundEffect.MasterVolume = 1.0f;
-
-            
-
-
-
 
             base.Update(gameTime);
         }

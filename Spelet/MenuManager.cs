@@ -16,7 +16,6 @@ namespace Spelet
         Dictionary<menuStates, Menu> menus;
         Menu currentMenu;
 
-
         public MenuManager()
         {
             menus = new()
