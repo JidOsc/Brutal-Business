@@ -55,7 +55,7 @@ namespace Spelet
                             break;
 
                         case Button.buttonStates.quit:
-                            
+                            Data.willExit = true;
                             break;
                     }
                     break;
@@ -64,12 +64,12 @@ namespace Spelet
                     mapManager.Update(_gameTime);
                     uiManager.Update(_gameTime, mapManager.player, mapManager.totalValue);
 
-                    if (mapManager.player.IsDead())
+                    if (mapManager.player.IsDead()) //spelaren dog
                     {
                         menuManager.ChangeMenu(MenuManager.menuStates.dead);
                         currentGameState = GameState.gamedead;
                     }
-                    else if(mapManager.objectsLeft <= 0)
+                    else if(mapManager.objectsLeft <= 0) //du har hämtat allt skrot
                     {
                         currentGameState = GameState.gamewinner;
                         menuManager.ChangeMenu(MenuManager.menuStates.winner);
@@ -80,7 +80,6 @@ namespace Spelet
                     switch (menuManager.GetInteraction())
                     {
                         case Button.buttonStates.start:
-
                             mapManager.Restart(LoadMap());
                             mapManager.totalValue = 0;
                             currentGameState = GameState.gamealive;
@@ -91,7 +90,7 @@ namespace Spelet
                             break;
 
                         case Button.buttonStates.quit:
-                            
+                            Data.willExit = true;
                             break;
                     }
                     break;
@@ -139,13 +138,11 @@ namespace Spelet
             _spriteBatch.End();
         }
 
-
         public void AccessFolder()
         {
-            //filepathFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Brutal Business\");
-
             if (!Directory.Exists(filepathFolder))
             {
+                //skapar mapp om den inte finns
                 Directory.CreateDirectory(filepathFolder);
             }
         }
@@ -159,7 +156,7 @@ namespace Spelet
                 return JsonSerializer.Deserialize<Dictionary<string, short[][]>>(File.ReadAllText(filepathMaps));
             }
 
-            
+            //om metoden kommer hit så hittade den ingen karta och kommer skapa en ny
             Dictionary<string, short[][]> tempMap = new();
             tempMap.Add("tilemap", new short[34][]);
 

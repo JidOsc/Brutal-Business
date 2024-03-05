@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Spelet
 {
+    //ritar ut en ruta i inventoryt samt vad den innehåller
     internal class InventoryView : UIElement
     {
         PickupObject pickupObject;
@@ -22,7 +23,7 @@ namespace Spelet
             this.pickupObject = pickupObject;
         }
 
-        public void Draw(SpriteBatch _spriteBatch)
+        public override void Draw(SpriteBatch _spriteBatch)
         {
             _spriteBatch.Draw(background, hitbox, Color.White);
 

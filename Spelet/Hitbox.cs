@@ -20,13 +20,12 @@ namespace Spelet
         public Hitbox(Vector2 position)
         {
             this.position = position;
-
             hitbox = new Rectangle(position.ToPoint(), new Point(0, 0));
         }
 
-        
         public bool IsInside(Vector2 position2)
         {
+            //är punkten innanför alla kanter?
             return 
                 position2.X >= hitbox.Left 
                 && position2.X <= hitbox.Right
@@ -34,9 +33,10 @@ namespace Spelet
                 && position2.Y <= hitbox.Bottom;
         }
 
-        public void DrawHitbox(SpriteBatch _spritebatch)
+        /*public void DrawHitbox(SpriteBatch _spritebatch)
         { 
+            //används enbart för att debugga och ligger därför kvar
             _spritebatch.Draw(Data.textures["background"], hitbox, Color.Red * 0.3f) ;
-        }
+        }*/
     }
 }

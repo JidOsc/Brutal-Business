@@ -31,6 +31,7 @@ namespace Spelet
 
         public void Draw(SpriteBatch _spriteBatch)
         {
+            //standard-draw-metoden
             _spriteBatch.Draw(
                 texture, 
                 position + new Vector2(sourceRectangle.Width / 2, sourceRectangle.Height / 2) * scale, 
@@ -41,8 +42,6 @@ namespace Spelet
                 scale, 
                 SpriteEffects.None, 
                 0.5f);
-
-            //DrawHitbox(_spriteBatch) ;
         }
     }
 }

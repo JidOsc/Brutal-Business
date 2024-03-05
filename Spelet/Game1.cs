@@ -47,7 +47,7 @@ namespace Spelet
             Data.keyboard = Keyboard.GetState();
             Data.mouse = Mouse.GetState();
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape) || Data.willExit)
                 Exit();
             
             gameManager.Update(gameTime);

@@ -21,6 +21,7 @@ namespace Spelet
 
         public HPEntity(Vector2 position, float scale) : base(position, scale)
         {
+            //controller hanterar kollisioner!
             controller = new PlatformController();
             controller.Initialize(new Rectangle(position.ToPoint(), new Point((int)(64 * scale), (int)(64 * scale))), 5, 5, Data.tileSize);
             controller.SetCollisionMap(Data.collisionMap);
@@ -36,9 +37,6 @@ namespace Spelet
         public void TakeDamage(float amount)
         {
             health -= amount;
-
-            
         }
-
     }
 }
